@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>ES6知识点(三) - CN97 博客</title>
+
+
+    <meta name="description" content="👇内容速览👇  Generator函数 async&#x2F;await Class语法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6知识点(三)">
+<meta property="og:url" content="http://cn1997.top/2020/03/12/es6/es6-base-3/index.html">
+<meta property="og:site_name" content="CN97 博客">
+<meta property="og:description" content="👇内容速览👇  Generator函数 async&#x2F;await Class语法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://cn1997.top/images/og_image.png">
+<meta property="article:published_time" content="2020-03-12T14:20:47.000Z">
+<meta property="article:modified_time" content="2020-03-13T02:43:16.553Z">
+<meta property="article:author" content="CN97">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="es6">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://cn1997.top/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <!--
+ * @Description: 
+ * @Autor: cn
+ * @Date: 2020-03-09 16:51:19
+ * @LastEditors: cn
+ * @LastEditTime: 2020-03-11 21:01:46
+ -->
+<nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <!-- <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="ES6知识点(三)" height="28">
+            
+            </a> -->
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">
+                    <i class="fa fa-home"></i>  回到首页
+                </a>
+                
+                <a class="navbar-item"
+                href="/bigweb">
+                    <i class="fa fa-code"></i>  前端大全
+                </a>
+                
+                <a class="navbar-item"
+                href="/algorithm">
+                    <i class="fa fa-pen"></i>  算法修炼
+                </a>
+                
+                <a class="navbar-item"
+                href="/archives">
+                    <i class="fa fa-archive"></i>  提交记录
+                </a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/woliuCN/woliuCN.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-12T14:20:47.000Z">2020-03-12</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    17 分钟 读完 (大约 2518 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                ES6知识点(三)
+            
+        </h1>
+        <div class="content">
+            <p>👇内容速览👇</p>
+<ul>
+<li>Generator函数</li>
+<li>async/await</li>
+<li>Class语法</li>
+</ul>
+<a id="more"></a>
+<h2 id="Generator函数"><a href="#Generator函数" class="headerlink" title="Generator函数"></a>Generator函数</h2><ol>
+<li><p><strong>基本语法</strong></p>
+<p>与promise对象一样，同样是为了异步编程。ES6提出了Generator函数，Generator函数是一个状态机，内部封装了多个状态，返回结果是一个迭代器(Iterator)对象。与普通函数的区别在于function声明与函数名之间多了个星号。且函数内部能使用yield关键字（普通函数使用将报错）。🙋‍个例子        </p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> * <span class="title">exampleGenerator</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="string">'hello'</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="string">'world'</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"end"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span>  g= exampleGenerator();</span><br><span class="line"><span class="comment">//里面有三个状态,分别对应三个关键字后面的字符串</span></span><br></pre></td></tr></table></figure>
+
+<p>调用函数后，并不会执行，因为其返回的不是一个值，而是一个Iterator对象，必须是调用这个对象的next方法，将内部的指针从函数头部或者是上一次停留的地方向下移动，遇到yield/return就会停止下来，返回后面跟随的值，然后挂起，下次next再重复上面的步骤。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(g.next());</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;value: "hello", done: false&#125;</span></span><br><span class="line"><span class="comment">value表示当前的值，done 则表示遍历是否结束</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="built_in">console</span>.log(g.next());</span><br><span class="line"><span class="comment">//&#123;value: "world", done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(g.next());</span><br><span class="line"><span class="comment">//&#123;value: "end", done: true&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>带参数的next方法</strong></p>
+<p>因为yield方法并没有返回值，当我们下一个yield需要上参数的时候，这时候就只能通过next方法传参进去。next里面的参数表示的是<strong>上一个yield表达式的返回值,如果在另外一个表达式里面，必须放在圆括号里面。</strong>这个也是后面async函数内部实现的原理步骤之一。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> * <span class="title">exampleGenerator</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> y = <span class="keyword">yield</span> (x+<span class="number">1</span>) ;</span><br><span class="line">    <span class="keyword">var</span> z = <span class="keyword">yield</span> (y*<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">return</span> x+y+z;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span>  g= exampleGenerator(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(g.next());</span><br><span class="line"><span class="comment">//2+1=3 &#123;value: 3, done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(g.next(<span class="number">4</span>));</span><br><span class="line"><span class="comment">//4*2=8 &#123;value: 8, done: false&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(g.next(<span class="number">5</span>));</span><br><span class="line"><span class="comment">//2+4+5=11 &#123;value: 11, done: true&#125;</span></span><br><span class="line"></span><br><span class="line">-----------------------------------</span><br><span class="line"><span class="comment">//再看一个例子，会更加明白</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> * <span class="title">exampleGenerator</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> y = <span class="number">2</span> * (<span class="keyword">yield</span>(x+<span class="number">1</span>) );</span><br><span class="line">    <span class="keyword">var</span> z = <span class="keyword">yield</span> (y*<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">return</span> x+y+z;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span>  g= exampleGenerator(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(g.next());</span><br><span class="line"><span class="comment">// 2+1=3</span></span><br><span class="line"><span class="built_in">console</span>.log(g.next(<span class="number">4</span>));</span><br><span class="line"><span class="comment">// 2*4*2=16</span></span><br><span class="line"><span class="built_in">console</span>.log(g.next(<span class="number">5</span>));</span><br><span class="line"><span class="comment">// 2+2*4+5=15</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>自动遍历内部的值：使用for…of循环</strong></p>
+<p>因为for…of循环能遍历具有Iterator接口的，而generator函数返回的刚好是一个迭代器对象。无需调用next方法，适合那些不用传参计算的情况。<strong>注意：return 返回的值不包括在里面</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> * <span class="title">exampleGenerator</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="string">'hello'</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="string">'world'</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"end"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span>  g= exampleGenerator();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> item <span class="keyword">of</span> g)&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// hello world</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>yield*</strong></p>
+<p>yield 语句后面如果想执行一个generator,使用yield*表达式。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> * <span class="title">firstGenerator</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">yield</span> <span class="string">'cn'</span>;</span><br><span class="line">	<span class="keyword">yield</span> <span class="string">'emmmm'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> * <span class="title">secondGenerator</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">yield</span> <span class="string">'hello'</span>;</span><br><span class="line">	<span class="keyword">yield</span> <span class="string">'world'</span>;</span><br><span class="line">	<span class="keyword">yield</span> *firstGenerator() ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span>  g= secondGenerator();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> item <span class="keyword">of</span> g)&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// hello world cn emmmm</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>throw方法</strong></p>
+<p>定义在原型对象上的throw方法，每个由generator函数返回的迭代器对象，都会拥有，可以在函数体外部调用，用来抛出错误，优先被函数内部的try…catch捕获，如果内部没有try…catch的话，就被外部的try…catch捕获。如果内外都没有的话，就直接报错，中断执行。</p>
+<p><strong>注：g.throw与throw互不影响！</strong></p>
+<p>被内部捕获的话，会顺带执行下一个yield表达式，且不会影响下面的执行,如果不是被内部捕获的，就不会继续执行下去，即使在外面有try…catch块。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">#内部捕获</span><br><span class="line"><span class="function"><span class="keyword">function</span> * <span class="title">exampleGenerator</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="keyword">try</span>&#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="string">'hello'</span>;</span><br><span class="line">  &#125;<span class="keyword">catch</span>(e)&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(e);</span><br><span class="line">   &#125;</span><br><span class="line">    <span class="keyword">yield</span> <span class="string">'world'</span>;</span><br><span class="line">	<span class="keyword">yield</span> <span class="string">'emmm'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span>  g= exampleGenerator();</span><br><span class="line"><span class="built_in">console</span>.log(g.next());</span><br><span class="line"><span class="built_in">console</span>.log(g.throw(<span class="string">'错误'</span>));</span><br><span class="line"><span class="built_in">console</span>.log(g.next());</span><br><span class="line"><span class="comment">/*&#123;value: "hello", done: false&#125;</span></span><br><span class="line"><span class="comment">   错误</span></span><br><span class="line"><span class="comment">  &#123;value: "world", done: false&#125;</span></span><br><span class="line"><span class="comment">  &#123;value: "emmm", done: false&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">#外部捕获</span><br><span class="line"><span class="function"><span class="keyword">function</span> * <span class="title">exampleGenerator</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="string">'hello'</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="string">'world'</span>;</span><br><span class="line">	<span class="keyword">yield</span> <span class="string">'emmm'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span>  g= exampleGenerator();	</span><br><span class="line"><span class="built_in">console</span>.log(g.next()); <span class="comment">//hello</span></span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">g.throw(<span class="string">'错误'</span>)</span><br><span class="line">&#125;<span class="keyword">catch</span>(e)&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(e); <span class="comment">//错误</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(g.next());<span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+</li>
+</ol>
+<h2 id="async-await"><a href="#async-await" class="headerlink" title="async/await"></a>async/await</h2><p>之前讲过的异步编程的方法，回调函数，嵌套多层的时候“回调地狱”问题难以处理。所以才有了Promise对象。但是当嵌套很多层的时候，一堆的return、then语句写到迷茫，代码可读性跟简洁性就会降低。而async/await则是用同步的思想来处理异步的操作，代码的可读性跟简洁性就会大大提高，它其实是由generator跟promise结合而成的。</p>
+<ol>
+<li><p><strong>用法</strong></p>
+<p>可以看成是generator函数的语法糖，将(*)替换成async，将yield 替换成await，且是自执行的，await后面跟的是一个promise对象或者其他类型的值都行，await有返回值，返回值就是后面跟着的那个。整个函数返回值也是一个promise对象。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'start'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1=<span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">      resolve(<span class="number">1</span>);</span><br><span class="line">    &#125;,<span class="number">1000</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">var</span> p2=<span class="function">(<span class="params">x</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        resolve(x);</span><br><span class="line">        &#125;,<span class="number">1000</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a=<span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a1= <span class="keyword">await</span> p1;</span><br><span class="line">    <span class="keyword">var</span> a2= <span class="keyword">await</span> p2(a1)</span><br><span class="line">    <span class="keyword">return</span> a1+a2</span><br><span class="line">&#125;()</span><br><span class="line">a.then(<span class="function">(<span class="params">data</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'end'</span>);</span><br><span class="line"><span class="comment">// start end 2</span></span><br></pre></td></tr></table></figure>
+
+<p>由此可以看出异步函数虽然以同步的形式写的，但是并不会阻塞住，实质是遇到await的时候，会先让出执行栈，等到异步操作完成(这里就是promise对象resolve的时候)，再执行下面的操作，且可以将其返回值作为下一个异步操作的参数（这个在很多情况下很有用）。</p>
+<p>通常情况下，如果await后面的promise对象变成了reject状态的话，整个函数将会中断执行。如果想不影响下面执行的话，就得在内部进行异常捕获。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">     <span class="keyword">await</span> <span class="built_in">Promise</span>.reject(<span class="string">'hhh'</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(error);    </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> a1= <span class="keyword">await</span> <span class="string">'hehehe'</span></span><br><span class="line">    <span class="keyword">return</span> a1</span><br><span class="line">&#125;()</span><br><span class="line">a.then(<span class="function">(<span class="params">data</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//hhh hehehe</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>实现原理</strong></p>
+<p>前面说到，async 可以由generator函数+promise对象来实现，👇下面是实现思路</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCountry</span>(<span class="params">url</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">        resolve(<span class="string">"中国"</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCity</span>(<span class="params">country</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">      resolve(<span class="string">"潮州"</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getProvince</span>(<span class="params">country</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">      resolve(<span class="string">"广东省"</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 定义一个generator函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> * <span class="title">gen</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="comment">//getCountry是一个异步操作</span></span><br><span class="line">      <span class="keyword">const</span> country = <span class="keyword">yield</span> getCountry(<span class="string">"url"</span>);</span><br><span class="line">      <span class="keyword">const</span> province = <span class="keyword">yield</span> getProvince (country);</span><br><span class="line">      <span class="keyword">const</span> city = <span class="keyword">yield</span> getCity(province);</span><br><span class="line">      <span class="keyword">return</span> city</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//自定义async函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">async</span> (<span class="params">generator</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//返回一个迭代器对象</span></span><br><span class="line">  <span class="keyword">var</span>  interator = generator();</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">handle</span> (<span class="params">interatorResult</span>)</span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(interatorResult);</span><br><span class="line">      <span class="comment">/*</span></span><br><span class="line"><span class="comment">      获取当前值</span></span><br><span class="line"><span class="comment">       &#123; value: Promise &#123; '中国' &#125;, done: false &#125;</span></span><br><span class="line"><span class="comment">       &#123; value: Promise &#123; '广东省' &#125;, done: false &#125;</span></span><br><span class="line"><span class="comment">       &#123; value: Promise &#123; '潮州' &#125;, done: false &#125;</span></span><br><span class="line"><span class="comment">       &#123; value: '潮州', done: true &#125;</span></span><br><span class="line"><span class="comment">      */</span>  </span><br><span class="line">      <span class="keyword">const</span> value=interatorResult.value;</span><br><span class="line">      <span class="comment">//到最后一个的时候就直接resolve出去</span></span><br><span class="line">      <span class="keyword">if</span>(interatorResult.done)&#123;resolve(value)&#125; </span><br><span class="line">      <span class="keyword">if</span>(value <span class="keyword">instanceof</span> <span class="built_in">Promise</span>)&#123;</span><br><span class="line">          value.then(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;</span><br><span class="line">      <span class="comment">//递归调用，res作为上一个yield的返回值传递下去</span></span><br><span class="line">             handle(interator.next(res))</span><br><span class="line">          &#125;).catch(<span class="function"><span class="params">e</span>=&gt;</span>&#123;interator.throw(e)&#125;)</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">    <span class="comment">//启动调用</span></span><br><span class="line">    handle(interator.next());</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"> <span class="keyword">async</span>(gen).then(<span class="function"><span class="params">val</span>=&gt;</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(val);<span class="comment">//潮州</span></span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
+</ol>
+<h2 id="Class语法"><a href="#Class语法" class="headerlink" title="Class语法"></a>Class语法</h2><p>在ES6之前，是没有class类与extends继承的概念的，所有的对象都是通过构造器函数创建的，继承也是通过原型链来实现，为了简便语法，更加面向对象，ES6引入了这两个“语法糖”。</p>
+<ol>
+<li><p><strong>Class</strong></p>
+<p>在类里面，实例的属性得显示的定义在this上。否则将被认为要定义在原型上，与ES5一样，实例的原型会指向类的原型对象上。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Man</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name)&#123;</span><br><span class="line">      <span class="keyword">this</span>.name=name</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    getName()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> man=<span class="keyword">new</span> Man(<span class="string">'cn'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(man.hasOwnProperty(<span class="string">'name'</span>));</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> true </span></span><br><span class="line"><span class="comment"> 构造器里面定义的属性是在实例上的</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="built_in">console</span>.log(man.getName===Man.prototype.getName);</span><br><span class="line"><span class="built_in">console</span>.log(man.hasOwnProperty(<span class="string">'getName'</span>));</span><br><span class="line"><span class="built_in">console</span>.log(man.__proto__.hasOwnProperty(<span class="string">'getName'</span>));</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> true</span></span><br><span class="line"><span class="comment"> false</span></span><br><span class="line"><span class="comment"> true</span></span><br><span class="line"><span class="comment"> 类里面声明的方法都是定义在类的原型对象上的。</span></span><br><span class="line"><span class="comment"> 实例的__proto__指向的是Class.prototype</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>getter/setter</strong></p>
+<p>class里面也可以对对象属性的读取跟设置进行拦截修改，途径就是get / set 方法</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Man</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>()&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">get</span> name()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'cn1997'</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">set</span> name(value)&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'setter '</span>+value);</span><br><span class="line">      </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> man=<span class="keyword">new</span> Man();</span><br><span class="line">man.name=<span class="string">'cn'</span>; <span class="comment">// setter cn</span></span><br><span class="line"><span class="built_in">console</span>.log(man.name); <span class="comment">// cn1997</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>其他</strong></p>
+<p>class 内部方法的this默认是指向类的实例的，类不必函数，不存在变量提升，即不能在类声明之前创建一个实例对象。class.name属性将会返回类名……</p>
+</li>
+<li><p><strong>继承</strong></p>
+<ul>
+<li><p>ES5：对比ES5的继承一般都是寄生组合式，即实例属性使用构造器继承，而方法使用原型继承方法。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name=<span class="string">'a'</span></span><br><span class="line">&#125;</span><br><span class="line">A.prototype.getName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    A.apply(<span class="keyword">this</span>); <span class="comment">//继承属性</span></span><br><span class="line">    <span class="keyword">this</span>.age=<span class="string">'12'</span></span><br><span class="line">&#125;</span><br><span class="line">B.prototype=<span class="keyword">new</span> A();</span><br><span class="line"><span class="built_in">console</span>.log(B.portotype._proto_===A.prototype) <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(B._proto_===A)<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ES6的继承，根据阮一峰大佬的话来说，ES6的继承分两条链，一条是原型链，一条是原型对象的链。</p>
+<ul>
+<li><p>子类的proto属性，表示构造器的继承，指向父类。跟ES5的不同之处。</p>
+</li>
+<li><p>子类的prototype属性的proto，表示方法的继承，指向父类的prototype，这一点与ES5的一致。</p>
+</li>
+<li><p>实例的指向就很明确了，根据所构造的类的关系去找。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>()&#123;</span><br><span class="line">      <span class="keyword">this</span>.name=<span class="string">'cn'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  getName()&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>()&#123;</span><br><span class="line">      <span class="keyword">super</span>()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span>  a=<span class="keyword">new</span> A();</span><br><span class="line"><span class="keyword">var</span>  b=<span class="keyword">new</span> B();</span><br><span class="line"><span class="built_in">console</span>.log(a.__proto__===b.__proto__)<span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(a.__proto__===b.__proto__.__proto__);<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(B.prototype.__proto__===A.prototype) <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(B.__proto__===A)<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>区别来了，ES6的继承，子类必须在构造器函数里面调用super方法，因为子类的this对象，必须先通过父类的构造函数塑造，得到父类的实例属性跟实例方法，而后在将其加工，加上子类的实例属性跟方法，总而言之，不调用super方法，子类得不到this对象。而ES5的继承，是先通过创建了一个子类的实例对象this，再将父类的方法跟属性添加到this上(  A.apply(this) )。可以这样理解☞，之前我们知道new 一个实例的过程，先创建一个空对象，而ES6可能是创建的是一个父类的对象，所以super可能就是创建的一个父类的对象，再进行后续的操作….</strong></p>
+</li>
+</ol>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/es6/" rel="tag">es6</a>, <a class="has-link-grey -link" href="/tags/javascript/" rel="tag">javascript</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/13/ui/css-base1/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">CSS3 常见知识(一)</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/12/es6/es6-base-2/">
+                <span class="level-item">ES6知识点(二)</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+	var gitment = new Gitment({
+		id: '0c97ebd1dc7dcc6eabd3b526dccf4e19',
+		owner: 'woliuCN',
+		repo: 'blogTalk',
+		oauth: {
+			client_id: 'b5fd8275297303984d3a',
+			client_secret: '536b9ec352328e057db1fae530324462742ffc5b',
+		},
+	})
+	gitment.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/avatar.png" alt="CN97">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        CN97
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        请强大自己
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>广东 惠州</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            16
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            3
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/woliuCN/woliuCN.github.io" target="_blank" rel="noopener">
+                关注我</a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+    
+        
+    
+        <!-- <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/es6/" style="font-size: 13.33px;">es6</a> <a href="/tags/javascript/" style="font-size: 16.67px;">javascript</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 20px;">设计模式</a>
+    </div>
+</div> -->
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-13T02:49:41.000Z">2020-03-13</time></div>
+                    <a href="/2020/03/13/pattern/strategy-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">策略模式</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-13T02:49:30.000Z">2020-03-13</time></div>
+                    <a href="/2020/03/13/pattern/proxy-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">代理模式</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-13T02:49:05.000Z">2020-03-13</time></div>
+                    <a href="/2020/03/13/pattern/command-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">命令模式</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-13T02:48:54.000Z">2020-03-13</time></div>
+                    <a href="/2020/03/13/pattern/bridging-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">桥接模式</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-13T02:48:39.000Z">2020-03-13</time></div>
+                    <a href="/2020/03/13/pattern/adapter-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">适配器模式</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            作品链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="http://webmusic.cn1997.top/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">音乐播放器</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">webmusic.cn1997.top</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+                <li>
+                    <a href="/bigweb" class="level is-marginless">
+                        <span class="level-start" style="color: #276cda;">
+                            <span class="level-item">前端内容整理</span>
+                        </span>
+                        <span class="level-end" >
+                            <span class="level-item tag" style="background-color: #276cda; color: #fff;">更多</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/algorithm" class="level is-marginless">
+                        <span class="level-start" style="color: #276cda;">
+                            <span class="level-item">算法修炼</span>
+                        </span>
+                        <span class="level-end" >
+                            <span class="level-item tag" style="background-color: #276cda; color: #fff;">更多</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+        <a class="level is-marginless" href="/categories/css3/">
+            <span class="level-start">
+                <span class="level-item">css3</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/javascript/">
+            <span class="level-start">
+                <span class="level-item">javascript</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/pattern/">
+            <span class="level-start">
+                <span class="level-item">pattern</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+        
+            <!-- <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">16</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div> -->
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/css3/">
+                        <span class="tag">css3</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/es6/">
+                        <span class="tag">es6</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/javascript/">
+                        <span class="tag">javascript</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="tag">设计模式</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            作品链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="http://webmusic.cn1997.top/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">音乐播放器</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">webmusic.cn1997.top</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+                <li>
+                    <a href="/bigweb" class="level is-marginless">
+                        <span class="level-start" style="color: #276cda;">
+                            <span class="level-item">前端内容整理</span>
+                        </span>
+                        <span class="level-end" >
+                            <span class="level-item tag" style="background-color: #276cda; color: #fff;">更多</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/algorithm" class="level is-marginless">
+                        <span class="level-start" style="color: #276cda;">
+                            <span class="level-item">算法修炼</span>
+                        </span>
+                        <span class="level-end" >
+                            <span class="level-item tag" style="background-color: #276cda; color: #fff;">更多</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+        <a class="level is-marginless" href="/categories/css3/">
+            <span class="level-start">
+                <span class="level-item">css3</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/javascript/">
+            <span class="level-start">
+                <span class="level-item">javascript</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/pattern/">
+            <span class="level-start">
+                <span class="level-item">pattern</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <!-- <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">16</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div> -->
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/css3/">
+                        <span class="tag">css3</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/es6/">
+                        <span class="tag">es6</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/javascript/">
+                        <span class="tag">javascript</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="tag">设计模式</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <!-- <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="ES6知识点(三)" height="28">
+                
+                </a> -->
+                <p class="is-size-7" style="white-space: pre-line;">
+                &copy; 2020 CN97&nbsp;
+                <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">粤ICP备19127992号</a>
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                Reference for <a href="https://xxoo521.com/" target="_blank" rel="noopener">心谭</a>     
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/woliuCN/woliuCN.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://cn1997.top',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

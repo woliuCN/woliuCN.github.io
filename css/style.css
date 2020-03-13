@@ -107,6 +107,9 @@ img.thumbnail {
   display: flex;
   align-items: center;
   padding: 1.25rem 0.75rem;
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 1rem;
 }
 .navbar-main .navbar-item.is-active {
   color: #3273dc;

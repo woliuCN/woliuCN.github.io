@@ -7,18 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>归档: 2020/3 - CN97 博客</title>
+<title>javaScript基础知识(上) - CN97 博客</title>
 
 
-    <meta name="description" content="记录中成长">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CN97 博客">
-<meta property="og:url" content="http://cn1997.top/archives/2020/03/index.html">
+    <meta name="description" content="👇内容速览👇  基本的数据类型及判断区别  闭包的一些问题  浅拷贝与深拷贝的区别跟实现  原型与原型对象">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javaScript基础知识(上)">
+<meta property="og:url" content="http://cn1997.top/2020/03/09/javascript/javaScript-base-1/index.html">
 <meta property="og:site_name" content="CN97 博客">
-<meta property="og:description" content="记录中成长">
+<meta property="og:description" content="👇内容速览👇  基本的数据类型及判断区别  闭包的一些问题  浅拷贝与深拷贝的区别跟实现  原型与原型对象">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://cn1997.top/images/og_image.png">
+<meta property="article:published_time" content="2020-03-09T12:55:23.000Z">
+<meta property="article:modified_time" content="2020-03-13T03:12:33.143Z">
 <meta property="article:author" content="CN97">
+<meta property="article:tag" content="javascript">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://cn1997.top/images/og_image.png">
 
@@ -85,7 +88,7 @@
         <div class="navbar-brand is-flex-center">
             <!-- <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="CN97 博客" height="28">
+                <img src="/images/logo.svg" alt="javaScript基础知识(上)" height="28">
             
             </a> -->
         </div>
@@ -140,323 +143,166 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        三月 2020
-        </h3>
-        <div class="timeline">
+<div class="card">
+    
+    <div class="card-content article ">
         
-            <article class="media">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-09T12:55:23.000Z">2020-03-09</time>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:49:41.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/pattern/strategy-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">策略模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
                 </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:49:30.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/pattern/proxy-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">代理模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:49:05.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/pattern/command-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">命令模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+                <span class="level-item has-text-grey">
+                    
+                    
+                    12 分钟 读完 (大约 1766 个字)
+                </span>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:48:54.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/pattern/bridging-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">桥接模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:48:39.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/pattern/adapter-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">适配器模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:48:21.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/pattern/observer-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">观察者模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:48:00.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/pattern/abstractFactory-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">抽象工厂模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:47:45.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/pattern/factory-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">工厂模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:47:24.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/pattern/single-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">单例模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:37:09.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/ui/css-base2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">CSS3 常见知识(二)</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/css3/">css3</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:33:10.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/ui/css-base1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">CSS3 常见知识(一)</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/css3/">css3</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-12T14:20:47.000Z">2020-03-12</time>
-                        <a href="/2020/03/12/es6/es6-base-3/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6知识点(三)</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-12T14:02:11.000Z">2020-03-12</time>
-                        <a href="/2020/03/12/es6/es6-base-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6知识点(二)</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-12T14:02:06.000Z">2020-03-12</time>
-                        <a href="/2020/03/12/es6/es6-base-1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6知识点(一)</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-09T13:56:34.000Z">2020-03-09</time>
-                        <a href="/2020/03/09/javascript/javaScript-base-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">javaScript基础知识(下)</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-09T12:55:23.000Z">2020-03-09</time>
-                        <a href="/2020/03/09/javascript/javaScript-base-1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">javaScript基础知识(上)</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                javaScript基础知识(上)
+            
+        </h1>
+        <div class="content">
+            <p>👇内容速览👇</p>
+<ul>
+<li><p>基本的数据类型及判断区别</p>
+</li>
+<li><p>闭包的一些问题</p>
+</li>
+<li><p>浅拷贝与深拷贝的区别跟实现</p>
+</li>
+<li><p>原型与原型对象</p>
+</li>
+</ul>
+<a id="more"></a>
+<h2 id="基本的数据类型及判断区别"><a href="#基本的数据类型及判断区别" class="headerlink" title="基本的数据类型及判断区别"></a>基本的数据类型及判断区别</h2><p>​    JS在ES6出现之前就只有以下几个数据类型：Number、String、Boolean、Undefined、Null、Function、Object。null只能自己手动赋值，而undefined当声明了变量没有赋值的时候，默认会赋值为undefined 。<strong>null也是对象</strong>。</p>
+<ul>
+<li>基本数据类型：Number、String、Boolean、Undefined、Null</li>
+<li>引用类型：Function、Object</li>
+</ul>
+<p>​    判断类型常用的方法是 typeof 操作符、instanceof操作符、Object.prototype.toString.call方法。三者的区别是：</p>
+<p>   ① typeof：能判断基本的数据类型,除了null，在判别是否是Array的时候也不能判别出来，都会返回是object。</p>
+<p>   ② instanceof：不能判别基本的数据类型，但能判别对象（具体是哪个类），通过原型链判断。</p>
+<p>   ③ Object.prototype.toString.call：也是只能判别基本的数据类型，无法识别具体是哪个对象。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span>  B = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">var</span>  c ;</span><br><span class="line"><span class="keyword">var</span>  D = <span class="keyword">new</span> A();</span><br><span class="line"><span class="keyword">var</span>  E = &#123;</span><br><span class="line">     name:<span class="string">"cn"</span>,</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">//typeof</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> A) <span class="comment">// function</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> B) <span class="comment">// object</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> C) <span class="comment">// undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> D) <span class="comment">// object</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> E) <span class="comment">// object</span></span><br><span class="line"><span class="comment">//instanceof</span></span><br><span class="line"><span class="built_in">console</span>.log(A <span class="keyword">instanceof</span> <span class="built_in">Function</span>) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(D <span class="keyword">instanceof</span>  A) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(E <span class="keyword">instanceof</span>  A) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(E <span class="keyword">instanceof</span> <span class="built_in">Object</span>) <span class="comment">// true</span></span><br><span class="line"><span class="comment">//Object.prototype.toString.call()</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(A)) <span class="comment">// [object Function]</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(B)) <span class="comment">// [object Null]</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(c)) <span class="comment">// [object Undefined]</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(D)) <span class="comment">// [object Object]</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="闭包的一些问题"><a href="#闭包的一些问题" class="headerlink" title="闭包的一些问题"></a>闭包的一些问题</h2><p>​    何为闭包？闭包就是能突破作用域链，能读取到函数内部的变量，即如果一个函数会在父级返回后留住对父级作用域的连接的话，相应的闭包就会被创建。其实函数本身就是一个闭包！</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//#1 将返回值赋值给另外一个全局变量，从而生成一个可以访问函数私有空间的函数。</span></span><br><span class="line"><span class="keyword">var</span> a=<span class="string">"global"</span>;</span><br><span class="line"><span class="keyword">var</span> F=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> b=<span class="string">"local"</span>;</span><br><span class="line">    <span class="keyword">var</span> N=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> c=<span class="string">"inner"</span>;</span><br><span class="line">        <span class="keyword">return</span> b;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> N;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> inner=F();</span><br><span class="line">inner();<span class="comment">//local   通过这样将N升级为全局变量，因为N可以访问F里面的变量，所以inner可以访问到b；</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//#2，声明一个全局占位符，实质是将N升级为全局变量。</span></span><br><span class="line"><span class="keyword">var</span> inner;</span><br><span class="line"><span class="keyword">var</span> F=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> b=<span class="string">"local"</span>;</span><br><span class="line">    <span class="keyword">var</span> N=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> b;</span><br><span class="line">    &#125;;</span><br><span class="line">    inner=N;</span><br><span class="line">&#125;</span><br><span class="line">inner();<span class="comment">// local</span></span><br></pre></td></tr></table></figure>
+
+<p>   闭包好处就是能让我们访问到函数作用域里面的变量，可以用来封装私有变量。但有时候因为闭包也带来了一些不想要的结果。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//#3因为闭包可能出现的错误</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr=[],i;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">3</span>;i++)&#123;</span><br><span class="line">        arr[i]=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> i;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;<span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> arr=F();</span><br><span class="line"><span class="comment">//arr[0]() 3 arr[1]() 3 arr[2]() 3</span></span><br><span class="line">出现这个问题是因为这里创建了三个闭包，他们都指向了共同的变量i,它们拥有的是相关域在创建是的一个引用。</span><br><span class="line"><span class="comment">//解决方法：</span></span><br><span class="line"><span class="number">1.</span>立即执行函数</span><br><span class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">3</span>;i++)&#123;</span><br><span class="line">        arr[i]=(<span class="function"><span class="keyword">function</span> (<span class="params">x</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> x;</span><br><span class="line">        &#125;)(i);</span><br><span class="line">    &#125;<span class="keyword">return</span> arr;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="number">2.</span>赋值给局部变量</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">binder</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"> <span class="keyword">var</span> arr=[],i;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">3</span>;i++)&#123;</span><br><span class="line">        arr[i]=binder(i);</span><br><span class="line">    &#125;<span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//两种方法的实质都是将共同的变量变成自己的局部变量</span></span><br><span class="line"><span class="number">3.</span> 使用ES6的 <span class="keyword">let</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr=[];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;<span class="number">3</span>;i++)&#123;</span><br><span class="line">        arr[i]=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> i;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;<span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="浅拷贝与深拷贝的区别跟实现"><a href="#浅拷贝与深拷贝的区别跟实现" class="headerlink" title="浅拷贝与深拷贝的区别跟实现"></a>浅拷贝与深拷贝的区别跟实现</h2><p>   对于引用类型，浅拷贝只是复制了对象在堆里面的引用地址，如果修改了其值，其他一起引用到这个对象的值也会受到影响。而如果想实现两个对象之间互不影响，就需要实现深拷贝，深拷贝是开辟了一个新的栈，两个对象对应两个不同的地址，修改一个对象的属性，不会改变另一个对象的属性。</p>
+<p>浅拷贝就不多说了，深拷贝有以下几种方法：</p>
+<ul>
+<li><p>如果只是拷贝一层对象的话就可以使用ES6提供的Object.assign()</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1=&#123;<span class="attr">a</span>:<span class="number">1</span>,<span class="attr">b</span>:<span class="number">2</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> obj2=<span class="built_in">Object</span>.assign(&#123;&#125;,obj1);</span><br><span class="line">obj1.a=<span class="number">4</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj2);<span class="comment">//&#123;a: 1, b: 2&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>想简单粗暴就使用JSON实现</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1=&#123;<span class="attr">a</span>:<span class="number">10</span>,<span class="attr">b</span>:&#123;<span class="attr">c</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]&#125;&#125;;</span><br><span class="line"><span class="keyword">var</span> obj2=<span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj1));</span><br><span class="line">obj2.b.c[<span class="number">0</span>]=<span class="number">2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj1);<span class="comment">//&#123;a:10,b:&#123;c:[1,2,3]&#125;&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2);<span class="comment">//&#123;a:10,b:&#123;c:[2,2,3]&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最直接就是递归实现</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span>(<span class="params">p,c</span>)</span>&#123;</span><br><span class="line">    c=c||&#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> p)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">typeof</span> p[i]===<span class="string">'object'</span>)&#123;</span><br><span class="line">            <span class="comment">//数组也得深拷贝一份</span></span><br><span class="line">            c[i]=<span class="built_in">Array</span>.isArray(p[i])?p[i].splice():&#123;&#125;;</span><br><span class="line">            deepcopy(p[i],c[i]);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            c[i]=p[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> c</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>lodash库提供的方法</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> _=<span class="built_in">require</span>(<span class="string">'lodash'</span>);</span><br><span class="line"><span class="keyword">var</span> obj1=&#123;<span class="attr">a</span>:<span class="number">10</span>,<span class="attr">b</span>:&#123;<span class="attr">c</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]&#125;&#125;;</span><br><span class="line"><span class="keyword">var</span> obj2=_.cloneDeep(obj);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
+</ul>
+<h2 id="原型与原型对象"><a href="#原型与原型对象" class="headerlink" title="原型与原型对象"></a>原型与原型对象</h2><p>​    原型（<strong>proto</strong>）跟原型对象（prototype）一开始小编也是晕晕，搞了大半天才明白是什么。个人习惯这样叫比较容易分清楚。其实归咎就是一句话，原型是每个对象都会有的属性，它是一个隐式指针，指向了创建这个对象的构造器函数的原型对象。原型对象就只有函数才拥有。又因为函数也是对象（也是通过new Function出来的，我们平时写的都是函数字面量），所以它本身拥有了两个属性，即上面的原型跟原型对象。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name=<span class="string">"cn"</span>;</span><br><span class="line">    <span class="keyword">this</span>.age=<span class="string">"18"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj=<span class="keyword">new</span> A();</span><br><span class="line"><span class="built_in">console</span>.log(obj.__proto__==A.prototype);<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<p>   这时候就得插个题外话啦，在ES6之前，是没有class这个语法糖的，所有的对象都是通过构造器函数创建的。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//new 一个对象的过程</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name=<span class="string">"cn"</span>;</span><br><span class="line">    <span class="keyword">this</span>.age=<span class="string">"18"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj=<span class="keyword">new</span> A();</span><br><span class="line">当<span class="keyword">new</span> 一个实例对象的时候，其实大致发生了这样的事情：</span><br><span class="line"><span class="number">1.</span>首先创建了一个空对象 </span><br><span class="line"><span class="keyword">var</span> obj=&#123;&#125;;</span><br><span class="line"><span class="number">2.</span>将这个对象的原型指向这个构造器函数的原型对象，实现共享方法的继承</span><br><span class="line">obj.__proto__=A.prototype;</span><br><span class="line"><span class="number">3.</span>使用call/apply将构造器函数里面的<span class="keyword">this</span>指向改变成为obj</span><br><span class="line">A.call(obj)</span><br><span class="line"><span class="number">4.</span>构造器函数最终返回<span class="keyword">this</span>，就是我们的<span class="keyword">new</span>的实例对象</span><br></pre></td></tr></table></figure>
+
+<p>​    构造器函数里面的属性是实例的属性，是属于每个实例对象的，而每个实例对象都会有共有的属性，那就是原型对象上的。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Gadget</span>(<span class="params">name,color</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name=name;</span><br><span class="line">    <span class="keyword">this</span>.color=color;</span><br><span class="line">&#125;</span><br><span class="line">Gadget.prototype.pirce=<span class="number">100</span>;</span><br><span class="line"><span class="keyword">var</span> newtoy=<span class="keyword">new</span> Gadget(<span class="string">'cn'</span>,<span class="string">'blue'</span>);</span><br><span class="line">newtoy.name <span class="comment">//"cn"</span></span><br><span class="line">newtoy.price <span class="comment">//100</span></span><br><span class="line"><span class="comment">/*当我们访问price属性的时候，JavaScript引擎首先查询newtoy对象的所有属性，</span></span><br><span class="line"><span class="comment">如果找到，就返回，但如果找不到，就会去查询用于创建当前对象的构造器函数的原型，</span></span><br><span class="line"><span class="comment">即访问newtoy.constructor.prototype 找到就返回。再找不到就顺者原型链找下去，直到找到Object</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/javascript/" rel="tag">javascript</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
     </div>
 </div>
 
 
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/09/javascript/javaScript-base-2/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">javaScript基础知识(下)</span>
+            </a>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+	var gitment = new Gitment({
+		id: '226ffe4932651b13adfc8d5fcd4a7c25',
+		owner: 'woliuCN',
+		repo: 'blogTalk',
+		oauth: {
+			client_id: 'b5fd8275297303984d3a',
+			client_secret: '536b9ec352328e057db1fae530324462742ffc5b',
+		},
+	})
+	gitment.render('comment-container')
+</script>
+
+    </div>
+</div>
 </div>
                 
 
@@ -950,7 +796,7 @@
             <div class="level-start has-text-centered-mobile">
                 <!-- <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="CN97 博客" height="28">
+                    <img src="/images/logo.svg" alt="javaScript基础知识(上)" height="28">
                 
                 </a> -->
                 <p class="is-size-7" style="white-space: pre-line;">

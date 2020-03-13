@@ -7,18 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>归档: 2020/3 - CN97 博客</title>
+<title>观察者模式 - CN97 博客</title>
 
 
-    <meta name="description" content="记录中成长">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CN97 博客">
-<meta property="og:url" content="http://cn1997.top/archives/2020/03/index.html">
+    <meta name="description" content="一、观察者模式及其用途  观察者模式，行为型模式的一种，当存在一对多的关系的时候，用观察者模式可以实现当这个被观察的对象被修改的时候，会自动的通知订阅它的其他依赖对象。例如angular 的一个依赖库RXJS就是广泛的应用了这种模式。但常常会与发布-订阅模式傻傻分不清楚。     二、代码实现 观察者模式：只有观察者跟被观察者，两者是直接通信的(松耦合)  function Subject() &amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="观察者模式">
+<meta property="og:url" content="http://cn1997.top/2020/03/13/pattern/observer-pattern/index.html">
 <meta property="og:site_name" content="CN97 博客">
-<meta property="og:description" content="记录中成长">
+<meta property="og:description" content="一、观察者模式及其用途  观察者模式，行为型模式的一种，当存在一对多的关系的时候，用观察者模式可以实现当这个被观察的对象被修改的时候，会自动的通知订阅它的其他依赖对象。例如angular 的一个依赖库RXJS就是广泛的应用了这种模式。但常常会与发布-订阅模式傻傻分不清楚。     二、代码实现 观察者模式：只有观察者跟被观察者，两者是直接通信的(松耦合)  function Subject() &amp;">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://cn1997.top/images/og_image.png">
+<meta property="article:published_time" content="2020-03-13T02:48:21.000Z">
+<meta property="article:modified_time" content="2020-03-13T02:56:45.415Z">
 <meta property="article:author" content="CN97">
+<meta property="article:tag" content="设计模式">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://cn1997.top/images/og_image.png">
 
@@ -85,7 +88,7 @@
         <div class="navbar-brand is-flex-center">
             <!-- <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="CN97 博客" height="28">
+                <img src="/images/logo.svg" alt="观察者模式" height="28">
             
             </a> -->
         </div>
@@ -140,323 +143,117 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        三月 2020
-        </h3>
-        <div class="timeline">
+<div class="card">
+    
+    <div class="card-content article ">
         
-            <article class="media">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-13T02:48:21.000Z">2020-03-13</time>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:49:41.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/pattern/strategy-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">策略模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
                 </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:49:30.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/pattern/proxy-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">代理模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:49:05.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/pattern/command-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">命令模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分钟 读完 (大约 534 个字)
+                </span>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:48:54.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/pattern/bridging-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">桥接模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:48:39.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/pattern/adapter-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">适配器模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:48:21.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/pattern/observer-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">观察者模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:48:00.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/pattern/abstractFactory-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">抽象工厂模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:47:45.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/pattern/factory-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">工厂模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:47:24.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/pattern/single-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">单例模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:37:09.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/ui/css-base2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">CSS3 常见知识(二)</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/css3/">css3</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:33:10.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/ui/css-base1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">CSS3 常见知识(一)</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/css3/">css3</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-12T14:20:47.000Z">2020-03-12</time>
-                        <a href="/2020/03/12/es6/es6-base-3/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6知识点(三)</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-12T14:02:11.000Z">2020-03-12</time>
-                        <a href="/2020/03/12/es6/es6-base-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6知识点(二)</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-12T14:02:06.000Z">2020-03-12</time>
-                        <a href="/2020/03/12/es6/es6-base-1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6知识点(一)</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-09T13:56:34.000Z">2020-03-09</time>
-                        <a href="/2020/03/09/javascript/javaScript-base-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">javaScript基础知识(下)</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-09T12:55:23.000Z">2020-03-09</time>
-                        <a href="/2020/03/09/javascript/javaScript-base-1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">javaScript基础知识(上)</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                观察者模式
+            
+        </h1>
+        <div class="content">
+            <h2 id="一、观察者模式及其用途"><a href="#一、观察者模式及其用途" class="headerlink" title="一、观察者模式及其用途"></a>一、观察者模式及其用途</h2><p>  观察者模式，行为型模式的一种，当存在一对多的关系的时候，用观察者模式可以实现当这个被观察的对象被修改的时候，会自动的通知订阅它的其他依赖对象。例如angular 的一个依赖库RXJS就是广泛的应用了这种模式。但常常会与发布-订阅模式傻傻分不清楚。    </p>
+<h2 id="二、代码实现"><a href="#二、代码实现" class="headerlink" title="二、代码实现"></a>二、代码实现</h2><ul>
+<li><p>观察者模式：只有观察者跟被观察者，两者是直接通信的(松耦合) </p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Subject</span>(<span class="params"></span>) </span>&#123; <span class="comment">//被观察者</span></span><br><span class="line">  <span class="keyword">this</span>.observers = [];</span><br><span class="line">  <span class="keyword">this</span>.state = <span class="string">'快乐'</span>;</span><br><span class="line">&#125;</span><br><span class="line">Subject.prototype.attach = <span class="function"><span class="keyword">function</span> (<span class="params">observer</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.observers.push(observer);</span><br><span class="line">&#125;</span><br><span class="line">Subject.prototype.setState = <span class="function"><span class="keyword">function</span> (<span class="params">state</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.state = state;</span><br><span class="line">  <span class="keyword">this</span>.notify();</span><br><span class="line">&#125;</span><br><span class="line">Subject.prototype.notify = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;    <span class="comment">//被观察者状态改变的话是直接与观察者通讯</span></span><br><span class="line">  <span class="keyword">this</span>.observers.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">observer</span>) </span>&#123;</span><br><span class="line">    observer.update();</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Observer</span>(<span class="params">name,target</span>)</span>&#123; <span class="comment">// 观察者 一般会有一个方法</span></span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.target = target;</span><br><span class="line">&#125;</span><br><span class="line">Observer.prototype.update = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// 更新方法</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`通知：<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span> 当前的状态是 <span class="subst">$&#123;<span class="keyword">this</span>.target.state&#125;</span>赶紧哄`</span>)</span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">let</span> subject = <span class="keyword">new</span> Subject();</span><br><span class="line"><span class="keyword">let</span> observer1 = <span class="keyword">new</span> Observer(<span class="string">'儿子'</span>, subject);</span><br><span class="line"><span class="keyword">let</span> observer2 = <span class="keyword">new</span> Observer(<span class="string">'女儿'</span>, subject);</span><br><span class="line">subject.attach(observer1); <span class="comment">// 给目标添加观察者</span></span><br><span class="line">subject.attach(observer2);</span><br><span class="line">subject.setState(<span class="string">'开心'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>发布-订阅模式:发布者跟订阅者两个互不知晓，而是通过一个中间人来传递信息(如读者与作者，中间人是报社，完全没耦合)</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*这里的event 相当于报社中间人,而fn读者,通过报社订阅报纸,当作者有新的东西的时候,就会通过报社出版新的*/</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">Event</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.events=[];</span><br><span class="line">  &#125;</span><br><span class="line">  Event.prototype.on=<span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123;    <span class="comment">//订阅</span></span><br><span class="line">    <span class="keyword">this</span>.events.push(fn);</span><br><span class="line">  &#125;</span><br><span class="line">  Event.prototype.emit=<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;    <span class="comment">//发布</span></span><br><span class="line">    <span class="keyword">this</span>.events.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">      fn(data);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>所以两者的区别就是发送方与接收方是否是知晓对方存在的，观察者模式中,被观察者状态一旦发生改变，订阅它的所有观察者都会立即知晓。而订阅发布模式中,发布者与订阅者是不知道对方是谁的，而是通过中间人（例如event）来联系。</p>
+</li>
+</ul>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
     </div>
 </div>
 
 
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/13/pattern/adapter-pattern/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">适配器模式</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/13/pattern/abstractFactory-pattern/">
+                <span class="level-item">抽象工厂模式</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+	var gitment = new Gitment({
+		id: '2eee457d42f523197534f0a59ce89afc',
+		owner: 'woliuCN',
+		repo: 'blogTalk',
+		oauth: {
+			client_id: 'b5fd8275297303984d3a',
+			client_secret: '536b9ec352328e057db1fae530324462742ffc5b',
+		},
+	})
+	gitment.render('comment-container')
+</script>
+
+    </div>
+</div>
 </div>
                 
 
@@ -950,7 +747,7 @@
             <div class="level-start has-text-centered-mobile">
                 <!-- <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="CN97 博客" height="28">
+                    <img src="/images/logo.svg" alt="观察者模式" height="28">
                 
                 </a> -->
                 <p class="is-size-7" style="white-space: pre-line;">

@@ -7,18 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>归档: 2020/3 - CN97 博客</title>
+<title>javaScript基础知识(下) - CN97 博客</title>
 
 
-    <meta name="description" content="记录中成长">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CN97 博客">
-<meta property="og:url" content="http://cn1997.top/archives/2020/03/index.html">
+    <meta name="description" content="👇内容速览👇  JS的运行机制（浏览器）  ES5的继承的实现  浏览器对象与文档对象">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javaScript基础知识(下)">
+<meta property="og:url" content="http://cn1997.top/2020/03/09/javascript/javaScript-base-2/index.html">
 <meta property="og:site_name" content="CN97 博客">
-<meta property="og:description" content="记录中成长">
+<meta property="og:description" content="👇内容速览👇  JS的运行机制（浏览器）  ES5的继承的实现  浏览器对象与文档对象">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://cn1997.top/images/og_image.png">
+<meta property="article:published_time" content="2020-03-09T13:56:34.000Z">
+<meta property="article:modified_time" content="2020-03-13T02:43:16.553Z">
 <meta property="article:author" content="CN97">
+<meta property="article:tag" content="javascript">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://cn1997.top/images/og_image.png">
 
@@ -85,7 +88,7 @@
         <div class="navbar-brand is-flex-center">
             <!-- <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="CN97 博客" height="28">
+                <img src="/images/logo.svg" alt="javaScript基础知识(下)" height="28">
             
             </a> -->
         </div>
@@ -140,323 +143,182 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        三月 2020
-        </h3>
-        <div class="timeline">
+<div class="card">
+    
+    <div class="card-content article ">
         
-            <article class="media">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-09T13:56:34.000Z">2020-03-09</time>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:49:41.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/pattern/strategy-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">策略模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
                 </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:49:30.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/pattern/proxy-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">代理模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:49:05.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/pattern/command-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">命令模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+                <span class="level-item has-text-grey">
+                    
+                    
+                    21 分钟 读完 (大约 3083 个字)
+                </span>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:48:54.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/pattern/bridging-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">桥接模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:48:39.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/pattern/adapter-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">适配器模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:48:21.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/pattern/observer-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">观察者模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:48:00.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/pattern/abstractFactory-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">抽象工厂模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:47:45.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/pattern/factory-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">工厂模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:47:24.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/pattern/single-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">单例模式</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:37:09.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/ui/css-base2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">CSS3 常见知识(二)</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/css3/">css3</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-13T02:33:10.000Z">2020-03-13</time>
-                        <a href="/2020/03/13/ui/css-base1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">CSS3 常见知识(一)</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/css3/">css3</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-12T14:20:47.000Z">2020-03-12</time>
-                        <a href="/2020/03/12/es6/es6-base-3/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6知识点(三)</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-12T14:02:11.000Z">2020-03-12</time>
-                        <a href="/2020/03/12/es6/es6-base-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6知识点(二)</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-12T14:02:06.000Z">2020-03-12</time>
-                        <a href="/2020/03/12/es6/es6-base-1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6知识点(一)</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-09T13:56:34.000Z">2020-03-09</time>
-                        <a href="/2020/03/09/javascript/javaScript-base-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">javaScript基础知识(下)</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-03-09T12:55:23.000Z">2020-03-09</time>
-                        <a href="/2020/03/09/javascript/javaScript-base-1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">javaScript基础知识(上)</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                javaScript基础知识(下)
+            
+        </h1>
+        <div class="content">
+            <p>👇内容速览👇</p>
+<ul>
+<li><p>JS的运行机制（浏览器）</p>
+</li>
+<li><p>ES5的继承的实现</p>
+</li>
+<li><p>浏览器对象与文档对象</p>
+</li>
+</ul>
+<a id="more"></a>
+
+
+
+
+<h2 id="JS的运行机制（浏览器）"><a href="#JS的运行机制（浏览器）" class="headerlink" title="JS的运行机制（浏览器）"></a>JS的运行机制（浏览器）</h2><p>   JavaScript是单线程语言，也只能是单线程，因为JS的用途就是与用户交互，假设同时有两个线程，一个线程在某个DOM节点上添加内容，另一个线程在删除这个节点，此时浏览器就不知道以哪个线程为准。因此它只有一个调用堆栈（call stack），一次只能做一件事情。例如进入一个函数，则把函数放在堆栈的顶部，如果一个函数返回，则弹出。因为是单线程，所以只能顺序执行，但如果执行的任务耗时间过长，则会产生很多不好的影响，解决这个的方法就是它本身的事件循环机制跟其回调队列。JavaScript 事件循环机制分为浏览器和 Node 事件循环机制。今天先讲浏览器的。</p>
+<p>​    讲事件循环之前先讲一下浏览器的内核：浏览器内核是多线程，在内核控制下各个线程相互配合保持同步，有以下的常驻线程：</p>
+<ul>
+<li>GUI渲染线程：负责页面的渲染，解析HTML、 CSS,构建DOM树，布局跟绘制。当界面需要回流重绘的时候就会执行该线程，同时这个线程是跟JS引擎线程互斥的。</li>
+<li>JS引擎线程：顾名思义，这个线程是来解析JS代码的，同时也是负责执行需要执行的事件，例如定时器结束、异步成功的回调函数，将依此进入事件队列，等待这个线程的执行。</li>
+<li>定时器触发线程：负责执行定时器一类的函数的线程。计数完毕后，事件触发线程就会将计数完毕的事件加入事件队列（这个事件就是触发回调函数的事件），等待JS引擎线程执行。</li>
+<li>事件触发线程：负责将准备好的事件交给JS线程执行，例如：定时器函数计数完毕，异步请求成功触发回调函数，用户触发点击事件…..</li>
+<li>异步HTTP请求线程:负责异步请求的线程，当异步执行完毕后触发回调函数，事件触发将相应的事件加入任务队列。</li>
+</ul>
+<p><strong>事件循环：</strong>将执行的任务分成异步跟同步任务。一同步任务跟异步任务进入不同的执行场所。同步进入主线程执行，异步的任务进入Event table 并注册其回调函数。当任务执行完成后，Event table将这个函数移入Event queue（回调队列）——（即在这个队列中放置一个事件）,等到主线程内的任务执行完毕为空，则去Event queue读取相应事件，将对应的函数放入主线程执行。 不断重复，就是事件循环。</p>
+<p>“任务队列/回调队列”是一个事件的队列（也可以理解成消息的队列），IO设备完成一项任务，就在”任务队列”中添加一个事件，表示相关的异步任务可以进入”执行栈”了。主线程读取”任务队列”，就是读取里面有哪些事件。就是上面事件触发线程跟JS线程之间的交流了。 </p>
+<p>  “任务队列/回调队列”中的事件，除了IO设备的事件以外，还包括一些用户产生的事件（比如鼠标点击、页面滚动等等）。只要指定过回调函数，这些事件发生时就会进入”任务队列”，等待主线程读取。 </p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/11/21/15fdd88994142347?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""></p>
+<p><strong>异步任务的区别</strong>：但是异步任务来说，应该也有执行的先后吧，有人会这样问。确实，当同时有异步任务一起执行的时候，到底是谁先谁后。这个时候就得说一下宏任务跟微任务了。<strong>注：宏任务队列能有多个，微任务队列就只有一个</strong></p>
+<ul>
+<li>宏任务：包括整体的同步代码，setTimeout, setInterval，IO ，各种事件等。</li>
+<li>微任务：Promise  process.nexTick(目前就两个)。</li>
+</ul>
+<p>此时事件的循环顺序是，进入整体代码（第一个宏任务）开始第一次循环。遇到宏任务，将其回调函数分发到宏任务Event queue。遇到微任务，将其回调函数分发到微任务Event queue。而后执行这第一个宏任务里面的所有微任务（即执行异步任务的回调队列）。而后再找下一个宏任务，反复循环。🙋‍举个简单的栗子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'setTimeout'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'promise'</span>);</span><br><span class="line">    resolve();</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'then'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'console'</span>);</span><br><span class="line"><span class="comment">//输出结果 </span></span><br><span class="line"> promise</span><br><span class="line"> <span class="built_in">console</span></span><br><span class="line"> then</span><br><span class="line"> setTimeout</span><br><span class="line"><span class="comment">/*这段代码作为宏任务，进入主线程。</span></span><br><span class="line"><span class="comment">先遇到setTimeout，那么将其回调函数注册后分发到宏任务Event Queue</span></span><br><span class="line"><span class="comment">接下来遇到了Promise，new Promise立即执行，then函数分发到微任务Event Queue。</span></span><br><span class="line"><span class="comment">遇到console.log(console)，立即执行。</span></span><br><span class="line"><span class="comment">整体代码script作为第一个宏任务执行结束，看看有哪些微任务？发现了then在微任务Event Queue里面，执行。</span></span><br><span class="line"><span class="comment">ok，第一轮事件循环结束了，我们开始第二轮循环，当然要从宏任务Event Queue开始。我们发现了宏任务Event Queue中setTimeout对应的回调函数，立即执行。</span></span><br><span class="line"><span class="comment">结束。*/</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<h2 id="ES5继承的实现"><a href="#ES5继承的实现" class="headerlink" title="ES5继承的实现"></a>ES5继承的实现</h2><p>JavaScript的继承与其他语言不同，它是通过原型链来实现的。之前已经讲过，一个实例对象的原型(proto)会指向创建这个实例的构造器函数的原型对象(prototype)。当我们访问属性的时候，会先找实例对象本身的属性，如果找不到会往原型链上找。就是通过这种思想来实现继承的。</p>
+<ol>
+<li><p>类式继承：最简单的继承，将父类的实例赋值给子类的原型。缺点是如果父类的属性是引用类型的话，就会出现一些意想不到的情况。(改一个而动全部)。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Shape</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.books=[<span class="string">"JS"</span>,<span class="string">"CSS"</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">TwDshape</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line">TwDshape.prototype=<span class="keyword">new</span> Shape(); </span><br><span class="line">TwDshape.prototype.constructor=TwDshape;</span><br><span class="line"><span class="keyword">var</span> my=<span class="keyword">new</span> TwDshape();</span><br><span class="line"><span class="keyword">var</span> your=<span class="keyword">new</span> TwDshape();</span><br><span class="line"><span class="built_in">console</span>.log(my.books);<span class="comment">// ["JS", "CSS"]</span></span><br><span class="line">your.books.push(<span class="string">"HTML"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(my.books);<span class="comment">// ["JS", "CSS", "HTML"]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构造函数继承：利用实例对象之间互不影响的特性，将父类的构造器函数在子类构造器函数里面执行一遍，实现继承。缺点是父类的原型对象上的属性不能获取到。因为没有建立原型链。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Shape</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.books=[<span class="string">"JS"</span>,<span class="string">"CSS"</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">TwDshape</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   Shape.call(<span class="keyword">this</span>);<span class="comment">//利用call/apply改变this指向</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> my=<span class="keyword">new</span> TwDshape();</span><br><span class="line"><span class="keyword">var</span> your=<span class="keyword">new</span> TwDshape();</span><br><span class="line"><span class="built_in">console</span>.log(my.books);<span class="comment">// ["JS", "CSS"]</span></span><br><span class="line">your.books.push(<span class="string">"HTML"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(my.books);<span class="comment">// ["JS", "CSS"]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>寄生组合型继承：构造函数继承与原型的继承的结合（原型对象继承是在类式继承的基础上改进）。结合两种继承方式的优点。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//原型对象继承</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inheritObject</span>(<span class="params">parent</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> F=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;  <span class="comment">//加了一个空中介函数,这样子的好处是直接继承了父级的原型对象的属性</span></span><br><span class="line">    F.prototype=parent.prototype;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> F(); <span class="comment">//返回的是空中介函数的实例，不是之前的父类的实例，节省了构造父类实例的步骤</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//寄生组合型</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Shape</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.books=[<span class="string">"JS"</span>,<span class="string">"CSS"</span>];</span><br><span class="line">&#125;</span><br><span class="line">Shape.prototype.toString=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.books;</span><br><span class="line">   &#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">TwDshape</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   Shape.call(<span class="keyword">this</span>);<span class="comment">//利用call/apply改变this指向</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p=inheritObject(Shape); <span class="comment">//返回的是F实例</span></span><br><span class="line">TwDshape.prototype=p;</span><br><span class="line">TwDshape.prototype.constructor=TwDshape; <span class="comment">//修正因为重写子类原型对象而导致的constructor被修改</span></span><br><span class="line"><span class="keyword">var</span> my=<span class="keyword">new</span> TwDshape();</span><br><span class="line"><span class="keyword">var</span> your=<span class="keyword">new</span> TwDshape();</span><br><span class="line"><span class="built_in">console</span>.log(my.toString());<span class="comment">// ["JS", "CSS"]</span></span><br><span class="line">your.books.push(<span class="string">"HTML"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(your.toString());<span class="comment">//["JS", "CSS", "HTML"]</span></span><br><span class="line"><span class="built_in">console</span>.log(my.toString());<span class="comment">// ["JS", "CSS"]</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
+</ol>
+<h2 id="浏览器对象与文档对象"><a href="#浏览器对象与文档对象" class="headerlink" title="浏览器对象与文档对象"></a>浏览器对象与文档对象</h2><ol>
+<li><p>浏览器对象BOM：页面以外事物拥有的对象。包括<strong>window，Navigator,Screen,History, Location</strong>。最主要的是window,它包含了对其他几个对象的引用，也有对document对象的引用。</p>
+<ul>
+<li>window：浏览器窗口。所有全局 JavaScript 对象，函数和变量自动成为 window 对象的成员。</li>
+<li>Navigator：包含了有关访问者的信息。如浏览器应用程序的名称（appName）、是否已启用cookie、浏览器是否在线。</li>
+<li>Screen：包含有关客户端显示屏的信息。</li>
+<li>History:包含用户访问过的URL。</li>
+<li>Location:包含当前有关URL的信息。</li>
+</ul>
+</li>
+<li><p>DOM：文档对象模型，在HTML DOM中，每个部分都是节点，文挡（document）本身就是文档节点，所有的html元素（element/标签）是元素节点，所有的元素的属性是属性节点，元素的文本是文本节点，注释是注释节点。引用一张图：</p>
+<p><img src="https://gss2.bdstatic.com/9fo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=0fe685f8ec1190ef15f69a8daf72f673/4afbfbedab64034ff2239713a4c379310a551d3c.jpg" alt=""></p>
+</li>
+<li><p>DOM节点的操作属性跟方法。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">1.</span>访问/获取节点</span><br><span class="line"><span class="built_in">document</span>.getElementById(id);　　　　　　　　 <span class="comment">//返回对拥有指定id的第一个对象进行访问</span></span><br><span class="line"><span class="built_in">document</span>.getElementsByName(name);　　　　　　<span class="comment">//返回带有指定名称的节点集合　　 </span></span><br><span class="line"><span class="built_in">document</span>.getElementsByTagName(tagname); 　　<span class="comment">//返回带有指定标签名的对象集合　</span></span><br><span class="line"><span class="built_in">document</span>.getElementsByClassName(classname);  <span class="comment">//返回带有指定class名称的对象集合 </span></span><br><span class="line"><span class="number">2.</span>创建节点/属性</span><br><span class="line"><span class="built_in">document</span>.createElement()   <span class="comment">//创建一个节点</span></span><br><span class="line"><span class="built_in">document</span>.createAttribute() <span class="comment">//对某个节点创建属性</span></span><br><span class="line"><span class="built_in">document</span>.createTextNode()  <span class="comment">// 创建文本节点</span></span><br><span class="line"><span class="number">3.</span>添加节点</span><br><span class="line"><span class="built_in">document</span>.inseretBefore(newNode,referenceNode) <span class="comment">// 在某个节点前插入节点</span></span><br><span class="line">parentNode.appendChild(newNode)                <span class="comment">// 给某个节点添加子节点</span></span><br><span class="line"><span class="number">4.</span>复制节点</span><br><span class="line">cloneNode（<span class="literal">true</span>/<span class="literal">false</span>）      <span class="comment">//复制某个节点</span></span><br><span class="line"><span class="number">5.</span>删除节点</span><br><span class="line">parentNode.removeChild（node） <span class="comment">// 删除某个节点的子节点</span></span><br><span class="line"><span class="number">6.</span>属性操作</span><br><span class="line">getAttribute（name）   <span class="comment">// 通过属性名称获取某个节点属性的值</span></span><br><span class="line">setAttribute（name,value） <span class="comment">// 修改某个节点属性的值</span></span><br><span class="line">removeAttribute（name）   <span class="comment">//删除某个属性</span></span><br><span class="line"><span class="number">7.</span>查找节点</span><br><span class="line">.firstChild  <span class="comment">// 获取第一个子节点</span></span><br><span class="line">.firstElementChild <span class="comment">// 获取第一个元素节点</span></span><br><span class="line">.lastChild   <span class="comment">// 获取最后一个子节点</span></span><br><span class="line">.lastElementChild  <span class="comment">// 获取最后一个元素节点</span></span><br><span class="line">.childNodes        <span class="comment">// 获取节点的所有子节点</span></span><br><span class="line"><span class="number">8.</span>获取相邻的节点</span><br><span class="line">.previousSibling    <span class="comment">//获取已知节点的相邻的上一个节点</span></span><br><span class="line">.previousElementSibling <span class="comment">//获取已知节点的相邻的上一个元素节点</span></span><br><span class="line">.nextSibling         <span class="comment">//获取已知节点的下一个节点</span></span><br><span class="line">.nextElementSibling  <span class="comment">//获取已知节点的下一个元素节点</span></span><br><span class="line"><span class="number">9.</span>获取父节点</span><br><span class="line">.parentNode      <span class="comment">//得到已知节点的父节点</span></span><br><span class="line"><span class="number">10.</span>替换节点</span><br><span class="line">.replace（ newNode，oldNode） <span class="comment">//从父节点中用新节点提换旧节点</span></span><br><span class="line"><span class="number">11.</span>修改文本节点</span><br><span class="line">appendData（data）    <span class="comment">//在文本节点后添加节点</span></span><br><span class="line">deleteData（start,length） <span class="comment">//从start处删除length字符</span></span><br><span class="line">insertData（start，data） <span class="comment">//在start处插入字符，start的开始值是0</span></span><br><span class="line">replaceData（start，length，data）<span class="comment">//在start处用data替换length个字符</span></span><br><span class="line"><span class="number">12.n</span>odeName 节点的名称。</span><br><span class="line">元素节点的 nodeName 等同于标签名</span><br><span class="line">属性节点的 nodeName 是属性名称</span><br><span class="line">文本节点的 nodeName 总是 #text</span><br><span class="line">文档节点的 nodeName 总是 #document</span><br><span class="line"><span class="number">13.n</span>odeValue 节点的值</span><br><span class="line">元素节点的 nodeValue 是 <span class="literal">null</span></span><br><span class="line">文本节点的 nodeValue 是文本文本</span><br><span class="line">属性节点的 nodeValue 是属性值</span><br><span class="line">-------------------------------------------------------------------</span><br><span class="line"><span class="comment">//例子</span></span><br><span class="line">&lt;body&gt;</span><br><span class="line"> &lt;div id=<span class="string">"root"</span>&gt;</span><br><span class="line">    &lt;a href=<span class="string">"#"</span> id=<span class="string">"a"</span>&gt;&lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp">    &lt;p&gt;&lt;/</span>p&gt;</span><br><span class="line"> &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt; </span><br><span class="line"><span class="keyword">var</span> myTitle = <span class="built_in">document</span>.getElementById(<span class="string">"root"</span>).childNodes</span><br><span class="line"><span class="built_in">console</span>.log(myTitle)</span><br><span class="line"><span class="comment">//NodeList(5) [text, a#a, text, p, text] 注：换行在浏览器里面是当成text节点</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/javascript/" rel="tag">javascript</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
     </div>
 </div>
 
 
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/12/es6/es6-base-1/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">ES6知识点(一)</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/09/javascript/javaScript-base-1/">
+                <span class="level-item">javaScript基础知识(上)</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+	var gitment = new Gitment({
+		id: '67a9b29f74c5aa5ddda8d59522f9ad27',
+		owner: 'woliuCN',
+		repo: 'blogTalk',
+		oauth: {
+			client_id: 'b5fd8275297303984d3a',
+			client_secret: '536b9ec352328e057db1fae530324462742ffc5b',
+		},
+	})
+	gitment.render('comment-container')
+</script>
+
+    </div>
+</div>
 </div>
                 
 
@@ -950,7 +812,7 @@
             <div class="level-start has-text-centered-mobile">
                 <!-- <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="CN97 博客" height="28">
+                    <img src="/images/logo.svg" alt="javaScript基础知识(下)" height="28">
                 
                 </a> -->
                 <p class="is-size-7" style="white-space: pre-line;">

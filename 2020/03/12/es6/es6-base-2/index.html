@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>ES6知识点(二) - CN97 博客</title>
+
+
+    <meta name="description" content="👇内容速览👇  Set、Map数据结构 Proxy(代理器) Promise对象">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6知识点(二)">
+<meta property="og:url" content="http://cn1997.top/2020/03/12/es6/es6-base-2/index.html">
+<meta property="og:site_name" content="CN97 博客">
+<meta property="og:description" content="👇内容速览👇  Set、Map数据结构 Proxy(代理器) Promise对象">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://cn1997.top/images/og_image.png">
+<meta property="article:published_time" content="2020-03-12T14:02:11.000Z">
+<meta property="article:modified_time" content="2020-03-13T02:43:16.553Z">
+<meta property="article:author" content="CN97">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="es6">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://cn1997.top/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <!--
+ * @Description: 
+ * @Autor: cn
+ * @Date: 2020-03-09 16:51:19
+ * @LastEditors: cn
+ * @LastEditTime: 2020-03-11 21:01:46
+ -->
+<nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <!-- <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="ES6知识点(二)" height="28">
+            
+            </a> -->
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">
+                    <i class="fa fa-home"></i>  回到首页
+                </a>
+                
+                <a class="navbar-item"
+                href="/bigweb">
+                    <i class="fa fa-code"></i>  前端大全
+                </a>
+                
+                <a class="navbar-item"
+                href="/algorithm">
+                    <i class="fa fa-pen"></i>  算法修炼
+                </a>
+                
+                <a class="navbar-item"
+                href="/archives">
+                    <i class="fa fa-archive"></i>  提交记录
+                </a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/woliuCN/woliuCN.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-12T14:02:11.000Z">2020-03-12</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    16 分钟 读完 (大约 2367 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                ES6知识点(二)
+            
+        </h1>
+        <div class="content">
+            <p>👇内容速览👇</p>
+<ul>
+<li>Set、Map数据结构</li>
+<li>Proxy(代理器)</li>
+<li>Promise对象</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="Set、Map数据结构"><a href="#Set、Map数据结构" class="headerlink" title="Set、Map数据结构"></a>Set、Map数据结构</h2><ol>
+<li><p><strong>Set</strong></p>
+<p>​学过Java的话就会对这个数据结构很熟悉。它类似于数组，但是区别在于它的成员值只能是唯一的，也就是说，里面是没有重复的值。跟其他数据类型一样，都是由构造器函数Set本身来new生成相应的实例。它可以接受一个数组作为参数，所以可以用来进行数组的去重工作。</p>
+<p><strong>注意：Set没有键名，只有键值。或者说它的键值与键名是同一个！</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//构造一个Set实例，接受一个数组作为参数</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">set</span>=new Set([1,2,3,4]);</span><br><span class="line"></span><br><span class="line">//可以被for...of遍历。可以看到键值与键名是一样的</span><br><span class="line">for(let item of <span class="keyword">set</span>.entries())&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item)</span><br><span class="line">&#125;<span class="comment">// [1,1] [2,2] [3,3] [4,4]</span></span><br></pre></td></tr></table></figure>
+
+<p>Set 的四个操作方法</p>
+<ul>
+<li><p><code>add(value)</code>：添加某个值，返回 Set 结构本身。</p>
+</li>
+<li><p><code>delete(value)</code>：删除某个值，返回一个布尔值，表示删除是否成功。</p>
+</li>
+<li><p><code>has(value)</code>：返回一个布尔值，表示该值是否为<code>Set</code>的成员。</p>
+</li>
+<li><p><code>clear()</code>：清除所有成员，没有返回值。</p>
+<p>Set 的四个遍历方法</p>
+</li>
+<li><p><code>keys()</code>：返回键名的遍历器</p>
+</li>
+<li><p><code>values()</code>：返回键值的遍历器</p>
+</li>
+<li><p><code>entries()</code>：返回键值对的遍历器</p>
+</li>
+<li><p><code>forEach()</code>：使用回调函数遍历每个成员</p>
+</li>
+</ul>
+</li>
+<li><p><strong>WeakSet</strong></p>
+<p>与Set类似，但正如其名一样，它只是Set的弱类型，且成员只能是对象，对成员对象的引用是弱引用。弱引用就是对值的引用的不计入垃圾回收机制的引用次数的，很可能在某时刻被垃圾回收机制给回收掉。所以不能被遍历，因为值不知道什么时候会被回收了。但是因为这个特性，可以用来存放一组临时的对象，以及存放对象的相关信息，只要外部的引用消失，WeakSet对这个对象的引用也自动消失。以此减少内存泄漏。</p>
+ <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> ws = <span class="keyword">new</span> <span class="built_in">WeakSet</span>();</span><br><span class="line"><span class="keyword">var</span> a=&#123;<span class="attr">dom</span>:<span class="built_in">document</span>.getElementById(<span class="string">'root'</span>),<span class="attr">name</span>:<span class="string">'cn'</span>&#125;</span><br><span class="line">ws.add(a);</span><br><span class="line"><span class="built_in">console</span>.log(ws.has(a));<span class="comment">//true</span></span><br><span class="line">a = <span class="literal">null</span></span><br><span class="line"><span class="built_in">console</span>.log(ws.has(a));<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Map</strong></p>
+<p>Map跟对象很类似，但是传统的对象的键名只能是字符串，这里的Map的键名可以是任何的类型，包括对象。同样的，也是通过构造器函数来初始化实例，可以接受一个参数，任何具有迭代器接口，且成员是一个双元素的数组的数据结构，都可以作为参数。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> map=<span class="keyword">new</span> <span class="built_in">Map</span>([[<span class="string">'name'</span>,<span class="string">'cn'</span>],[<span class="string">'age'</span>,<span class="string">'20'</span>]]);</span><br><span class="line"><span class="built_in">console</span>.log(map.size); <span class="comment">//2</span></span><br><span class="line"><span class="built_in">console</span>.log(map.get(<span class="string">'name'</span>));<span class="comment">//cn</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//接受数组为参数，实际是执行了一下的代码</span></span><br><span class="line"><span class="keyword">var</span> item=[[<span class="string">'name'</span>,<span class="string">'cn'</span>],[<span class="string">'age'</span>,<span class="string">'20'</span>]];</span><br><span class="line"><span class="keyword">const</span> map=<span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">item.forEach(<span class="function">(<span class="params">[key,value]</span>)=&gt;</span>&#123;</span><br><span class="line">    map.set(key,value);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：同一个值的不同对象是被视为不同的键的。</strong></p>
+<p>Map的属性和方法</p>
+<ul>
+<li>size 属性 返回成员总数。</li>
+<li>set(key, value)  设值</li>
+<li>get(key)  获取值</li>
+<li>has(key)  查询</li>
+<li>delete(key)  删除</li>
+<li>clear()  清除所有成员</li>
+</ul>
+<p>遍历方法类同Set</p>
+</li>
+<li><p><strong>WeakMap</strong></p>
+<p>与Map类似，但只接受对象作为键，键名对对象的引用是弱引用，其引用对象可以被垃圾回收，不能遍历。可以用来保存DOM节点。即如果想为对象添加相应的数据或者描述，又不想干扰垃圾回收机制，Map是很好的选择。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> wm = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</span><br><span class="line"><span class="keyword">const</span> element = <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>);</span><br><span class="line">wm.set(element, <span class="string">'information'</span>);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">此时如果消除element的引用，则所占的内存将会被回收，</span></span><br><span class="line"><span class="comment">Weakmap 保存的这个键值对，也会自动消失。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">-------------------------------------------------</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">ps：下面是用 node模拟的一个环境,搜了不少都是说heapUsed值才是</span></span><br><span class="line"><span class="comment">判断内存是否泄漏的标准，但是我这里的键值是一个数组，它的存储空间</span></span><br><span class="line"><span class="comment">是在栈里面而不是堆，所以感觉看rss的占用可能是比较对吧</span></span><br><span class="line"><span class="comment">（个人猜想，因为heapUsed的值就按照所想的值的顺序出现，有正确的</span></span><br><span class="line"><span class="comment"> 观点的欢迎在评论指出................）</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">PS D:\react\server&gt; node  --expose-gc</span><br><span class="line">&gt; global.gc();</span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line">&gt; process.memoryUsage();</span><br><span class="line">&#123; <span class="attr">rss</span>: <span class="number">22376448</span>,   <span class="comment">//所有内存占用</span></span><br><span class="line">  heapTotal: <span class="number">6635520</span>,<span class="comment">//堆占用的内存 包括用到跟没用到的</span></span><br><span class="line">  heapUsed: <span class="number">4548648</span>,<span class="comment">//用到的堆</span></span><br><span class="line">  external: <span class="number">9625</span> &#125;<span class="comment">// V8引擎内部C++对象占用的内存</span></span><br><span class="line">&gt; <span class="keyword">let</span> wm = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line">&gt;  <span class="keyword">let</span> b = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line">&gt; global.gc();</span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line">&gt; process.memoryUsage();</span><br><span class="line">&#123; <span class="attr">rss</span>: <span class="number">22044672</span>,</span><br><span class="line">  heapTotal: <span class="number">7684096</span>,</span><br><span class="line">  heapUsed: <span class="number">4830024</span>,</span><br><span class="line">  external: <span class="number">8716</span> &#125;</span><br><span class="line">&gt; wm.set(b, <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">5</span>*<span class="number">1024</span>*<span class="number">1024</span>));</span><br><span class="line"><span class="built_in">WeakMap</span> &#123;&#125;</span><br><span class="line">&gt; global.gc();</span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line">&gt; process.memoryUsage();</span><br><span class="line">&#123; <span class="attr">rss</span>: <span class="number">64049152</span>,    <span class="comment">//set之后，内存占用明显变大</span></span><br><span class="line">  heapTotal: <span class="number">49639424</span>,</span><br><span class="line">  heapUsed: <span class="number">46702528</span>,</span><br><span class="line">  external: <span class="number">8619</span> &#125;</span><br><span class="line">&gt; b=<span class="literal">null</span>;    <span class="comment">//清除外部引用</span></span><br><span class="line"><span class="literal">null</span></span><br><span class="line">&gt; global.gc();</span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line">&gt; process.memoryUsage();</span><br><span class="line">&#123; <span class="attr">rss</span>: <span class="number">22102016</span>,   <span class="comment">//内存大小恢复跟之前开始的差不多大小的值</span></span><br><span class="line">  heapTotal: <span class="number">7684096</span>,</span><br><span class="line">  heapUsed: <span class="number">4757064</span>,</span><br><span class="line">  external: <span class="number">8682</span> &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
+</ol>
+<h2 id="Proxy-代理器"><a href="#Proxy-代理器" class="headerlink" title="Proxy(代理器)"></a>Proxy(代理器)</h2><p>   ES6引入了proxy对象，用来在访问目标对象之前进行一些拦截操作，可以对外界的访问进行过滤跟改写。同样的，它也是有相应的构造器函数来构建实例。</p>
+<p>   <strong>注意，要使得<code>Proxy</code>起作用，必须针对<code>Proxy</code>实例（上例是<code>proxy</code>对象）进行操作，而不是针对目标对象进行操作。</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> proxy=<span class="keyword">new</span> <span class="built_in">Proxy</span>(target,handler)</span><br><span class="line"><span class="comment">//其中target表示要拦截的对象，handler则是定义拦截的行为，也是一个对象</span></span><br><span class="line"></span><br><span class="line">Ps:如果handler为一个空对象，则w没有拦截效果，访问proxy就是访问target本身</span><br><span class="line"></span><br><span class="line"><span class="comment">//对象的读取操作,使用get方法</span></span><br><span class="line"><span class="keyword">var</span> person=&#123;</span><br><span class="line">    name:<span class="string">'cn'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> proxy=<span class="keyword">new</span> <span class="built_in">Proxy</span>(person,&#123;</span><br><span class="line">    <span class="keyword">get</span>:function (target,property)&#123;</span><br><span class="line">        <span class="keyword">if</span>(property <span class="keyword">in</span> target )&#123;</span><br><span class="line">         <span class="keyword">return</span> target[property]</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'没有这个参数'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;);</span><br><span class="line">proxy.name <span class="comment">//cn</span></span><br><span class="line">proxy.age  <span class="comment">//抛出异常</span></span><br></pre></td></tr></table></figure>
+
+<p>Proxy支持的拦截操作一共有13种，具体可以去看阮一峰大佬的文档👇</p>
+<p><a href="http://es6.ruanyifeng.com/#docs/proxy#Proxy">http://es6.ruanyifeng.com/#docs/proxy#Proxy</a></p>
+<h2 id="Promise对象"><a href="#Promise对象" class="headerlink" title="Promise对象"></a>Promise对象</h2><p>   以往的异步编程，往往都是通过事件+回调函数来实现，但是当回调嵌套很多层的时候，其代码的可读性跟维护难度都会大大增加，进而出现“回调地狱”这种情况。而promise对象，表示一个异步操作的最终状态(成功或者失败),可以将异步操作用“同步”的形式表示出来，从而解决了“回调地狱的问题”。</p>
+<p>   promise有三种状态：pending(进行中)、resolved-fulfilled(已成功)、 rejected(已失败),对象的状态不受外界影响。所以Promise也有一些缺点。首先，无法取消<code>Promise</code>，一旦新建它就会立即执行，无法中途取消。其次，如果不设置回调函数，<code>Promise</code>内部抛出的错误，不会反应到外部。</p>
+<ul>
+<li><p><strong>基本用法</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ... some code</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="comment">/* 异步操作成功 */</span>)&#123;</span><br><span class="line">    resolve(value);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    reject(error);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">promise.then(<span class="function">(<span class="params">data</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data)</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">err</span>=&gt;</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(err)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">如果没有使用catch方法指定错误处理的回调函数，</span></span><br><span class="line"><span class="comment">Promise对象抛出的异常是不会传递到外层代码的。</span></span><br><span class="line"><span class="comment">所以一般要实现catch方法，catch方法会返回一个</span></span><br><span class="line"><span class="comment">promise对象，所以依旧可以调用then方法</span></span><br><span class="line"><span class="comment">Promise 对象的错误具有“冒泡”性质，一直向后传递，</span></span><br><span class="line"><span class="comment">直到被捕获为止。错误总是会被下一个catch语句捕获。</span></span><br><span class="line"><span class="comment">所以catch一般写在最后</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Promise.all()</strong></p>
+<p>将多个promise实例包装成一个新的promise对象，新的promise对象只有等到参数成员里面的所有成员的状态是fulfilled，它才会是fulfilled。如果成员中有定义了自己的catch方法，那么新的Promise实例的catch方法不会被触发</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> promise1=<span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">      setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          resolve(<span class="string">"promise1"</span>);</span><br><span class="line">      &#125;, <span class="number">2000</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> promise2=<span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            resolve(<span class="string">"promise1"</span>);</span><br><span class="line">        &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">Promise</span>.all([promise1,promise2])</span><br><span class="line">.then(<span class="function">(<span class="params">data</span>)=&gt;</span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 结果是两秒后输出[ 'promise1', 'promise1' ]</span></span><br><span class="line"><span class="keyword">var</span> promise1=<span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">      setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          resolve(<span class="string">"promise1"</span>);</span><br><span class="line">      &#125;, <span class="number">2000</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> promise2=<span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            reject();</span><br><span class="line">        &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.all([promise1,promise2])</span><br><span class="line">.then(<span class="function">(<span class="params">data</span>)=&gt;</span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"promise_all"</span>); </span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// promise_all</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> promise1=<span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">      setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          resolve(<span class="string">"promise1"</span>);</span><br><span class="line">      &#125;, <span class="number">2000</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> promise2=<span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            reject();</span><br><span class="line">        &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"promise_2"</span>);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//这里的promise2实际是catch后返回的新的promise实例</span></span><br><span class="line"><span class="built_in">Promise</span>.all([promise1,promise2])</span><br><span class="line">.then(<span class="function">(<span class="params">data</span>)=&gt;</span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"promise_all"</span>);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">输出</span></span><br><span class="line"><span class="comment">  promise_2</span></span><br><span class="line"><span class="comment">  [ 'promise1', undefined ]</span></span><br><span class="line"><span class="comment">为什么呢?因为p2会先reject,reject后被自身的</span></span><br><span class="line"><span class="comment">catch捕获，catch会返回新的promise，这个在</span></span><br><span class="line"><span class="comment">catch执行完成后会变成resolved,所以最后会调用</span></span><br><span class="line"><span class="comment">promise.all的then方法</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p><strong>Promise.race</strong></p>
+<p>该方法与Promise.all()方法类似，只不过是只要有一个的状态发生改变，新的实例的对象也就会跟着改变。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> promise1=<span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">      setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          resolve(<span class="string">"promise1"</span>);</span><br><span class="line">      &#125;, <span class="number">2000</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> promise2=<span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            resolve(<span class="string">"promise2"</span>);</span><br><span class="line">        &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">Promise</span>.race([promise1,promise2])</span><br><span class="line">.then(<span class="function">(<span class="params">data</span>)=&gt;</span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"promise_all"</span>);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//promise2</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Promise.resolve</strong></p>
+<ol>
+<li><p>参数是一个Promise对象，将不做任何改变</p>
+</li>
+<li><p>其他参数，则直接转换，状态为resolved。常用来生成一个状态为fulfilled的promise实例</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> p = <span class="built_in">Promise</span>.resolve(<span class="string">'Hello'</span>);</span><br><span class="line">p.then(<span class="function"><span class="keyword">function</span> (<span class="params">s</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(s)</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// Hello</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p><strong>Promise.reject</strong></p>
+<p>返回的是一个promise实例，状态是rejected,常用来生成一个状态为rejected的promise实例</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> p = <span class="built_in">Promise</span>.reject(<span class="string">'error'</span>);</span><br><span class="line"><span class="comment">//等同于</span></span><br><span class="line"><span class="keyword">const</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> reject(<span class="string">'error'</span>))</span><br><span class="line">p.catch(<span class="function">(<span class="params">err</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//error</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/es6/" rel="tag">es6</a>, <a class="has-link-grey -link" href="/tags/javascript/" rel="tag">javascript</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/12/es6/es6-base-3/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">ES6知识点(三)</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/12/es6/es6-base-1/">
+                <span class="level-item">ES6知识点(一)</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+	var gitment = new Gitment({
+		id: '936e742078d08e72569a4e57efc26534',
+		owner: 'woliuCN',
+		repo: 'blogTalk',
+		oauth: {
+			client_id: 'b5fd8275297303984d3a',
+			client_secret: '536b9ec352328e057db1fae530324462742ffc5b',
+		},
+	})
+	gitment.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/avatar.png" alt="CN97">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        CN97
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        请强大自己
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>广东 惠州</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            16
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            3
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            4
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/woliuCN/woliuCN.github.io" target="_blank" rel="noopener">
+                关注我</a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+    
+        
+    
+        <!-- <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/es6/" style="font-size: 13.33px;">es6</a> <a href="/tags/javascript/" style="font-size: 16.67px;">javascript</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 20px;">设计模式</a>
+    </div>
+</div> -->
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-13T02:49:41.000Z">2020-03-13</time></div>
+                    <a href="/2020/03/13/pattern/strategy-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">策略模式</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-13T02:49:30.000Z">2020-03-13</time></div>
+                    <a href="/2020/03/13/pattern/proxy-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">代理模式</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-13T02:49:05.000Z">2020-03-13</time></div>
+                    <a href="/2020/03/13/pattern/command-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">命令模式</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-13T02:48:54.000Z">2020-03-13</time></div>
+                    <a href="/2020/03/13/pattern/bridging-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">桥接模式</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-13T02:48:39.000Z">2020-03-13</time></div>
+                    <a href="/2020/03/13/pattern/adapter-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">适配器模式</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            作品链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="http://webmusic.cn1997.top/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">音乐播放器</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">webmusic.cn1997.top</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+                <li>
+                    <a href="/bigweb" class="level is-marginless">
+                        <span class="level-start" style="color: #276cda;">
+                            <span class="level-item">前端内容整理</span>
+                        </span>
+                        <span class="level-end" >
+                            <span class="level-item tag" style="background-color: #276cda; color: #fff;">更多</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/algorithm" class="level is-marginless">
+                        <span class="level-start" style="color: #276cda;">
+                            <span class="level-item">算法修炼</span>
+                        </span>
+                        <span class="level-end" >
+                            <span class="level-item tag" style="background-color: #276cda; color: #fff;">更多</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+        <a class="level is-marginless" href="/categories/css3/">
+            <span class="level-start">
+                <span class="level-item">css3</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/javascript/">
+            <span class="level-start">
+                <span class="level-item">javascript</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/pattern/">
+            <span class="level-start">
+                <span class="level-item">pattern</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+        
+            <!-- <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">16</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div> -->
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/css3/">
+                        <span class="tag">css3</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/es6/">
+                        <span class="tag">es6</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/javascript/">
+                        <span class="tag">javascript</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="tag">设计模式</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            作品链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="http://webmusic.cn1997.top/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">音乐播放器</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">webmusic.cn1997.top</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+                <li>
+                    <a href="/bigweb" class="level is-marginless">
+                        <span class="level-start" style="color: #276cda;">
+                            <span class="level-item">前端内容整理</span>
+                        </span>
+                        <span class="level-end" >
+                            <span class="level-item tag" style="background-color: #276cda; color: #fff;">更多</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/algorithm" class="level is-marginless">
+                        <span class="level-start" style="color: #276cda;">
+                            <span class="level-item">算法修炼</span>
+                        </span>
+                        <span class="level-end" >
+                            <span class="level-item tag" style="background-color: #276cda; color: #fff;">更多</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+        <a class="level is-marginless" href="/categories/css3/">
+            <span class="level-start">
+                <span class="level-item">css3</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/javascript/">
+            <span class="level-start">
+                <span class="level-item">javascript</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/pattern/">
+            <span class="level-start">
+                <span class="level-item">pattern</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <!-- <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">16</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div> -->
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/css3/">
+                        <span class="tag">css3</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/es6/">
+                        <span class="tag">es6</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/javascript/">
+                        <span class="tag">javascript</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="tag">设计模式</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <!-- <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="ES6知识点(二)" height="28">
+                
+                </a> -->
+                <p class="is-size-7" style="white-space: pre-line;">
+                &copy; 2020 CN97&nbsp;
+                <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener">粤ICP备19127992号</a>
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                Reference for <a href="https://xxoo521.com/" target="_blank" rel="noopener">心谭</a>     
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/woliuCN/woliuCN.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://cn1997.top',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
