@@ -303,19 +303,30 @@
         
 <div id="comment-container"></div>
 
-<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
-<script src="https://billts.site/js/gitment.js"></script>
+<!-- <link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script> -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 <script>
-	var gitment = new Gitment({
-		id: '67a9b29f74c5aa5ddda8d59522f9ad27',
+	// var gitment = new Gitment({
+	// 	id: '67a9b29f74c5aa5ddda8d59522f9ad27',
+	// 	owner: 'woliuCN',
+	// 	repo: 'woliuCN.github.io',
+	// 	oauth: {
+	// 		client_id: 'b5fd8275297303984d3a',
+	// 		client_secret: '536b9ec352328e057db1fae530324462742ffc5b',
+	// 	},
+	// })
+	var gitalk = new Gitalk({
+		clientID: 'b5fd8275297303984d3a',
+		clientSecret: '536b9ec352328e057db1fae530324462742ffc5b',
 		owner: 'woliuCN',
 		repo: 'woliuCN.github.io',
-		oauth: {
-			client_id: 'b5fd8275297303984d3a',
-			client_secret: '536b9ec352328e057db1fae530324462742ffc5b',
-		},
+		admin: ['woliuCN'],
+		id: '67a9b29f74c5aa5ddda8d59522f9ad27',      // Ensure uniqueness and length less than 50
+		distractionFreeMode: false  // Facebook-like distraction free mode
 	})
-	gitment.render('comment-container')
+	gitalk.render('comment-container')
 </script>
 
     </div>
