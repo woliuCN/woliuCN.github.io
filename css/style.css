@@ -411,6 +411,9 @@ img.thumbnail {
 .content blockquote footer strong + cite {
   margin-left: 0.5em;
 }
+.content .hljs-comment {
+  color: rgba(145,152,167,0.922) !important;
+}
 /* ---------------------------------
  *        Fix code highlight
  * --------------------------------- */

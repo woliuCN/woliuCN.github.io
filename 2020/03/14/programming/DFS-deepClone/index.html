@@ -7,18 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>CN97 博客</title>
+<title>深度遍历实现深拷贝 - CN97 博客</title>
 
 
-    <meta name="description" content="记录中成长">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CN97 博客">
-<meta property="og:url" content="http://cn1997.top/page/2/index.html">
+    <meta name="description" content="题目描述:利用深度遍历的思想实现对象的深拷贝，且能处理好环状数据的问题。 思路:根据深度遍历的思路，针对每个对象属性深入递归拷贝下去，然后再遍历整个对象，在对每个对象属性都依照前面规则。下面实现了基本的类型的拷贝，至于其他类型的得依照稍加处理。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度遍历实现深拷贝">
+<meta property="og:url" content="http://cn1997.top/2020/03/14/programming/DFS-deepClone/index.html">
 <meta property="og:site_name" content="CN97 博客">
-<meta property="og:description" content="记录中成长">
+<meta property="og:description" content="题目描述:利用深度遍历的思想实现对象的深拷贝，且能处理好环状数据的问题。 思路:根据深度遍历的思路，针对每个对象属性深入递归拷贝下去，然后再遍历整个对象，在对每个对象属性都依照前面规则。下面实现了基本的类型的拷贝，至于其他类型的得依照稍加处理。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://cn1997.top/images/og_image.png">
+<meta property="article:published_time" content="2020-03-14T03:15:21.000Z">
+<meta property="article:modified_time" content="2020-03-14T05:36:57.737Z">
 <meta property="article:author" content="CN97">
+<meta property="article:tag" content="递归">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://cn1997.top/images/og_image.png">
 
@@ -85,7 +88,7 @@
         <div class="navbar-brand is-flex-center">
             <!-- <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="CN97 博客" height="28">
+                <img src="/images/logo.svg" alt="深度遍历实现深拷贝" height="28">
             
             </a> -->
         </div>
@@ -140,148 +143,57 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-    
 <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-13T02:47:45.000Z">2020-03-13</time>
+                <time class="level-item has-text-grey" datetime="2020-03-14T03:15:21.000Z">2020-03-14</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
+                <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 235 个字)
+                    3 分钟 读完 (大约 392 个字)
                 </span>
                 
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
                 
             </div>
         </div>
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/03/13/pattern/factory-pattern/">工厂模式</a>
+                深度遍历实现深拷贝
             
         </h1>
         <div class="content">
-            <h2 id="一、工厂模式及其用途"><a href="#一、工厂模式及其用途" class="headerlink" title="一、工厂模式及其用途"></a>一、工厂模式及其用途</h2><p>所谓工厂模式，就是根据不同的需求而”产出”相应的对象的类的实例，只对外提供一个根据不同参数来实例化相应的对象的函数。好处是在于可以避免了使用者于对象类之间的耦合，使用者完全可以不用知道这个类的细节，只需要懂得调用相应的方法。坏处也很明显，每个工厂只能”生产”同一类型的类的实例对象，当多类别对象的时候就不好用了，且当增加产品的时候需要更改判断的逻辑，繁琐</p>
-<h2 id="二、代码实现"><a href="#二、代码实现" class="headerlink" title="二、代码实现"></a>二、代码实现</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line">    run()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'狗'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> </span>&#123;</span><br><span class="line">    run()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'猫'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name)&#123;</span><br><span class="line">        name=name.toLocaleLowerCase();</span><br><span class="line">        <span class="keyword">switch</span>(name)&#123;</span><br><span class="line">          <span class="keyword">case</span>:<span class="string">'dog'</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> Dog();</span><br><span class="line">          <span class="keyword">case</span>:<span class="string">'cat'</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> Cat();</span><br><span class="line">          <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">throw</span> <span class="built_in">TypeError</span>(<span class="string">"class name wrong"</span>);    </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> cat=<span class="keyword">new</span> Animal(<span class="string">"cat"</span>);</span><br><span class="line">cat.run(); <span class="comment">//狗</span></span><br></pre></td></tr></table></figure>
-
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-13T02:47:24.000Z">2020-03-13</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    1 分钟 读完 (大约 199 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/13/pattern/single-pattern/">单例模式</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="一、单例模式及其用途"><a href="#一、单例模式及其用途" class="headerlink" title="一、单例模式及其用途"></a>一、单例模式及其用途</h2><p>所谓单例模式，就是一个类就只有一个实例，用途的话可以用来定义命名空间，通过在一个实例对象定义其的方法跟属性，来达到命名不重复的目的，例如Jquery的$符号就是这个思想。再者就是如果对于一个类是负责连接数据库的线程池，日志等逻辑的，用到这种模式来保证对象不被重复创建，降低开销。</p>
-<h2 id="二、代码实现"><a href="#二、代码实现" class="headerlink" title="二、代码实现"></a>二、代码实现</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//惰性单例模式</span></span><br><span class="line"><span class="keyword">var</span> laztSingle=(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="comment">//使用闭包使得单例对象为私有</span></span><br><span class="line">    <span class="keyword">var</span> instance=<span class="literal">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Signle</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            age:<span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(!instance)&#123;</span><br><span class="line">         instance=<span class="keyword">new</span> Signle()</span><br><span class="line">     &#125;</span><br><span class="line">        <span class="keyword">return</span> instance</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)()</span><br><span class="line"><span class="keyword">var</span> a=lazySingle();</span><br><span class="line"><span class="keyword">var</span> b=lazySingle();</span><br><span class="line"><span class="built_in">console</span>.log(a===b) <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-
+            <p><strong>题目描述:</strong><br>利用深度遍历的思想实现对象的深拷贝，且能处理好环状数据的问题。</p>
+<p><strong>思路:</strong><br>根据深度遍历的思路，针对每个对象属性深入递归拷贝下去，然后再遍历整个对象，在对每个对象属性都依照前面规则。下面实现了基本的类型的拷贝，至于其他类型的得依照稍加处理。</p>
+<a id="more"></a>
+<p><strong>代码实现</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> _toString  = <span class="built_in">Object</span>.prototype.toString;</span><br><span class="line"><span class="keyword">let</span> map = &#123;</span><br><span class="line">         array: <span class="string">'Array'</span>,</span><br><span class="line">         object: <span class="string">'Object'</span>,</span><br><span class="line">         <span class="function"><span class="keyword">function</span>: '<span class="title">Function</span>',</span></span><br><span class="line"><span class="function">         <span class="title">string</span>: '<span class="title">String</span>',</span></span><br><span class="line"><span class="function">         <span class="title">null</span>: '<span class="title">Null</span>',</span></span><br><span class="line"><span class="function">         <span class="title">undefined</span>: '<span class="title">Undefined</span>',</span></span><br><span class="line"><span class="function">         <span class="title">boolean</span>: '<span class="title">Boolean</span>',</span></span><br><span class="line"><span class="function">         <span class="title">number</span>: '<span class="title">Number</span>'</span></span><br><span class="line"><span class="function">     &#125;</span></span><br><span class="line"><span class="function">     //返回数据的类型</span></span><br><span class="line"><span class="function">     <span class="title">function</span> <span class="title">getType</span> (<span class="params">obj</span>)</span>&#123;</span><br><span class="line">         <span class="keyword">return</span> _toString.call(obj).slice(<span class="number">8</span>,<span class="number">-1</span>);</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="function"><span class="keyword">function</span> <span class="title">isTypeOf</span>(<span class="params">obj,type</span>)</span>&#123;</span><br><span class="line">         <span class="keyword">return</span> map[type] &amp;&amp; map[type] ===getType(obj)</span><br><span class="line">     &#125;</span><br><span class="line">      <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@description</span>: 深度遍历实现深拷贝，递归形式实现</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param <span class="type">&#123;object&#125;</span> </span>obj 被拷贝的对象</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param <span class="type">&#123;Array&#125;</span> </span>visitedArr 存储已拷贝的对象属性，来处理环状数据问题</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@return</span>: 深拷贝的对象</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">DFSdeepClone</span> (<span class="params">obj,visitedArr = []</span>) </span>&#123;</span><br><span class="line">     <span class="keyword">let</span> _obj = &#123;&#125; <span class="comment">//拷贝的对象</span></span><br><span class="line">     <span class="comment">// 如果拷贝的属性是一个对象的话</span></span><br><span class="line">     <span class="keyword">if</span>(isTypeOf(obj,<span class="string">'array'</span>)||isTypeOf(obj,<span class="string">'object'</span>))&#123;</span><br><span class="line">         <span class="keyword">let</span> index = visitedArr.indexOf(obj); </span><br><span class="line">         <span class="keyword">if</span>(index &gt; <span class="number">-1</span>)&#123;</span><br><span class="line">          _obj = visitedArr[index]; <span class="comment">//如果是已经拷贝了的属性直接返回这个属性的值,处理回环问题</span></span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">else</span>&#123;</span><br><span class="line">             visitedArr.push(obj) <span class="comment">//保存这个属性</span></span><br><span class="line">             <span class="comment">//递归的深入每个属性嵌套的对象去拷贝</span></span><br><span class="line">             <span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">in</span> obj) &#123;</span><br><span class="line">                _obj[item] = DFSdeepClone(obj[item],visitedArr) </span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line"> </span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">else</span>&#123;</span><br><span class="line">         _obj = obj <span class="comment">//如果是普通值的话就直接赋值</span></span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> _obj</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="comment">//环状数据</span></span><br><span class="line"> <span class="keyword">let</span> Circle = &#123;</span><br><span class="line">     a: <span class="number">1</span>,</span><br><span class="line">     b: &#123;</span><br><span class="line">         c: <span class="number">1</span>,</span><br><span class="line">         d: <span class="number">2</span>,</span><br><span class="line">         circle: <span class="literal">null</span>,</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> Circle.b.circle = Circle.b;</span><br><span class="line"> cloneCircle = DFSdeepClone(Circle);<span class="comment">//如果不处理环问题会进入死循环</span></span><br><span class="line"> <span class="built_in">console</span>.log(cloneCircle);</span><br></pre></td></tr></table></figure>
 
         </div>
         
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-13T02:37:09.000Z">2020-03-13</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/css3/">css3</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    10 分钟 读完 (大约 1531 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/13/ui/css-base2/">CSS3 常见知识(二)</a>
-            
-        </h1>
-        <div class="content">
-            <p>👇内容速览👇</p>
-<ul>
-<li>各种像素的区别与理解</li>
-<li>那些年遇到过的”视口”</li>
-<li>移动端适配的一些小理解</li>
-</ul>
-        </div>
-        
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/03/13/ui/css-base2/#more">阅读更多</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
@@ -291,383 +203,55 @@
 
 
 
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-13T02:33:10.000Z">2020-03-13</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/css3/">css3</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    8 分钟 读完 (大约 1178 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/13/ui/css-base1/">CSS3 常见知识(一)</a>
-            
-        </h1>
-        <div class="content">
-            <p>👇内容速览👇</p>
-<ul>
-<li>常见的几种居中方法</li>
-<li>浮动与BFC</li>
-<li>与浏览器性能相关</li>
-</ul>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/03/13/ui/css-base1/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-12T14:20:47.000Z">2020-03-12</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    17 分钟 读完 (大约 2518 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/12/es6/es6-base-3/">ES6知识点(三)</a>
-            
-        </h1>
-        <div class="content">
-            <p>👇内容速览👇</p>
-<ul>
-<li>Generator函数</li>
-<li>async/await</li>
-<li>Class语法</li>
-</ul>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/03/12/es6/es6-base-3/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-12T14:02:11.000Z">2020-03-12</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    16 分钟 读完 (大约 2367 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/12/es6/es6-base-2/">ES6知识点(二)</a>
-            
-        </h1>
-        <div class="content">
-            <p>👇内容速览👇</p>
-<ul>
-<li>Set、Map数据结构</li>
-<li>Proxy(代理器)</li>
-<li>Promise对象</li>
-</ul>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/03/12/es6/es6-base-2/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-12T14:02:06.000Z">2020-03-12</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    11 分钟 读完 (大约 1596 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/12/es6/es6-base-1/">ES6知识点(一)</a>
-            
-        </h1>
-        <div class="content">
-            <p>👇内容速览👇</p>
-<ul>
-<li>一些新特性跟拓展</li>
-<li>箭头函数特点及与普通函数的区别</li>
-<li>Symbol数据类型</li>
-</ul>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/03/12/es6/es6-base-1/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-09T13:56:34.000Z">2020-03-09</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    21 分钟 读完 (大约 3083 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/09/javascript/javaScript-base-2/">javaScript基础知识(下)</a>
-            
-        </h1>
-        <div class="content">
-            <p>👇内容速览👇</p>
-<ul>
-<li><p>JS的运行机制（浏览器）</p>
-</li>
-<li><p>ES5的继承的实现</p>
-</li>
-<li><p>浏览器对象与文档对象</p>
-</li>
-</ul>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/03/09/javascript/javaScript-base-2/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-09T12:55:23.000Z">2020-03-09</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    12 分钟 读完 (大约 1766 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/09/javascript/javaScript-base-1/">javaScript基础知识(上)</a>
-            
-        </h1>
-        <div class="content">
-            <p>👇内容速览👇</p>
-<ul>
-<li><p>基本的数据类型及判断区别</p>
-</li>
-<li><p>闭包的一些问题</p>
-</li>
-<li><p>浅拷贝与深拷贝的区别跟实现</p>
-</li>
-<li><p>原型与原型对象</p>
-</li>
-</ul>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/03/09/javascript/javaScript-base-1/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    
 <div class="card card-transparent">
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/">上一页</a>
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/14/programming/BFS-deepClone/">
+                <span class="level-item">广度遍历实现深拷贝</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        <div class="pagination-next is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/page/3/">下一页</a>
-        </div>
-        <ul class="pagination-list is-hidden-mobile">
-            
-            <li><a class="pagination-link has-text-black-ter" href="/">1</a></li>
-            
-            <li><a class="pagination-link is-current" href="/page/2/">2</a></li>
-            
-        </ul>
-    </nav>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+
+<!-- <link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script> -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+	// var gitment = new Gitment({
+	// 	id: '6db39811e75e3b9045a731f6b2cccde6',
+	// 	owner: 'woliuCN',
+	// 	repo: 'woliuCN.github.io',
+	// 	oauth: {
+	// 		client_id: 'b5fd8275297303984d3a',
+	// 		client_secret: '536b9ec352328e057db1fae530324462742ffc5b',
+	// 	},
+	// })
+	var gitalk = new Gitalk({
+		clientID: 'b5fd8275297303984d3a',
+		clientSecret: '536b9ec352328e057db1fae530324462742ffc5b',
+		owner: 'woliuCN',
+		repo: 'woliuCN.github.io',
+		admin: ['woliuCN'],
+		id: '6db39811e75e3b9045a731f6b2cccde6',      // Ensure uniqueness and length less than 50
+		distractionFreeMode: false  // Facebook-like distraction free mode
+	})
+	gitalk.render('comment-container')
+</script>
+
+    </div>
 </div>
 </div>
                 
@@ -1236,7 +820,7 @@
             <div class="level-start has-text-centered-mobile">
                 <!-- <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="CN97 博客" height="28">
+                    <img src="/images/logo.svg" alt="深度遍历实现深拷贝" height="28">
                 
                 </a> -->
                 <p class="is-size-7" style="white-space: pre-line;">
