@@ -147,6 +147,179 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-15T02:40:26.000Z">2020-03-15</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/webpack4/">webpack4</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 分钟 读完 (大约 812 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/03/15/webpack4/webpack4-base3/">webpack基本配置(下)</a>
+            
+        </h1>
+        <div class="content">
+            <p><strong>watch</strong></p>
+<p>文件监听配置，在源码发生变化的时候，自动重新构建出新的输出文件。因为是输出在磁盘里面的文件，所以每次更新后得手动刷新浏览器。可以在配置文件配置或者在脚本后面加上<code>--watch</code>参数开启。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//文件监听的原理：轮询判断文件的最后编辑时间是否变化，当某个文件发生变化后，并不是立刻的告诉监听者，而是先缓存起来，等待aggregateTimeout再去通知</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    watch:<span class="literal">true</span>,</span><br><span class="line">    watchOptions:&#123;</span><br><span class="line">        ignored:<span class="regexp">/node_modules/</span>, <span class="comment">//不监听变化的文件或者文件夹，支持正则</span></span><br><span class="line">        aggregateTimeout:<span class="number">300</span>, <span class="comment">//监听到变化后等待300ms后再去执行。默认是300ms</span></span><br><span class="line">        poll:<span class="number">1000</span> <span class="comment">//判断文件是否发送变化是通过不停询问系统指定文件有没有变化实现的，默认每秒询问1000次</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>webpack-dev-server</strong></p>
+<p>在开发环境的时候，使用webpack-dev-server来开启一个本地服务器来实时监听文件的变化。开启热更新(不用刷新浏览器就能显示最新的结果)</p>
+<blockquote>
+<p>npm i webpack-dev-server -D</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports=&#123;</span><br><span class="line">    plugins:[</span><br><span class="line">        <span class="keyword">new</span> CleanWebpackPlugin(), <span class="comment">//自动清除目录插件</span></span><br><span class="line">        <span class="keyword">new</span> HtmlWebpackPlugin(&#123;<span class="attr">template</span>:<span class="string">'./src/index.html'</span>,<span class="attr">filename</span>:<span class="string">'index.html'</span>&#125;),</span><br><span class="line">        <span class="keyword">new</span> webpack.HotModuleReplacementPlugin()</span><br><span class="line">        <span class="comment">/*webpack 构建出来的 bundle.js 本身是不具备热更新的能力的，</span></span><br><span class="line"><span class="comment">        HotModuleReplacementPlugin 的作用就是将 HMR runtime 注入到 bundle.js，</span></span><br><span class="line"><span class="comment">        使得bundle.js可以和HMR server建立websocket的通信连接。*/</span>  </span><br><span class="line">        ],</span><br><span class="line">    devServer:&#123;</span><br><span class="line">        contentBase:<span class="string">'./dist'</span>, </span><br><span class="line">        <span class="comment">/*默认的话webpack-dev-server会为根文件提供一个本地服务器，</span></span><br><span class="line"><span class="comment">        如果想为另外的目录下文件提供本地服务器的话，在这里设置。</span></span><br><span class="line"><span class="comment">        注意如果想获取到实时的数据变换的话文件夹里面必须有一个html文件且文件里面引入的脚本得以'/'来指定是获取内存里面的文件而不是磁盘上的旧的打包的文件。</span></span><br><span class="line"><span class="comment">        如果有指定HtmlWebpackPlugin插件来使得html文件也是在内存中的话，就可以不用设置这个参数。*/</span>    </span><br><span class="line">        hot:<span class="literal">true</span>,<span class="comment">//开启热更新</span></span><br><span class="line">        port:<span class="number">8080</span>, <span class="comment">//设置端口，默认是8080</span></span><br><span class="line">        historyApiFallback:<span class="literal">true</span> <span class="comment">//在开发单页应用时，它依赖于HTML5 history API，如果设置为true，所有的跳转将指向index.html</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>热更新原理分析</strong></p>
+<p>文件通过编辑后经过文件系统，传输给webpack compiler将js编译成为bundle.js。再由Bundle server提供个端口服务让文件在浏览器访问。一开始的过程是12AB。而后的更新过程则是依靠另外的一个服务器HMR server 与浏览器进行websocket通信。HMR Server 是服务端，用来将变化的 js 模块通过 websocket 的消息通知给浏览器端。HMR Runtime是浏览器端，用于接受 HMR Server 传递的模块数据。webpack 构建出来的 bundle.js 本身是不具备热更新的能力的，HotModuleReplacementPlugin 的作用就是将 HMR runtime 注入到 bundle.js，使得bundle.js可以和HMR server建立websocket的通信连接。<br><img src="https://github.com/woliuCN/photos/blob/master/WDS.png?raw=true" alt="热更新图"></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-15T02:40:20.000Z">2020-03-15</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/webpack4/">webpack4</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 分钟 读完 (大约 810 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/03/15/webpack4/webpack4-base2/">webpack基本配置(上)</a>
+            
+        </h1>
+        <div class="content">
+            <p><strong>entry(入口)</strong></p>
+<p>webpack打包的入口,根据这个入口文件及里面文件的相关依赖来开始构建,可以指定单个或者多个入口。举个例子</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry:<span class="string">'./src/index.js'</span>, <span class="comment">//单个入口的时候是字符串 默认是.src/index</span></span><br><span class="line">    <span class="comment">//多个入口的时候是对象。可以动态配置</span></span><br><span class="line">    entry:&#123;</span><br><span class="line">		phone:<span class="string">'./src/phone.js'</span>,</span><br><span class="line">		pc:<span class="string">'./src/pc.js'</span></span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>output(出口)</strong></p>
+<p>webpack打包生成的bundle的最终出口，可以指定文件所在的目录及命名格式等配置，按需加载的文件名称等。具体更多的配置可参照官网的。举个例子</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    output:&#123;</span><br><span class="line">        path:path.join(__dirname,<span class="string">'dist'</span>),</span><br><span class="line">        filename:<span class="string">'bundle.js'</span> <span class="comment">//单入口的时候    </span></span><br><span class="line">        filename:<span class="string">'[name].bundle.js'</span> <span class="comment">//多入口的时候使用入口名称占位符</span></span><br><span class="line">        filename:<span class="string">'[id].bundle.js'</span><span class="comment">//多入口使用内部chunk id占位符</span></span><br><span class="line">        filename: <span class="string">"[name].[hash].bundle.js"</span> <span class="comment">//多入口的时候使用入口名称占位符加每次打包的hash</span></span><br><span class="line">        chunkFilename: <span class="string">'chunk.bundle.js'</span>, <span class="comment">// 指未列在 entry 中，却又需要被打包出来的文件的名称,通常指按需加载的代码</span></span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/03/15/webpack4/webpack4-base2/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-15T02:17:05.000Z">2020-03-15</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/webpack4/">webpack4</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分钟 读完 (大约 625 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/03/15/webpack4/webpack4-base1/">webpack4配置文件及其相关概念</a>
+            
+        </h1>
+        <div class="content">
+            <p><strong>配置文件</strong></p>
+<p>webpack默认识别的配置文件是webpack.config.js。但是在日常的项目中，通常有分生产环境与开发环境，所以可以通过webpack –config 指定配置文件。例如webpack –config webpack.pro.js。在package.json里面脚本配置。打包的命令是./node_modules/.bin/webpack。原理是局部安装的依赖如果有创建一些命令的话，会在node_modules/.bin目录创建软链接。而package.json默认会读取这些软链接。所以可以在package.json的脚本里面配置命令。</p>
+<p><strong>打包输出结果</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;   </span><br><span class="line">entry:&#123;</span><br><span class="line">        index:<span class="string">'./src/index.js'</span>,</span><br><span class="line">        utils:<span class="string">'./src/util.js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    output:&#123;</span><br><span class="line">        path:path.join(__dirname,<span class="string">'dist'</span>),</span><br><span class="line">        filename:<span class="string">'[id].bundle.js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    mode:<span class="string">'production'</span></span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line">Hash: <span class="number">8</span>a5dd3006c8eb99d09ca	<span class="comment">//本次打包对应的唯一的一个hash值</span></span><br><span class="line">Version: webpack <span class="number">4.41</span><span class="number">.6</span>	 <span class="comment">//webpack 版本</span></span><br><span class="line">Time: <span class="number">96</span>ms		<span class="comment">//打包耗时</span></span><br><span class="line">Built at: <span class="number">2020</span><span class="number">-02</span><span class="number">-16</span> <span class="number">8</span>:<span class="number">16</span>:<span class="number">35</span> PM	</span><br><span class="line"><span class="comment">/* 打包出的文件	 文件大小	chunks id数组   asset对应的chunk名称 就是entry指定对象的key</span></span><br><span class="line"><span class="comment">                                              当entry是字符串的时候，会默认指定名称为main</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">    Asset        Size           Chunks        Chunk Names</span><br><span class="line"><span class="number">0.</span>bundle.js   <span class="number">976</span> bytes       <span class="number">0</span>  [emitted]     index</span><br><span class="line"><span class="number">1.</span>bundle.js  <span class="number">1020</span> bytes       <span class="number">1</span>  [emitted]     utils</span><br><span class="line">Entrypoint index = <span class="number">0.</span>bundle.js	 <span class="comment">//打包入口文件及输出的结果</span></span><br><span class="line">Entrypoint utils = <span class="number">1.</span>bundle.js</span><br><span class="line">[<span class="number">0</span>] ./src/util.js <span class="number">179</span> bytes &#123;<span class="number">1</span>&#125; [built]</span><br><span class="line">[<span class="number">1</span>] ./src/index.js + <span class="number">1</span> modules <span class="number">378</span> bytes &#123;<span class="number">0</span>&#125; [built] <span class="comment">//chunk 0 里有引用关系的文件列表</span></span><br><span class="line">| ./src/index.js <span class="number">196</span> bytes [built]</span><br><span class="line">| ./src/hello.js <span class="number">182</span> bytes [built]</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>module</code>、<code>chunk</code>、<code>bundle</code>在webpack里面的意义与区别</strong></p>
+<ol>
+<li><code>module</code>：我们写的每个文件，如js文件,css文件，jsx文件。甚至是被引用的一张图片。都是认为是module。</li>
+<li><code>chunk</code>：webpack在运行打包的时候，根据文件的引用关系生成<strong>chunk</strong>文件，然后在对这个<strong>chunk</strong>文件进行相关操作。例如上面例子，index.js引用了hello.js文件，这两个就生成了<strong>chunk</strong>文件。</li>
+<li><code>bundle</code>：webpack处理完chunk文件后，最终输出的就是bundle文件。这个文件包含了加载与编译后的最终源文件，可以直接在浏览器运行。</li>
+<li>一般来说，一个chunk会对应一个bundle，但是也有例外，例如我在index.js里面引入了index.css文件,但我用插件将其分割出来生成了index.bundle.css文件。这个时候这个chunk就对应了两个bundle。</li>
+<li>总结来说，我们编写的是module，webpack运行的时候是chunk，最终输出的是可以直接运行的bundle。</li>
+</ol>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-03-14T03:15:21.000Z">2020-03-14</time>
                 
                 <div class="level-item">
@@ -488,176 +661,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-13T02:48:39.000Z">2020-03-13</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 分钟 读完 (大约 315 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/13/pattern/adapter-pattern/">适配器模式</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="一、适配器模式及其用途"><a href="#一、适配器模式及其用途" class="headerlink" title="一、适配器模式及其用途"></a>一、适配器模式及其用途</h2><p>“水管弯弯”适配器模式，顾名思义，它就是对数据进行适配，将一个类的接口（方法亦或是属性）转换/过滤/重组成为另外的接口来满足需求。但常用在两个接口构造类似的情况下，如若两个大相径庭，适配模式就有点力不从心了。</p>
-<h2 id="二、代码实现"><a href="#二、代码实现" class="headerlink" title="二、代码实现"></a>二、代码实现</h2><h3 id="适配框架"><a href="#适配框架" class="headerlink" title="适配框架"></a>适配框架</h3><p>大名鼎鼎的Jquery 框架大家都很熟悉吧，假设现在有一内部框架A，其结构与Jquery很类似，但是提供的方法却比较少，想引入Jquery却不想影响到之前写的代码，可以这样做</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">A.g =<span class="function"><span class="keyword">function</span> (<span class="params">id</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.A = jQuery;</span><br><span class="line"><span class="comment">//适配器方法</span></span><br><span class="line">A.g = <span class="function"><span class="keyword">function</span> (<span class="params">id</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> $(<span class="string">'#'</span>+id)[<span class="number">0</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="数据适配"><a href="#数据适配" class="headerlink" title="数据适配"></a>数据适配</h3><p>假设有这样的各大音乐平台提供的数据，为了后台好处理，我们需要对数据进行适配</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> API=&#123;</span><br><span class="line">    QQ:<span class="function"><span class="params">()</span>=&gt;</span>(&#123;</span><br><span class="line">        n:<span class="string">"最了不起的你"</span>,</span><br><span class="line">        a:<span class="string">"火箭少女101段奥娟"</span>,</span><br><span class="line">        f:<span class="number">0</span></span><br><span class="line">    &#125;),</span><br><span class="line">    Netease:<span class="function"><span class="params">()</span>=&gt;</span>(&#123;</span><br><span class="line">        name:<span class="string">"最了不起的你"</span>,</span><br><span class="line">        author:<span class="string">"火箭少女101段奥娟"</span>,</span><br><span class="line">        free:<span class="literal">false</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> adapter=<span class="function">(<span class="params">info</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        name:info.name||info.n,</span><br><span class="line">        author:info.author||info.a,</span><br><span class="line">        free:info.free||info.f</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-13T02:48:21.000Z">2020-03-13</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 分钟 读完 (大约 534 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/13/pattern/observer-pattern/">观察者模式</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="一、观察者模式及其用途"><a href="#一、观察者模式及其用途" class="headerlink" title="一、观察者模式及其用途"></a>一、观察者模式及其用途</h2><p>  观察者模式，行为型模式的一种，当存在一对多的关系的时候，用观察者模式可以实现当这个被观察的对象被修改的时候，会自动的通知订阅它的其他依赖对象。例如angular 的一个依赖库RXJS就是广泛的应用了这种模式。但常常会与发布-订阅模式傻傻分不清楚。    </p>
-<h2 id="二、代码实现"><a href="#二、代码实现" class="headerlink" title="二、代码实现"></a>二、代码实现</h2><ul>
-<li><p>观察者模式：只有观察者跟被观察者，两者是直接通信的(松耦合) </p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Subject</span>(<span class="params"></span>) </span>&#123; <span class="comment">//被观察者</span></span><br><span class="line">  <span class="keyword">this</span>.observers = [];</span><br><span class="line">  <span class="keyword">this</span>.state = <span class="string">'快乐'</span>;</span><br><span class="line">&#125;</span><br><span class="line">Subject.prototype.attach = <span class="function"><span class="keyword">function</span> (<span class="params">observer</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.observers.push(observer);</span><br><span class="line">&#125;</span><br><span class="line">Subject.prototype.setState = <span class="function"><span class="keyword">function</span> (<span class="params">state</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.state = state;</span><br><span class="line">  <span class="keyword">this</span>.notify();</span><br><span class="line">&#125;</span><br><span class="line">Subject.prototype.notify = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;    <span class="comment">//被观察者状态改变的话是直接与观察者通讯</span></span><br><span class="line">  <span class="keyword">this</span>.observers.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">observer</span>) </span>&#123;</span><br><span class="line">    observer.update();</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Observer</span>(<span class="params">name,target</span>)</span>&#123; <span class="comment">// 观察者 一般会有一个方法</span></span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.target = target;</span><br><span class="line">&#125;</span><br><span class="line">Observer.prototype.update = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// 更新方法</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`通知：<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span> 当前的状态是 <span class="subst">$&#123;<span class="keyword">this</span>.target.state&#125;</span>赶紧哄`</span>)</span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">let</span> subject = <span class="keyword">new</span> Subject();</span><br><span class="line"><span class="keyword">let</span> observer1 = <span class="keyword">new</span> Observer(<span class="string">'儿子'</span>, subject);</span><br><span class="line"><span class="keyword">let</span> observer2 = <span class="keyword">new</span> Observer(<span class="string">'女儿'</span>, subject);</span><br><span class="line">subject.attach(observer1); <span class="comment">// 给目标添加观察者</span></span><br><span class="line">subject.attach(observer2);</span><br><span class="line">subject.setState(<span class="string">'开心'</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>发布-订阅模式:发布者跟订阅者两个互不知晓，而是通过一个中间人来传递信息(如读者与作者，中间人是报社，完全没耦合)</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*这里的event 相当于报社中间人,而fn读者,通过报社订阅报纸,当作者有新的东西的时候,就会通过报社出版新的*/</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">Event</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.events=[];</span><br><span class="line">  &#125;</span><br><span class="line">  Event.prototype.on=<span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123;    <span class="comment">//订阅</span></span><br><span class="line">    <span class="keyword">this</span>.events.push(fn);</span><br><span class="line">  &#125;</span><br><span class="line">  Event.prototype.emit=<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;    <span class="comment">//发布</span></span><br><span class="line">    <span class="keyword">this</span>.events.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">      fn(data);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>所以两者的区别就是发送方与接收方是否是知晓对方存在的，观察者模式中,被观察者状态一旦发生改变，订阅它的所有观察者都会立即知晓。而订阅发布模式中,发布者与订阅者是不知道对方是谁的，而是通过中间人（例如event）来联系。</p>
-</li>
-</ul>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-13T02:48:00.000Z">2020-03-13</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 379 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/13/pattern/abstractFactory-pattern/">抽象工厂模式</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="一、抽象工厂模式及其用途"><a href="#一、抽象工厂模式及其用途" class="headerlink" title="一、抽象工厂模式及其用途"></a>一、抽象工厂模式及其用途</h2><p>抽象工厂模式，其实就是在工厂模式的基础上，对工厂类再次抽象封装，产生一个超级工厂类。这个超级工厂类同时可以用一个抽象工厂类对子类工厂进行约束，超级工厂创建的是一个类簇，类簇里面才是相应的对象实例。</p>
-<h2 id="二、代码实现"><a href="#二、代码实现" class="headerlink" title="二、代码实现"></a>二、代码实现</h2><h3 id="抽象工厂类制定约束"><a href="#抽象工厂类制定约束" class="headerlink" title="抽象工厂类制定约束"></a>抽象工厂类制定约束</h3><p>构建一个抽象工厂类来对工厂类的实现进行相应的约束</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AbstractFactory</span></span>&#123;</span><br><span class="line">    getPerson()&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"子类请实现接口"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    getAnimal()&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"子类请实现接口"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="创建实体类"><a href="#创建实体类" class="headerlink" title="创建实体类"></a>创建实体类</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line">    name()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'狗'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> </span>&#123;</span><br><span class="line">    name()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'猫'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Male</span> </span>&#123;</span><br><span class="line">    name()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'男人'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Female</span> </span>&#123;</span><br><span class="line">    name()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'女人'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="创建各自的工厂类"><a href="#创建各自的工厂类" class="headerlink" title="创建各自的工厂类"></a>创建各自的工厂类</h3><p>跟之前工厂类一样创造工厂来产出相应的实例，只不过这时候的工厂会受到抽象工厂类的约束</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonFactory</span> <span class="keyword">extends</span> <span class="title">AbstractFactory</span></span>&#123;</span><br><span class="line">      getPerson(person)&#123;</span><br><span class="line">          <span class="keyword">switch</span>(person)&#123;</span><br><span class="line">          <span class="keyword">case</span>:<span class="string">'male'</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> Male();</span><br><span class="line">          <span class="keyword">case</span>:<span class="string">'female'</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> Female();</span><br><span class="line">          <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">break</span>; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">     getAnimal()&#123;</span><br><span class="line">         <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AminalFactory</span> <span class="keyword">extends</span> <span class="title">AbstractFactory</span></span>&#123;</span><br><span class="line">    getAnimal(name)&#123;</span><br><span class="line">        name=name.toLocaleLowerCase();</span><br><span class="line">        <span class="keyword">switch</span>(name)&#123;</span><br><span class="line">          <span class="keyword">case</span>:<span class="string">'dog'</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> Dog();</span><br><span class="line">          <span class="keyword">case</span>:<span class="string">'cat'</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> Cat();</span><br><span class="line">          <span class="keyword">default</span>:</span><br><span class="line">           <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line">      getPerson()&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="超级工厂类的实现"><a href="#超级工厂类的实现" class="headerlink" title="超级工厂类的实现"></a>超级工厂类的实现</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//超级工厂类，生产对应的工厂类簇</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line">     <span class="keyword">constructor</span>(choice)&#123;</span><br><span class="line">        choice=choice.toLocaleLowerCase();</span><br><span class="line">        <span class="keyword">switch</span>(choice)&#123;</span><br><span class="line">          <span class="keyword">case</span>:<span class="string">'person</span></span><br><span class="line"><span class="string">            return new PersonFactory();</span></span><br><span class="line"><span class="string">          case:'</span>aminal<span class="string">'</span></span><br><span class="line"><span class="string">            return new AminalFactory();</span></span><br><span class="line"><span class="string">          default:</span></span><br><span class="line"><span class="string">            throw TypeError("class name wrong");    </span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">//创建person工厂类</span></span><br><span class="line"><span class="string">const personFactory =new Factory("person");</span></span><br><span class="line"><span class="string">//创建male实例</span></span><br><span class="line"><span class="string">const male=personFactory.getPerson("male");</span></span><br><span class="line"><span class="string">male.name()//'</span>男人<span class="string">'</span></span><br></pre></td></tr></table></figure>
-
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -673,6 +676,8 @@
             <li><a class="pagination-link is-current" href="/">1</a></li>
             
             <li><a class="pagination-link has-text-black-ter" href="/page/2/">2</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/3/">3</a></li>
             
         </ul>
     </nav>
@@ -722,7 +727,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            19
+                            22
                         </p>
                     </a>
                 </div>
@@ -734,7 +739,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -784,6 +789,45 @@
             
             <div class="media-content">
                 <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-15T02:40:26.000Z">2020-03-15</time></div>
+                    <a href="/2020/03/15/webpack4/webpack4-base3/" class="title has-link-black-ter is-size-6 has-text-weight-normal">webpack基本配置(下)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/webpack4/">webpack4</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-15T02:40:20.000Z">2020-03-15</time></div>
+                    <a href="/2020/03/15/webpack4/webpack4-base2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">webpack基本配置(上)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/webpack4/">webpack4</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-15T02:17:05.000Z">2020-03-15</time></div>
+                    <a href="/2020/03/15/webpack4/webpack4-base1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">webpack4配置文件及其相关概念</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/webpack4/">webpack4</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-14T03:15:21.000Z">2020-03-14</time></div>
                     <a href="/2020/03/14/programming/DFS-deepClone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深度遍历实现深拷贝</a>
                     <p class="is-size-7 is-uppercase">
@@ -801,45 +845,6 @@
                     <a href="/2020/03/14/programming/BFS-deepClone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">广度遍历实现深拷贝</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-14T03:14:27.000Z">2020-03-14</time></div>
-                    <a href="/2020/03/14/programming/rebuild-binaryTree/" class="title has-link-black-ter is-size-6 has-text-weight-normal">重建二叉树</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-13T02:49:41.000Z">2020-03-13</time></div>
-                    <a href="/2020/03/13/pattern/strategy-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">策略模式</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-13T02:49:30.000Z">2020-03-13</time></div>
-                    <a href="/2020/03/13/pattern/proxy-pattern/" class="title has-link-black-ter is-size-6 has-text-weight-normal">代理模式</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
                     </p>
                 </div>
             </div>
@@ -929,6 +934,14 @@
                 <span class="level-item tag">9</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/webpack4/">
+            <span class="level-start">
+                <span class="level-item">webpack4</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/%E5%89%91%E6%8C%87offer/">
             <span class="level-start">
                 <span class="level-item">剑指offer</span>
@@ -964,7 +977,7 @@
                     <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">22</span>
                 </span>
             </a>
         </li>
@@ -1125,6 +1138,14 @@
                 <span class="level-item tag">9</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/webpack4/">
+            <span class="level-start">
+                <span class="level-item">webpack4</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/%E5%89%91%E6%8C%87offer/">
             <span class="level-start">
                 <span class="level-item">剑指offer</span>
@@ -1160,7 +1181,7 @@
                     <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">22</span>
                 </span>
             </a>
         </li>

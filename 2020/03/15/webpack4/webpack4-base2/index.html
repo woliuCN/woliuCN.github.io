@@ -7,25 +7,20 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>标签 - CN97 博客</title>
+<title>webpack基本配置(上) - CN97 博客</title>
 
 
-    <meta name="description" content="记录中成长">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CN97 博客">
-<meta property="og:url" content="http://cn1997.top/tags/index.html">
+    <meta name="description" content="entry(入口) webpack打包的入口,根据这个入口文件及里面文件的相关依赖来开始构建,可以指定单个或者多个入口。举个例子 module.exports &#x3D; &amp;#123;    entry:&#39;.&#x2F;src&#x2F;index.js&#39;, &#x2F;&#x2F;单个入口的时候是字符串 默认是.src&#x2F;index    &#x2F;&#x2F;多个入口的时候是对象。可以动态配置    entry:&amp;#123;		phone:&#39;.&#x2F;src&#x2F;pho">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack基本配置(上)">
+<meta property="og:url" content="http://cn1997.top/2020/03/15/webpack4/webpack4-base2/index.html">
 <meta property="og:site_name" content="CN97 博客">
-<meta property="og:description" content="记录中成长">
+<meta property="og:description" content="entry(入口) webpack打包的入口,根据这个入口文件及里面文件的相关依赖来开始构建,可以指定单个或者多个入口。举个例子 module.exports &#x3D; &amp;#123;    entry:&#39;.&#x2F;src&#x2F;index.js&#39;, &#x2F;&#x2F;单个入口的时候是字符串 默认是.src&#x2F;index    &#x2F;&#x2F;多个入口的时候是对象。可以动态配置    entry:&amp;#123;		phone:&#39;.&#x2F;src&#x2F;pho">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://cn1997.top/images/og_image.png">
+<meta property="article:published_time" content="2020-03-15T02:40:20.000Z">
+<meta property="article:modified_time" content="2020-03-15T03:13:10.329Z">
 <meta property="article:author" content="CN97">
-<meta property="article:tag" content="javascript">
-<meta property="article:tag" content="es6">
-<meta property="article:tag" content="设计模式">
-<meta property="article:tag" content="css3">
-<meta property="article:tag" content="二叉树">
-<meta property="article:tag" content="递归">
-<meta property="article:tag" content="队列">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://cn1997.top/images/og_image.png">
 
@@ -92,7 +87,7 @@
         <div class="navbar-brand is-flex-center">
             <!-- <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="CN97 博客" height="28">
+                <img src="/images/logo.svg" alt="webpack基本配置(上)" height="28">
             
             </a> -->
         </div>
@@ -146,67 +141,128 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-15T02:40:20.000Z">2020-03-15</time>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/css3/">
-                        <span class="tag">css3</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/webpack4/">webpack4</a>
                 </div>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/es6/">
-                        <span class="tag">es6</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/javascript/">
-                        <span class="tag">javascript</span>
-                        <span class="tag is-grey">5</span>
-                    </a>
-                </div>
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 分钟 读完 (大约 810 个字)
+                </span>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
-                        <span class="tag">二叉树</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                        <span class="tag">设计模式</span>
-                        <span class="tag is-grey">9</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/%E9%80%92%E5%BD%92/">
-                        <span class="tag">递归</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/%E9%98%9F%E5%88%97/">
-                        <span class="tag">队列</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
                 
             </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                webpack基本配置(上)
+            
+        </h1>
+        <div class="content">
+            <p><strong>entry(入口)</strong></p>
+<p>webpack打包的入口,根据这个入口文件及里面文件的相关依赖来开始构建,可以指定单个或者多个入口。举个例子</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry:<span class="string">'./src/index.js'</span>, <span class="comment">//单个入口的时候是字符串 默认是.src/index</span></span><br><span class="line">    <span class="comment">//多个入口的时候是对象。可以动态配置</span></span><br><span class="line">    entry:&#123;</span><br><span class="line">		phone:<span class="string">'./src/phone.js'</span>,</span><br><span class="line">		pc:<span class="string">'./src/pc.js'</span></span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>output(出口)</strong></p>
+<p>webpack打包生成的bundle的最终出口，可以指定文件所在的目录及命名格式等配置，按需加载的文件名称等。具体更多的配置可参照官网的。举个例子</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    output:&#123;</span><br><span class="line">        path:path.join(__dirname,<span class="string">'dist'</span>),</span><br><span class="line">        filename:<span class="string">'bundle.js'</span> <span class="comment">//单入口的时候    </span></span><br><span class="line">        filename:<span class="string">'[name].bundle.js'</span> <span class="comment">//多入口的时候使用入口名称占位符</span></span><br><span class="line">        filename:<span class="string">'[id].bundle.js'</span><span class="comment">//多入口使用内部chunk id占位符</span></span><br><span class="line">        filename: <span class="string">"[name].[hash].bundle.js"</span> <span class="comment">//多入口的时候使用入口名称占位符加每次打包的hash</span></span><br><span class="line">        chunkFilename: <span class="string">'chunk.bundle.js'</span>, <span class="comment">// 指未列在 entry 中，却又需要被打包出来的文件的名称,通常指按需加载的代码</span></span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p><strong>loaders</strong></p>
+<p>webpack默认只支持js/json两者文件类型，需要通过loaders来支持其他文件类型并转换为有效的模块，从而可以添加到依赖图。本身是一个函数，接受源文件作为参数，返回转换的结果，可以对一个规则指定多个loader,<strong>指定多个loader的时候，执行是从右到左。</strong>举个例子</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.css$/</span>,  <span class="comment">//匹配规则，以.css为结尾的文件</span></span><br><span class="line">                use:[<span class="string">'style-loader'</span>,<span class="string">'css-loader'</span>]  <span class="comment">//或者 loader:'style-loaer!css-loade'  </span></span><br><span class="line">                </span><br><span class="line">                <span class="comment">/*loader需要相应配置的时候*/</span></span><br><span class="line">                use: [</span><br><span class="line">                    &#123; <span class="attr">loader</span>: <span class="string">'style-loader'</span> &#125;,  <span class="comment">//将生成的css代码放在一个style标签里面，放到head标签，当样式代码太大的时候不好用，需要使用plugin抽离出成为css文件link引用</span></span><br><span class="line">                    &#123;</span><br><span class="line">                        loader: <span class="string">'css-loader'</span>, <span class="comment">//支持.css文件的加载与解析 如import style.css  </span></span><br><span class="line">                        options: &#123;</span><br><span class="line">                            modules: <span class="literal">true</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                ],</span><br><span class="line">                exclude: <span class="regexp">/node_modules/</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/woliuCN/photos/blob/master/loaders.PNG?raw=true" alt="常用loader"></p>
+<p><strong>plugins</strong></p>
+<p>用于最终bundle文件的优化，资源管理和环境变量注入，弥补loaders没有的功能。后面很多内容配置都会用到相关的plugin，有些是webpack自带的有些是社区需要额外下载的，举个例子，webpack自带的定义全局变量插件</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">   <span class="comment">/*使用JSON.srtingfy的原因是definePlugin插件声明的全局变量是直接将内容替换了，如果不stringfy的话</span></span><br><span class="line"><span class="comment">    "development"最后变成development变量了， "'development'" 才会等于'devlopment'*/</span></span><br><span class="line">    <span class="keyword">new</span> webpack.DefinePlugin(&#123; <span class="string">"process.env.NODE_ENV"</span>: <span class="built_in">JSON</span>.stringify(<span class="string">"development"</span>) &#125;),    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/woliuCN/photos/blob/master/plugin.PNG?raw=true" alt="常用plugin"></p>
+<p><strong>mode</strong></p>
+<p>告知webpack使用相应模式的内置优化：有两个选项，一个是development，将process.env.NODE_ENV设置为development,同时启用webpack在开发环境的相关插件。另外一个production，将process.env.NODE_ENV设置为production，同时启用webpack在生产环境的相关插件(后面会讲到)。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line"> + mode: <span class="string">'development'</span>  <span class="comment">//等同于使用下面这些插件</span></span><br><span class="line"> - plugins: [</span><br><span class="line"> -   <span class="keyword">new</span> webpack.NamedModulesPlugin(),</span><br><span class="line"> -   <span class="keyword">new</span> webpack.DefinePlugin(&#123; <span class="string">"process.env.NODE_ENV"</span>: <span class="built_in">JSON</span>.stringify(<span class="string">"development"</span>) &#125;),</span><br><span class="line"> - ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
     </div>
-</div></div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/15/webpack4/webpack4-base3/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">webpack基本配置(下)</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/15/webpack4/webpack4-base1/">
+                <span class="level-item">webpack4配置文件及其相关概念</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+
+<!-- <link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script> -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+	// var gitment = new Gitment({
+	// 	id: 'ebcbe42687237fdf6f5fb065b38e25da',
+	// 	owner: 'woliuCN',
+	// 	repo: 'woliuCN.github.io',
+	// 	oauth: {
+	// 		client_id: 'b5fd8275297303984d3a',
+	// 		client_secret: '536b9ec352328e057db1fae530324462742ffc5b',
+	// 	},
+	// })
+	var gitalk = new Gitalk({
+		clientID: 'b5fd8275297303984d3a',
+		clientSecret: '536b9ec352328e057db1fae530324462742ffc5b',
+		owner: 'woliuCN',
+		repo: 'woliuCN.github.io',
+		admin: ['woliuCN'],
+		id: 'ebcbe42687237fdf6f5fb065b38e25da',      // Ensure uniqueness and length less than 50
+		distractionFreeMode: false  // Facebook-like distraction free mode
+	})
+	gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
                 
 
 
@@ -789,7 +845,7 @@
             <div class="level-start has-text-centered-mobile">
                 <!-- <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="CN97 博客" height="28">
+                    <img src="/images/logo.svg" alt="webpack基本配置(上)" height="28">
                 
                 </a> -->
                 <p class="is-size-7" style="white-space: pre-line;">

@@ -7,25 +7,20 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>标签 - CN97 博客</title>
+<title>webpack基本配置(下) - CN97 博客</title>
 
 
-    <meta name="description" content="记录中成长">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CN97 博客">
-<meta property="og:url" content="http://cn1997.top/tags/index.html">
+    <meta name="description" content="watch 文件监听配置，在源码发生变化的时候，自动重新构建出新的输出文件。因为是输出在磁盘里面的文件，所以每次更新后得手动刷新浏览器。可以在配置文件配置或者在脚本后面加上--watch参数开启。 &#x2F;&#x2F;文件监听的原理：轮询判断文件的最后编辑时间是否变化，当某个文件发生变化后，并不是立刻的告诉监听者，而是先缓存起来，等待aggregateTimeout再去通知module.exports &#x3D; &amp;#1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack基本配置(下)">
+<meta property="og:url" content="http://cn1997.top/2020/03/15/webpack4/webpack4-base3/index.html">
 <meta property="og:site_name" content="CN97 博客">
-<meta property="og:description" content="记录中成长">
+<meta property="og:description" content="watch 文件监听配置，在源码发生变化的时候，自动重新构建出新的输出文件。因为是输出在磁盘里面的文件，所以每次更新后得手动刷新浏览器。可以在配置文件配置或者在脚本后面加上--watch参数开启。 &#x2F;&#x2F;文件监听的原理：轮询判断文件的最后编辑时间是否变化，当某个文件发生变化后，并不是立刻的告诉监听者，而是先缓存起来，等待aggregateTimeout再去通知module.exports &#x3D; &amp;#1">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://cn1997.top/images/og_image.png">
+<meta property="article:published_time" content="2020-03-15T02:40:26.000Z">
+<meta property="article:modified_time" content="2020-03-15T03:38:04.192Z">
 <meta property="article:author" content="CN97">
-<meta property="article:tag" content="javascript">
-<meta property="article:tag" content="es6">
-<meta property="article:tag" content="设计模式">
-<meta property="article:tag" content="css3">
-<meta property="article:tag" content="二叉树">
-<meta property="article:tag" content="递归">
-<meta property="article:tag" content="队列">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://cn1997.top/images/og_image.png">
 
@@ -92,7 +87,7 @@
         <div class="navbar-brand is-flex-center">
             <!-- <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="CN97 博客" height="28">
+                <img src="/images/logo.svg" alt="webpack基本配置(下)" height="28">
             
             </a> -->
         </div>
@@ -146,67 +141,116 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-15T02:40:26.000Z">2020-03-15</time>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/css3/">
-                        <span class="tag">css3</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/webpack4/">webpack4</a>
                 </div>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/es6/">
-                        <span class="tag">es6</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/javascript/">
-                        <span class="tag">javascript</span>
-                        <span class="tag is-grey">5</span>
-                    </a>
-                </div>
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 分钟 读完 (大约 812 个字)
+                </span>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
-                        <span class="tag">二叉树</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
                 
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-                        <span class="tag">设计模式</span>
-                        <span class="tag is-grey">9</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/%E9%80%92%E5%BD%92/">
-                        <span class="tag">递归</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/%E9%98%9F%E5%88%97/">
-                        <span class="tag">队列</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
                 
             </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                webpack基本配置(下)
+            
+        </h1>
+        <div class="content">
+            <p><strong>watch</strong></p>
+<p>文件监听配置，在源码发生变化的时候，自动重新构建出新的输出文件。因为是输出在磁盘里面的文件，所以每次更新后得手动刷新浏览器。可以在配置文件配置或者在脚本后面加上<code>--watch</code>参数开启。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//文件监听的原理：轮询判断文件的最后编辑时间是否变化，当某个文件发生变化后，并不是立刻的告诉监听者，而是先缓存起来，等待aggregateTimeout再去通知</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    watch:<span class="literal">true</span>,</span><br><span class="line">    watchOptions:&#123;</span><br><span class="line">        ignored:<span class="regexp">/node_modules/</span>, <span class="comment">//不监听变化的文件或者文件夹，支持正则</span></span><br><span class="line">        aggregateTimeout:<span class="number">300</span>, <span class="comment">//监听到变化后等待300ms后再去执行。默认是300ms</span></span><br><span class="line">        poll:<span class="number">1000</span> <span class="comment">//判断文件是否发送变化是通过不停询问系统指定文件有没有变化实现的，默认每秒询问1000次</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>webpack-dev-server</strong></p>
+<p>在开发环境的时候，使用webpack-dev-server来开启一个本地服务器来实时监听文件的变化。开启热更新(不用刷新浏览器就能显示最新的结果)</p>
+<blockquote>
+<p>npm i webpack-dev-server -D</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports=&#123;</span><br><span class="line">    plugins:[</span><br><span class="line">        <span class="keyword">new</span> CleanWebpackPlugin(), <span class="comment">//自动清除目录插件</span></span><br><span class="line">        <span class="keyword">new</span> HtmlWebpackPlugin(&#123;<span class="attr">template</span>:<span class="string">'./src/index.html'</span>,<span class="attr">filename</span>:<span class="string">'index.html'</span>&#125;),</span><br><span class="line">        <span class="keyword">new</span> webpack.HotModuleReplacementPlugin()</span><br><span class="line">        <span class="comment">/*webpack 构建出来的 bundle.js 本身是不具备热更新的能力的，</span></span><br><span class="line"><span class="comment">        HotModuleReplacementPlugin 的作用就是将 HMR runtime 注入到 bundle.js，</span></span><br><span class="line"><span class="comment">        使得bundle.js可以和HMR server建立websocket的通信连接。*/</span>  </span><br><span class="line">        ],</span><br><span class="line">    devServer:&#123;</span><br><span class="line">        contentBase:<span class="string">'./dist'</span>, </span><br><span class="line">        <span class="comment">/*默认的话webpack-dev-server会为根文件提供一个本地服务器，</span></span><br><span class="line"><span class="comment">        如果想为另外的目录下文件提供本地服务器的话，在这里设置。</span></span><br><span class="line"><span class="comment">        注意如果想获取到实时的数据变换的话文件夹里面必须有一个html文件且文件里面引入的脚本得以'/'来指定是获取内存里面的文件而不是磁盘上的旧的打包的文件。</span></span><br><span class="line"><span class="comment">        如果有指定HtmlWebpackPlugin插件来使得html文件也是在内存中的话，就可以不用设置这个参数。*/</span>    </span><br><span class="line">        hot:<span class="literal">true</span>,<span class="comment">//开启热更新</span></span><br><span class="line">        port:<span class="number">8080</span>, <span class="comment">//设置端口，默认是8080</span></span><br><span class="line">        historyApiFallback:<span class="literal">true</span> <span class="comment">//在开发单页应用时，它依赖于HTML5 history API，如果设置为true，所有的跳转将指向index.html</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>热更新原理分析</strong></p>
+<p>文件通过编辑后经过文件系统，传输给webpack compiler将js编译成为bundle.js。再由Bundle server提供个端口服务让文件在浏览器访问。一开始的过程是12AB。而后的更新过程则是依靠另外的一个服务器HMR server 与浏览器进行websocket通信。HMR Server 是服务端，用来将变化的 js 模块通过 websocket 的消息通知给浏览器端。HMR Runtime是浏览器端，用于接受 HMR Server 传递的模块数据。webpack 构建出来的 bundle.js 本身是不具备热更新的能力的，HotModuleReplacementPlugin 的作用就是将 HMR runtime 注入到 bundle.js，使得bundle.js可以和HMR server建立websocket的通信连接。<br><img src="https://github.com/woliuCN/photos/blob/master/WDS.png?raw=true" alt="热更新图"></p>
+
+        </div>
+        
+        
+        
     </div>
-</div></div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/15/webpack4/webpack4-base2/">
+                <span class="level-item">webpack基本配置(上)</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+
+<!-- <link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script> -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+	// var gitment = new Gitment({
+	// 	id: 'dc6696f0ec4416687d40b5b7bf19146e',
+	// 	owner: 'woliuCN',
+	// 	repo: 'woliuCN.github.io',
+	// 	oauth: {
+	// 		client_id: 'b5fd8275297303984d3a',
+	// 		client_secret: '536b9ec352328e057db1fae530324462742ffc5b',
+	// 	},
+	// })
+	var gitalk = new Gitalk({
+		clientID: 'b5fd8275297303984d3a',
+		clientSecret: '536b9ec352328e057db1fae530324462742ffc5b',
+		owner: 'woliuCN',
+		repo: 'woliuCN.github.io',
+		admin: ['woliuCN'],
+		id: 'dc6696f0ec4416687d40b5b7bf19146e',      // Ensure uniqueness and length less than 50
+		distractionFreeMode: false  // Facebook-like distraction free mode
+	})
+	gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
                 
 
 
@@ -789,7 +833,7 @@
             <div class="level-start has-text-centered-mobile">
                 <!-- <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="CN97 博客" height="28">
+                    <img src="/images/logo.svg" alt="webpack基本配置(下)" height="28">
                 
                 </a> -->
                 <p class="is-size-7" style="white-space: pre-line;">
