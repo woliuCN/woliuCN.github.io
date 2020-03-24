@@ -7,21 +7,20 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>单例模式 - CN97 博客</title>
+<title>webpack进阶使用(上) - CN97 博客</title>
 
 
-    <meta name="description" content="一、单例模式及其用途所谓单例模式，就是一个类就只有一个实例，用途的话可以用来定义命名空间，通过在一个实例对象定义其的方法跟属性，来达到命名不重复的目的，例如Jquery的$符号就是这个思想。再者就是如果对于一个类是负责连接数据库的线程池，日志等逻辑的，用到这种模式来保证对象不被重复创建，降低开销。 二、代码实现&#x2F;&#x2F;惰性单例模式var laztSingle&#x3D;(function()&amp;#123;   &#x2F;">
+    <meta name="description" content="实现自动补充样式前缀与px转rem使用postcss(后处理器)来实现自动补充样式前缀与px转rem。在wepack中使用postcss-loader来实现postcss的功能。实现px转rem的话也可以使用px2rem-loader，这里为了方便一起使用就用了postcss的插件来实现。另外还需要动态指定html的px来实现自适应。可以使用阿里移动端的lib-flexible库(根html元素的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="单例模式">
-<meta property="og:url" content="http://cn1997.top/2020/03/13/pattern/single-pattern/index.html">
+<meta property="og:title" content="webpack进阶使用(上)">
+<meta property="og:url" content="http://cn1997.top/2020/03/20/webpack4/webpack4-base4/index.html">
 <meta property="og:site_name" content="CN97 博客">
-<meta property="og:description" content="一、单例模式及其用途所谓单例模式，就是一个类就只有一个实例，用途的话可以用来定义命名空间，通过在一个实例对象定义其的方法跟属性，来达到命名不重复的目的，例如Jquery的$符号就是这个思想。再者就是如果对于一个类是负责连接数据库的线程池，日志等逻辑的，用到这种模式来保证对象不被重复创建，降低开销。 二、代码实现&#x2F;&#x2F;惰性单例模式var laztSingle&#x3D;(function()&amp;#123;   &#x2F;">
+<meta property="og:description" content="实现自动补充样式前缀与px转rem使用postcss(后处理器)来实现自动补充样式前缀与px转rem。在wepack中使用postcss-loader来实现postcss的功能。实现px转rem的话也可以使用px2rem-loader，这里为了方便一起使用就用了postcss的插件来实现。另外还需要动态指定html的px来实现自适应。可以使用阿里移动端的lib-flexible库(根html元素的">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://cn1997.top/images/og_image.png">
-<meta property="article:published_time" content="2020-03-13T02:47:24.000Z">
-<meta property="article:modified_time" content="2020-03-13T02:53:05.063Z">
+<meta property="article:published_time" content="2020-03-20T08:14:13.000Z">
+<meta property="article:modified_time" content="2020-03-24T02:51:44.468Z">
 <meta property="article:author" content="CN97">
-<meta property="article:tag" content="设计模式">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://cn1997.top/images/og_image.png">
 
@@ -88,7 +87,7 @@
         <div class="navbar-brand is-flex-center">
             <!-- <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="单例模式" height="28">
+                <img src="/images/logo.svg" alt="webpack进阶使用(上)" height="28">
             
             </a> -->
         </div>
@@ -149,17 +148,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-13T02:47:24.000Z">2020-03-13</time>
+                <time class="level-item has-text-grey" datetime="2020-03-20T08:14:13.000Z">2020-03-20</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
+                <a class="has-link-grey -link" href="/categories/webpack4/">webpack4</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 读完 (大约 199 个字)
+                    14 分钟 读完 (大约 2079 个字)
                 </span>
                 
                 
@@ -173,23 +172,47 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                单例模式
+                webpack进阶使用(上)
             
         </h1>
         <div class="content">
-            <h2 id="一、单例模式及其用途"><a href="#一、单例模式及其用途" class="headerlink" title="一、单例模式及其用途"></a>一、单例模式及其用途</h2><p>所谓单例模式，就是一个类就只有一个实例，用途的话可以用来定义命名空间，通过在一个实例对象定义其的方法跟属性，来达到命名不重复的目的，例如Jquery的$符号就是这个思想。再者就是如果对于一个类是负责连接数据库的线程池，日志等逻辑的，用到这种模式来保证对象不被重复创建，降低开销。</p>
-<h2 id="二、代码实现"><a href="#二、代码实现" class="headerlink" title="二、代码实现"></a>二、代码实现</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//惰性单例模式</span></span><br><span class="line"><span class="keyword">var</span> laztSingle=(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="comment">//使用闭包使得单例对象为私有</span></span><br><span class="line">    <span class="keyword">var</span> instance=<span class="literal">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Signle</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            age:<span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(!instance)&#123;</span><br><span class="line">         instance=<span class="keyword">new</span> Signle()</span><br><span class="line">     &#125;</span><br><span class="line">        <span class="keyword">return</span> instance</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)()</span><br><span class="line"><span class="keyword">var</span> a=lazySingle();</span><br><span class="line"><span class="keyword">var</span> b=lazySingle();</span><br><span class="line"><span class="built_in">console</span>.log(a===b) <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+            <h3 id="实现自动补充样式前缀与px转rem"><a href="#实现自动补充样式前缀与px转rem" class="headerlink" title="实现自动补充样式前缀与px转rem"></a><strong>实现自动补充样式前缀与px转rem</strong></h3><p>使用postcss(后处理器)来实现自动补充样式前缀与px转rem。在wepack中使用postcss-loader来实现postcss的功能。实现px转rem的话也可以使用px2rem-loader，这里为了方便一起使用就用了postcss的插件来实现。另外还需要动态指定html的px来实现自适应。可以使用阿里移动端的lib-flexible库(根html元素的fons-size的计算，获取的是当前浏览器的宽度/10)，也可以自己写。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    test:<span class="regexp">/\.css$/</span>,</span><br><span class="line">        use:[</span><br><span class="line">            MiniCssExtractPlugin.loader,</span><br><span class="line">            <span class="string">'css-loader'</span>,</span><br><span class="line">            &#123;</span><br><span class="line">                loader:<span class="string">'postcss-loader'</span>,</span><br><span class="line">                options:&#123;</span><br><span class="line">                    plugins:<span class="function"><span class="params">()</span>=&gt;</span>[</span><br><span class="line">                        <span class="built_in">require</span>(<span class="string">'autoprefixer'</span>)(&#123; <span class="comment">//自动补齐前缀</span></span><br><span class="line">                            browsers:[<span class="string">"last 2 version"</span>,<span class="string">"&gt;1%"</span>] <span class="comment">//最新的两个版本且使用率大于1%的浏览器</span></span><br><span class="line">                        &#125;),</span><br><span class="line">                        <span class="built_in">require</span>(<span class="string">'postcss-plugin-px2rem'</span>)(&#123;</span><br><span class="line">                            <span class="comment">//1rem 等于多少px 默认是1rem 等于100px</span></span><br><span class="line">                            <span class="comment">//这个值要根据你设计稿与根元素的自适应设置而定</span></span><br><span class="line">                            rootValue:<span class="number">75</span>, </span><br><span class="line">                            unitPrecision:<span class="number">8</span>, <span class="comment">//允许REM单位增长到的十进制数字，貌似没什么用</span></span><br><span class="line">                            propWhiteList: [], <span class="comment">//白名单，默认空数组不启用 匹配正则</span></span><br><span class="line">                            propBlackList: [], <span class="comment">//黑名单，默认空数组不启用 匹配正则</span></span><br><span class="line">                            exclude:<span class="literal">false</span>,  <span class="comment">//排除的目录 支持正则</span></span><br><span class="line">                            selectorBlackList: [],  <span class="comment">//要忽略并保留为px的选择器</span></span><br><span class="line">                            ignoreIdentifier: <span class="literal">false</span>, <span class="comment">//</span></span><br><span class="line">                            replace: <span class="literal">true</span>,</span><br><span class="line">                            mediaQuery: <span class="literal">false</span>, <span class="comment">//允许在媒体查询中转换px</span></span><br><span class="line">                            minPixelValue: <span class="number">1</span>  <span class="comment">//设置要替换的最小像素值(1px会被转rem) 默认 0</span></span><br><span class="line">                        &#125;) </span><br><span class="line">                    ]</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<h3 id="多页面打包"><a href="#多页面打包" class="headerlink" title="多页面打包"></a><strong>多页面打包</strong></h3><p>动态的设置入口配置及动态创建html-webpack-plugin来实现自动化多页面配置。需注意的一点是多入口文件的位置要有相同的约束规定，才能正则匹配。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//多页面自动化配置</span></span><br><span class="line"><span class="keyword">const</span> glob = <span class="built_in">require</span>(<span class="string">'glob'</span>);</span><br><span class="line"><span class="keyword">const</span> setMPA = <span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> entry = &#123;&#125;;</span><br><span class="line">    <span class="keyword">const</span> htmlwebpackplugins = [];</span><br><span class="line">    <span class="comment">//使用glob库来类似linux下文件的通配匹配的方式获取每个模块的入口文件的路径。</span></span><br><span class="line">    <span class="keyword">const</span> entryFiles = glob.sync(path.join(__dirname,<span class="string">'./src/*/index.js'</span>));</span><br><span class="line">    entryFiles.map(<span class="function">(<span class="params">file</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> match = file.match(<span class="regexp">/src\/(.*)\/index\.js/</span>);  <span class="comment">//(.*)贪婪模式匹配任意字符</span></span><br><span class="line">        <span class="keyword">let</span> pageName = match &amp;&amp; match[<span class="number">1</span>]; <span class="comment">//获取第二个子表达式里面的匹配值</span></span><br><span class="line">        entry[pageName] = file;</span><br><span class="line">        htmlwebpackplugins.push(</span><br><span class="line">            <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">                template:path.join(__dirname,<span class="string">'src/index.html'</span>),</span><br><span class="line">                filename:<span class="string">`<span class="subst">$&#123;pageName&#125;</span>.html`</span>,</span><br><span class="line">                chunks:[pageName], <span class="comment">//针对多入口文件,就是选择要html嵌入的js文件</span></span><br><span class="line">                inject:<span class="literal">true</span>, <span class="comment">//放置js文件的位置，如果设置为 true 或者 body，所有的 javascript 资源将被放置到 body 元素的底部，'head' 将放置到 head 元素中。false则不会引入。</span></span><br><span class="line">                minify:&#123;</span><br><span class="line">                    html5:<span class="literal">true</span>,</span><br><span class="line">                    collapseWhitespace:<span class="literal">true</span>,<span class="comment">//去除空格换行符</span></span><br><span class="line">                    removeComments:<span class="literal">true</span>,<span class="comment">//是否去除注释</span></span><br><span class="line">                    minifyCSS:<span class="literal">true</span>, <span class="comment">//压缩一开始就内联在 html 里面的css和js</span></span><br><span class="line">                    minifyJS:<span class="literal">true</span>,</span><br><span class="line">                    preserveLineBreaks:<span class="literal">false</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;),</span><br><span class="line">        )</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        entry,</span><br><span class="line">        htmlwebpackplugins</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> &#123;entry,htmlwebpackplugins&#125; = setMPA();</span><br></pre></td></tr></table></figure>
+
+<h3 id="source-map"><a href="#source-map" class="headerlink" title="source-map"></a><strong>source-map</strong></h3><p>信息文件，里面储存着位置信息。也就是说，转换后的代码的每一个位置，所对应的转换前的位置。使用sourceMap来构建打包前后的代码之间的关联，因为打包前后的代码差异巨大，如果出现问题的话很难找到相应的位置，所以需要使用sourceMap来知道源文件错误的地方。至于其原理比较深奥，有兴趣搜一下阮一峰的大佬的文章。在webpack里面提供了许多模式，可以拆分组合，下面将一下基本构成的元素的含义。</p>
+<blockquote>
+<p>ps：以下例子不管是开发环境还是生产环境都需要将mode设置为none，因为在特定环境下devtool指定了默认值,例如production的情况下，为了安全，是不能映射到真实文件的</p>
+</blockquote>
+<ul>
+<li><p><strong>eval</strong>：eval作用是让打包后的文件里面的每个模块代码都使用eval去执行，并且会追加//@ sourceURL（原始文件的url）。可能因为 <code>eval</code> 中为字符串形式，所以当源码变动的时候进行字符串处理会提升 <code>rebuild</code> 的速度，所以所有带有 <code>eval</code> 的选项，<code>rebuild</code> 速度都很快。</p>
+   <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">devtool : <span class="string">'eval'</span></span><br><span class="line"><span class="comment">//打包后的文件</span></span><br><span class="line">(&#123;</span><br><span class="line">    <span class="number">8</span>: <span class="function"><span class="keyword">function</span> (<span class="params">module, exports</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">eval</span>(<span class="string">'/*\r\n * @Description: \r\n * @Autor: cn\r\n * @Date: 2020-02-22 10:39:35\r\n * @LastEditors: cn\r\n * @LastEditTime: 2020-02-22 10:39:35\r\n */\nconsole.log("search");\n\n//# sourceURL=webpack:///./src/search/index.js?'</span>) </span><br><span class="line"><span class="comment">//生成了sourceURL=webpack:///./src/search/index.js就可以知道原始文件</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>source-map</strong>：顾名思义会生成一个.map文件，来关联源文件跟打包后的文件。</p>
+   <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//# sourceMappingURL=index.js.map   打包后的文件底部会指定其sourcemap文件</span></span><br><span class="line">--------------------------------------------------------------------------------</span><br><span class="line"><span class="comment">//source-map 文件简介</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"version"</span>: <span class="number">3</span>, <span class="comment">//Source map的版本，目前为3。</span></span><br><span class="line">    <span class="string">"file"</span>: <span class="string">"./static/js/index.js"</span>, <span class="comment">//转换后的文件名</span></span><br><span class="line">    <span class="string">"sources"</span>: [ <span class="comment">//转换前的文件。该项是一个数组，表示可能存在多个文件合并。</span></span><br><span class="line">        <span class="string">"webpack:///webpack/bootstrap"</span>,</span><br><span class="line">        <span class="string">"webpack:///./src/index/index.js"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">"mappings"</span>: <span class="string">"AAAA"</span>,<span class="comment">//记录位置信息的字符串</span></span><br><span class="line">    <span class="string">"sourceRoot"</span>: <span class="string">""</span> <span class="comment">//转换前的文件所在的目录。如果与转换前的文件在同一目录，该项为空。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>inline</strong> ： <code>inline</code> 的含义就是不产生独立的 <code>.map</code> 文件，而把 <code>source-map</code> 的内容以 <code>dataURI</code>的方式追加到 <code>bundle</code> 件末尾。这样会使得文件打包后变得比较大。</p>
+   <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9...</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>cheap</strong>：忽略列的信息，只定位到某一行。提升了构建速度。</p>
+</li>
+<li><p><strong>module</strong>：包含了loader模块之间的sourcemap，因为webpack最终会将所有的非js资源，通过loader的形式转变成js资源。比如jsx语言的操作分为：jsx——（loader）——js——（压缩等处理）——压缩后的js。如果没有loader之间的sourcemap，那么在debug的时候定义到上图中的压缩前的js处，而不能追踪到jsx中。</p>
+</li>
+<li><p><strong>不同环境下的较好搭配</strong>：首先，选择cheap，是因为我们只需要定位到某行就可以了，可以加快构建速度。而module就不用多说了，打包用到的loader之多，需要得到原始代码。而开发使用eval的原因是调试的时候重建的速度会快一些，生产不用是因为eval-source-map类似inline一样把map代码丢到eval语句里面,加大打包体积！</p>
+   <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//在开发环境中我们使用：cheap-module-eval-source-map</span></span><br><span class="line"><span class="comment">//在生产环境中我们使用：cheap-module-source-map。</span></span><br></pre></td></tr></table></figure>
 
 
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a>
-                </div>
-            </div>
+
+</li>
+</ul>
+<h3 id="提取公共资源"><a href="#提取公共资源" class="headerlink" title="提取公共资源"></a><strong>提取公共资源</strong></h3><p>抽取例如框架的依赖包，以及项目里面的通用模块等，减少打包后文件的体积。</p>
+<ul>
+<li>使用<code>html-webpack-externals-plugin</code>插件，将通用库依赖通过cdn方式引入或者本地引入,抽离bundle。这个插件在htmlwebpackplugin后面实例化的话可以不用手动引入script，如果不是就得在html手动引入。  <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//基础库分离插件，将通用库依赖通过cdn或者本地引入,抽离bundle</span></span><br><span class="line"><span class="keyword">new</span> HtmlWebpackExternalsPlugin(&#123;</span><br><span class="line">    externals:[</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">module</span>:<span class="string">'react'</span>,</span><br><span class="line">            entry:<span class="string">'https://11.url.cn/now/lib/16.2.0/react.min.js'</span>,</span><br><span class="line">            global:<span class="string">'React'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">module</span>:<span class="string">'react-dom'</span>,</span><br><span class="line">            entry:<span class="string">'https://11.url.cn/now/lib/16.2.0/react-dom.min.js'</span>,</span><br><span class="line">            global:<span class="string">'ReactDOM'</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>使用webpack4内置的splitChunksPlugin可以自定义抽离模块，包括项目通用的模块。  <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">optimization:&#123;</span><br><span class="line">    splitChunks:&#123;</span><br><span class="line">        chunks:<span class="string">'all'</span>,<span class="comment">// async：异步引入的库进行分离（默认）， initial： 同步引入的库进行分离， all：所有引入的库进行分离（推荐）</span></span><br><span class="line">        minSize:<span class="number">0</span>, <span class="comment">//压缩前的模块的最小大小,默认0</span></span><br><span class="line">        minChunks:<span class="number">1</span>, <span class="comment">//最小被引用的次数,默认1   </span></span><br><span class="line">        maxAsyncRequests:<span class="number">1</span>, <span class="comment">//最大的按需加载的次数,默认是1,跟maxInitialRequests道理应该一样,可是不论设置多少都是有多少个打多少个。待求证...</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">/*入口文件做代码分割最多能分成3个js文件，默认是1,例如index，默认1的只打包生成index_hash文件,现在要将引入的react/react-dom等依赖包打成一个js,还有将引用次数超过2的模块抽成一个common 就得3*/</span></span><br><span class="line">        maxInitialRequests:<span class="number">3</span>, </span><br><span class="line">        name:<span class="literal">true</span>,</span><br><span class="line">        cacheGroups:&#123;    <span class="comment">//cacheGroup默认基础上面的配置，可以覆盖</span></span><br><span class="line">            vendors:&#123;</span><br><span class="line">                test: <span class="regexp">/[\\/]node_modules[\\/]/</span>, <span class="comment">//匹配node_modules下的依赖包</span></span><br><span class="line">                priority: <span class="number">-10</span>,<span class="comment">////值越大,优先级越高.模块先打包到优先级高的组里</span></span><br><span class="line">                name:<span class="string">'vendors'</span></span><br><span class="line">            &#125;,</span><br><span class="line">            commons:&#123;</span><br><span class="line">                name:<span class="string">'commons'</span>,</span><br><span class="line">                minChunks:<span class="number">2</span>, </span><br><span class="line">                reuseExistingChunk: <span class="literal">true</span> <span class="comment">//如果一个模块已经被打包过了,那么再打包时就忽略这个上模块</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">`</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
         </div>
         
         
@@ -205,16 +228,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/13/pattern/factory-pattern/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/24/webpack4/webpack4-base5/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">工厂模式</span>
+                <span class="level-item">webpack进阶使用(下)</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/13/ui/css-base2/">
-                <span class="level-item">CSS3 常见知识(二)</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/15/webpack4/webpack4-base3/">
+                <span class="level-item">webpack基本配置(下)</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -236,7 +259,7 @@
 <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 <script>
 	// var gitment = new Gitment({
-	// 	id: 'fce48befcb1616b6fcda14136f1be12c',
+	// 	id: 'ec72eb61f4f197244ca107e3ba4cfeb0',
 	// 	owner: 'woliuCN',
 	// 	repo: 'woliuCN.github.io',
 	// 	oauth: {
@@ -250,7 +273,7 @@
 		owner: 'woliuCN',
 		repo: 'woliuCN.github.io',
 		admin: ['woliuCN'],
-		id: 'fce48befcb1616b6fcda14136f1be12c',      // Ensure uniqueness and length less than 50
+		id: 'ec72eb61f4f197244ca107e3ba4cfeb0',      // Ensure uniqueness and length less than 50
 		distractionFreeMode: false  // Facebook-like distraction free mode
 	})
 	gitalk.render('comment-container')
@@ -841,7 +864,7 @@
             <div class="level-start has-text-centered-mobile">
                 <!-- <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="单例模式" height="28">
+                    <img src="/images/logo.svg" alt="webpack进阶使用(上)" height="28">
                 
                 </a> -->
                 <p class="is-size-7" style="white-space: pre-line;">

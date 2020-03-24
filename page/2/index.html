@@ -147,6 +147,146 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-13T02:49:30.000Z">2020-03-13</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 385 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/03/13/pattern/proxy-pattern/">代理模式</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="一、代理模式及其用途"><a href="#一、代理模式及其用途" class="headerlink" title="一、代理模式及其用途"></a>一、代理模式及其用途</h2><p>代理模式，给原对象提供一个代理对象，代理对象拥有原对象的引用，可以通过访问这个代理对象来实现执行原对象的相关操作，进而能避免对原对象的直接访问。举个例子：如平常我们买车买房，自己亲自去找车主房主是不现实的，通常做法就是去找中介，代理对象就了类似与中介，拉起两者之间的桥梁。代理有虚拟代理跟保护代理，保护代理的话可以在代理中直接拒绝对真实对象的访问，而虚拟代理的话可以延迟访问到真正需要的时候，节省程序开销。所以优点是高度解耦，对象保护，缺点的话就是添加的代理对象，可能会开销增大。</p>
+<h2 id="二、代码实现"><a href="#二、代码实现" class="headerlink" title="二、代码实现"></a>二、代码实现</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*----------------------------------------------------------------------保护代理*/</span></span><br><span class="line"> <span class="keyword">var</span> Fans = &#123;</span><br><span class="line">        flower()&#123;</span><br><span class="line">            Agent.reception(<span class="string">"刀片"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> Agent = &#123;</span><br><span class="line">        reception:<span class="function"><span class="keyword">function</span>(<span class="params">gift</span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"粉丝送的:"</span>+gift);  <span class="comment">//粉丝送的:刀片</span></span><br><span class="line">            <span class="keyword">if</span>(gift != <span class="string">"花"</span>)&#123;</span><br><span class="line">                star.reception(<span class="string">"花"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">          </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> star = &#123;</span><br><span class="line">        reception:<span class="function"><span class="keyword">function</span>(<span class="params">gift</span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"收到粉丝的:"</span>+gift); <span class="comment">//收到粉丝的:花</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Fans.flower();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*----------------------------------------------------------------------虚拟代理*/</span></span><br><span class="line"><span class="comment">//代理模式实现图片的延迟加载</span></span><br><span class="line"><span class="keyword">const</span> myImg=&#123;</span><br><span class="line">    setSrc(imgNode,src)&#123;</span><br><span class="line">        imgNode.src=src;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> proxyImg=&#123;</span><br><span class="line">    setSrc(imgNode,src)&#123;</span><br><span class="line">    myImg.setSrc(imgNode,<span class="string">'./img.jpg'</span>); <span class="comment">//1. 加载占位图片</span></span><br><span class="line">    <span class="keyword">let</span> img=<span class="keyword">new</span> Img(); <span class="comment">//2. 真正加载图片</span></span><br><span class="line">    img.src=src;</span><br><span class="line">    img.onload=<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">      myImg.setSrc(imgNode,src); <span class="comment">//3. 加载完成后，替换真正图片</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-13T02:49:05.000Z">2020-03-13</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 318 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/03/13/pattern/command-pattern/">命令模式</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="一、命令模式"><a href="#一、命令模式" class="headerlink" title="一、命令模式"></a>一、命令模式</h2><p>  行为模式中的命令模式，是将可能请求的命令封装在一个对象中，交给中间人执行者，执行者再根据请求者的请求执行相应的命令。所以命令模式里面有三个主体。命令对象、执行者、请求者。应用场景就是当需要向命令对象发送请求的时候，不知道请求的对象具体是谁（执行者知道），更不知道被请求执行的操作是什么（命令对象知道），这个时候就用到命令模式了。优点就是高度松耦合，缺点嘛，就是需要定义三个对象且执行者跟命令对象之间的关系需要知道。</p>
+<h2 id="二、代码实现"><a href="#二、代码实现" class="headerlink" title="二、代码实现"></a>二、代码实现</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//定义一个命令对象，用来存储执行的操作</span></span><br><span class="line"><span class="keyword">const</span> MenuBar = &#123;</span><br><span class="line">	refresh()&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">"执行了刷新操作"</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//定义执行者函数，返回一个对象。用来执行命令</span></span><br><span class="line"><span class="keyword">const</span> command = <span class="function"><span class="params">receiver</span>=&gt;</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		execute()&#123;</span><br><span class="line">			receiver.refresh();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//定义一个请求者,接受一个dom对象以及一个执行者</span></span><br><span class="line"><span class="keyword">const</span> request = <span class="function">(<span class="params">button,command</span>)=&gt;</span>&#123;</span><br><span class="line">		button.onclick=<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">			command.execute()</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> refeshCommand = command(MenuBar);</span><br><span class="line"><span class="keyword">let</span> button = <span class="built_in">document</span>.xxxx;</span><br><span class="line">request(button,refeshCommand);</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-13T02:48:54.000Z">2020-03-13</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 分钟 读完 (大约 214 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/03/13/pattern/bridging-pattern/">桥接模式</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="一、桥接模式及其应用"><a href="#一、桥接模式及其应用" class="headerlink" title="一、桥接模式及其应用"></a>一、桥接模式及其应用</h2><p>桥接模式，将抽象部分跟具体实现部分分离，两者可以独立变化，也可以一起工作。中间通过‘桥’连接。如经常用到的组件上的那些方法，它们接受一个函数，如果用户传入这个函数，那么就会在某段代码逻辑里面使用。这个过程中，组件就是桥的作用，而用户传入的函数则是具体实现的部分了。</p>
+<h2 id="二、代码实现"><a href="#二、代码实现" class="headerlink" title="二、代码实现"></a>二、代码实现</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//例如array对象上的forEach方法，就是桥接模式的应用,forEach就是抽象部分，而具体实现是用户传入的回调函数。</span></span><br><span class="line"><span class="keyword">const</span> forEach=<span class="function">(<span class="params">arr,callback</span>)=&gt;</span>&#123; </span><br><span class="line">    <span class="keyword">if</span>(!<span class="built_in">Array</span>.isArray(arr)) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">const</span> length=arr.length;   </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;length,i++)&#123;</span><br><span class="line">        callback(arr[i],i); </span><br><span class="line">    &#125;&#125;</span><br><span class="line"><span class="keyword">let</span> arr=[<span class="string">"a"</span>,<span class="string">"b"</span>];</span><br><span class="line">forEach(arr,(el,index)=&gt;&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(el+index);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-03-13T02:48:39.000Z">2020-03-13</time>
                 
                 <div class="level-item">
@@ -293,7 +433,7 @@
 
 
 
-<h3 id="超级工厂类的实现"><a href="#超级工厂类的实现" class="headerlink" title="超级工厂类的实现"></a>超级工厂类的实现</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//超级工厂类，生产对应的工厂类簇</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line">     <span class="keyword">constructor</span>(choice)&#123;</span><br><span class="line">        choice=choice.toLocaleLowerCase();</span><br><span class="line">        <span class="keyword">switch</span>(choice)&#123;</span><br><span class="line">          <span class="keyword">case</span>:<span class="string">'person</span></span><br><span class="line"><span class="string">            return new PersonFactory();</span></span><br><span class="line"><span class="string">          case:'</span>aminal<span class="string">'</span></span><br><span class="line"><span class="string">            return new AminalFactory();</span></span><br><span class="line"><span class="string">          default:</span></span><br><span class="line"><span class="string">            throw TypeError("class name wrong");    </span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">//创建person工厂类</span></span><br><span class="line"><span class="string">const personFactory =new Factory("person");</span></span><br><span class="line"><span class="string">//创建male实例</span></span><br><span class="line"><span class="string">const male=personFactory.getPerson("male");</span></span><br><span class="line"><span class="string">male.name()//'</span>男人<span class="string">'</span></span><br></pre></td></tr></table></figure>
+<h3 id="超级工厂类的实现"><a href="#超级工厂类的实现" class="headerlink" title="超级工厂类的实现"></a>超级工厂类的实现</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//超级工厂类，生产对应的工厂类簇</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line">     <span class="keyword">constructor</span>(choice)&#123;</span><br><span class="line">        choice=choice.toLocaleLowerCase();</span><br><span class="line">        <span class="keyword">switch</span>(choice)&#123;</span><br><span class="line">          <span class="keyword">case</span>:<span class="string">'person'</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> PersonFactory();</span><br><span class="line">          <span class="keyword">case</span>:<span class="string">'aminal'</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> AminalFactory();</span><br><span class="line">          <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">throw</span> <span class="built_in">TypeError</span>(<span class="string">"class name wrong"</span>);    </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建person工厂类</span></span><br><span class="line"><span class="keyword">const</span> personFactory =<span class="keyword">new</span> Factory(<span class="string">"person"</span>);</span><br><span class="line"><span class="comment">//创建male实例</span></span><br><span class="line"><span class="keyword">const</span> male=personFactory.getPerson(<span class="string">"male"</span>);</span><br><span class="line">male.name()<span class="comment">//'男人'</span></span><br></pre></td></tr></table></figure>
 
 
         </div>
@@ -522,180 +662,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-12T14:20:47.000Z">2020-03-12</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    17 分钟 读完 (大约 2518 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/12/es6/es6-base-3/">ES6知识点(三)</a>
-            
-        </h1>
-        <div class="content">
-            <p>👇内容速览👇</p>
-<ul>
-<li>Generator函数</li>
-<li>async/await</li>
-<li>Class语法</li>
-</ul>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/03/12/es6/es6-base-3/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-12T14:02:11.000Z">2020-03-12</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    16 分钟 读完 (大约 2367 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/12/es6/es6-base-2/">ES6知识点(二)</a>
-            
-        </h1>
-        <div class="content">
-            <p>👇内容速览👇</p>
-<ul>
-<li>Set、Map数据结构</li>
-<li>Proxy(代理器)</li>
-<li>Promise对象</li>
-</ul>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/03/12/es6/es6-base-2/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-12T14:02:06.000Z">2020-03-12</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    11 分钟 读完 (大约 1596 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/12/es6/es6-base-1/">ES6知识点(一)</a>
-            
-        </h1>
-        <div class="content">
-            <p>👇内容速览👇</p>
-<ul>
-<li>一些新特性跟拓展</li>
-<li>箭头函数特点及与普通函数的区别</li>
-<li>Symbol数据类型</li>
-</ul>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/03/12/es6/es6-base-1/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -762,7 +728,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            22
+                            25
                         </p>
                     </a>
                 </div>
@@ -824,6 +790,45 @@
             
             <div class="media-content">
                 <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-24T03:14:38.000Z">2020-03-24</time></div>
+                    <a href="/2020/03/24/webpack4/webpack4-base6/" class="title has-link-black-ter is-size-6 has-text-weight-normal">webpack4优化策略</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/webpack4/">webpack4</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-24T02:57:23.000Z">2020-03-24</time></div>
+                    <a href="/2020/03/24/webpack4/webpack4-base5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">webpack进阶使用(下)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/webpack4/">webpack4</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-20T08:14:13.000Z">2020-03-20</time></div>
+                    <a href="/2020/03/20/webpack4/webpack4-base4/" class="title has-link-black-ter is-size-6 has-text-weight-normal">webpack进阶使用(上)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/webpack4/">webpack4</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-15T02:40:26.000Z">2020-03-15</time></div>
                     <a href="/2020/03/15/webpack4/webpack4-base3/" class="title has-link-black-ter is-size-6 has-text-weight-normal">webpack基本配置(下)</a>
                     <p class="is-size-7 is-uppercase">
@@ -841,45 +846,6 @@
                     <a href="/2020/03/15/webpack4/webpack4-base2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">webpack基本配置(上)</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/webpack4/">webpack4</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-15T02:17:05.000Z">2020-03-15</time></div>
-                    <a href="/2020/03/15/webpack4/webpack4-base1/" class="title has-link-black-ter is-size-6 has-text-weight-normal">webpack4配置文件及其相关概念</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/webpack4/">webpack4</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-14T03:15:21.000Z">2020-03-14</time></div>
-                    <a href="/2020/03/14/programming/DFS-deepClone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">深度遍历实现深拷贝</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-14T03:15:13.000Z">2020-03-14</time></div>
-                    <a href="/2020/03/14/programming/BFS-deepClone/" class="title has-link-black-ter is-size-6 has-text-weight-normal">广度遍历实现深拷贝</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
                     </p>
                 </div>
             </div>
@@ -974,7 +940,7 @@
                 <span class="level-item">webpack4</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">6</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/%E5%89%91%E6%8C%87offer/">
@@ -1012,7 +978,7 @@
                     <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">22</span>
+                    <span class="level-item tag">25</span>
                 </span>
             </a>
         </li>
@@ -1178,7 +1144,7 @@
                 <span class="level-item">webpack4</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">6</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/%E5%89%91%E6%8C%87offer/">
@@ -1216,7 +1182,7 @@
                     <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">22</span>
+                    <span class="level-item tag">25</span>
                 </span>
             </a>
         </li>

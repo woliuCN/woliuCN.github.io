@@ -7,21 +7,20 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>单例模式 - CN97 博客</title>
+<title>webpack进阶使用(下) - CN97 博客</title>
 
 
-    <meta name="description" content="一、单例模式及其用途所谓单例模式，就是一个类就只有一个实例，用途的话可以用来定义命名空间，通过在一个实例对象定义其的方法跟属性，来达到命名不重复的目的，例如Jquery的$符号就是这个思想。再者就是如果对于一个类是负责连接数据库的线程池，日志等逻辑的，用到这种模式来保证对象不被重复创建，降低开销。 二、代码实现&#x2F;&#x2F;惰性单例模式var laztSingle&#x3D;(function()&amp;#123;   &#x2F;">
+    <meta name="description" content="treeShaking-摇树优化使用CJS的时候，为了使用一个模块中的方法引入一个模块，整个模块都会最后打包到bundle里面。而在wepack4对其进行了优化，在mode指定为production的时候默认开启three shaking。注意只能检测静态引用，也就是ES6的import，export 语法。CJS则无法检测。而tree shaking是DCE的一种方式，检测的依据是代码不会被执行">
 <meta property="og:type" content="article">
-<meta property="og:title" content="单例模式">
-<meta property="og:url" content="http://cn1997.top/2020/03/13/pattern/single-pattern/index.html">
+<meta property="og:title" content="webpack进阶使用(下)">
+<meta property="og:url" content="http://cn1997.top/2020/03/24/webpack4/webpack4-base5/index.html">
 <meta property="og:site_name" content="CN97 博客">
-<meta property="og:description" content="一、单例模式及其用途所谓单例模式，就是一个类就只有一个实例，用途的话可以用来定义命名空间，通过在一个实例对象定义其的方法跟属性，来达到命名不重复的目的，例如Jquery的$符号就是这个思想。再者就是如果对于一个类是负责连接数据库的线程池，日志等逻辑的，用到这种模式来保证对象不被重复创建，降低开销。 二、代码实现&#x2F;&#x2F;惰性单例模式var laztSingle&#x3D;(function()&amp;#123;   &#x2F;">
+<meta property="og:description" content="treeShaking-摇树优化使用CJS的时候，为了使用一个模块中的方法引入一个模块，整个模块都会最后打包到bundle里面。而在wepack4对其进行了优化，在mode指定为production的时候默认开启three shaking。注意只能检测静态引用，也就是ES6的import，export 语法。CJS则无法检测。而tree shaking是DCE的一种方式，检测的依据是代码不会被执行">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://cn1997.top/images/og_image.png">
-<meta property="article:published_time" content="2020-03-13T02:47:24.000Z">
-<meta property="article:modified_time" content="2020-03-13T02:53:05.063Z">
+<meta property="article:published_time" content="2020-03-24T02:57:23.000Z">
+<meta property="article:modified_time" content="2020-03-24T03:12:37.468Z">
 <meta property="article:author" content="CN97">
-<meta property="article:tag" content="设计模式">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://cn1997.top/images/og_image.png">
 
@@ -88,7 +87,7 @@
         <div class="navbar-brand is-flex-center">
             <!-- <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="单例模式" height="28">
+                <img src="/images/logo.svg" alt="webpack进阶使用(下)" height="28">
             
             </a> -->
         </div>
@@ -149,17 +148,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-13T02:47:24.000Z">2020-03-13</time>
+                <time class="level-item has-text-grey" datetime="2020-03-24T02:57:23.000Z">2020-03-24</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
+                <a class="has-link-grey -link" href="/categories/webpack4/">webpack4</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 读完 (大约 199 个字)
+                    8 分钟 读完 (大约 1174 个字)
                 </span>
                 
                 
@@ -173,23 +172,19 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                单例模式
+                webpack进阶使用(下)
             
         </h1>
         <div class="content">
-            <h2 id="一、单例模式及其用途"><a href="#一、单例模式及其用途" class="headerlink" title="一、单例模式及其用途"></a>一、单例模式及其用途</h2><p>所谓单例模式，就是一个类就只有一个实例，用途的话可以用来定义命名空间，通过在一个实例对象定义其的方法跟属性，来达到命名不重复的目的，例如Jquery的$符号就是这个思想。再者就是如果对于一个类是负责连接数据库的线程池，日志等逻辑的，用到这种模式来保证对象不被重复创建，降低开销。</p>
-<h2 id="二、代码实现"><a href="#二、代码实现" class="headerlink" title="二、代码实现"></a>二、代码实现</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//惰性单例模式</span></span><br><span class="line"><span class="keyword">var</span> laztSingle=(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="comment">//使用闭包使得单例对象为私有</span></span><br><span class="line">    <span class="keyword">var</span> instance=<span class="literal">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Signle</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            age:<span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(!instance)&#123;</span><br><span class="line">         instance=<span class="keyword">new</span> Signle()</span><br><span class="line">     &#125;</span><br><span class="line">        <span class="keyword">return</span> instance</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)()</span><br><span class="line"><span class="keyword">var</span> a=lazySingle();</span><br><span class="line"><span class="keyword">var</span> b=lazySingle();</span><br><span class="line"><span class="built_in">console</span>.log(a===b) <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+            <h3 id="treeShaking-摇树优化"><a href="#treeShaking-摇树优化" class="headerlink" title="treeShaking-摇树优化"></a><strong>treeShaking-摇树优化</strong></h3><p>使用CJS的时候，为了使用一个模块中的方法引入一个模块，整个模块都会最后打包到bundle里面。而在wepack4对其进行了优化，在mode指定为production的时候默认开启three shaking。注意只能检测静态引用，也就是ES6的import，export 语法。CJS则无法检测。而tree shaking是DCE的一种方式，检测的依据是代码不会被执行的，也就是没有引入的则会标记删除，或者执行的结果不会被用到的、执行的影响只是影响死变量也会被标记删除。这样的好处显而易见，可以减少打包后的代码的体积，减少程序的执行时间等…</p>
+<h3 id="scopeHoisting-作用域提升"><a href="#scopeHoisting-作用域提升" class="headerlink" title="scopeHoisting-作用域提升"></a><strong>scopeHoisting-作用域提升</strong></h3><p>webpack打包出来的是一个IIFE（立即执行函数，同时也是一个匿名闭包），传入的modules是个数组，数组每一个都是一个模块初始化函数（也就是我们自己定义导入导出的模块）。当项目庞大的时候，就会生成很多函数包裹块，增加内存的开销。而scope hoisting可以理解为是把每个模块被webpack处理成的模块初始化函数整理到一个统一的包裹函数里，也就是把多个作用域用一个作用域取代，以减少内存消耗并减少包裹块代码，从每个模块有一个包裹函数变成只有一个包裹函数包裹所有的模块，但是有一个前提就是，当模块的引用次数大于1时，比如被引用了两次或以上，那么这个效果会无效，也就是被引用多次的模块在被webpack处理后，会被独立的包裹函数所包裹。这个很好理解，被多次引用的话，肯定是抽离成为一个模块更加方便。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//举个例子，没有使用scope hoisting,index文件里import两个模块,打包后的index文件是这样子的,两个函数作用域</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">module, __webpack_exports__, __webpack_require__</span>) </span>&#123;</span><br><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line">__webpack_require__.r(__webpack_exports__);</span><br><span class="line"><span class="comment">/* harmony export (binding) */</span> __webpack_require__.d(__webpack_exports__, <span class="string">"hello"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> hello; &#125;);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'hellos'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/***/</span> &#125;),</span><br><span class="line"><span class="comment">/* 14 */</span></span><br><span class="line"><span class="comment">/***/</span> (<span class="function"><span class="keyword">function</span>(<span class="params">module, __webpack_exports__, __webpack_require__</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line">__webpack_require__.r(__webpack_exports__);</span><br><span class="line"><span class="comment">/* harmony export (binding) */</span> __webpack_require__.d(__webpack_exports__, <span class="string">"square"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> square; &#125;);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">square</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x * x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/***/</span> &#125;),</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">设置mode为none的时候 设置 <span class="keyword">new</span> webpack.optimize.ModuleConcatenationPlugin(),作用就是开启scopeHoisting</span><br><span class="line"></span><br><span class="line"><span class="comment">/***/</span> <span class="number">13</span>:</span><br><span class="line"><span class="comment">/***/</span> (<span class="function"><span class="keyword">function</span>(<span class="params">module, __webpack_exports__, __webpack_require__</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line">__webpack_require__.r(__webpack_exports__);</span><br><span class="line"></span><br><span class="line"><span class="comment">// EXTERNAL MODULE: ./node_modules/react/index.js</span></span><br><span class="line"><span class="keyword">var</span> react = __webpack_require__(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">var</span> react_default = <span class="comment">/*#__PURE__*/</span>__webpack_require__.n(react);</span><br><span class="line"></span><br><span class="line"><span class="comment">// EXTERNAL MODULE: ./node_modules/react-dom/index.js</span></span><br><span class="line"><span class="keyword">var</span> react_dom = __webpack_require__(<span class="number">5</span>);</span><br><span class="line"><span class="keyword">var</span> react_dom_default = <span class="comment">/*#__PURE__*/</span>__webpack_require__.n(react_dom);</span><br><span class="line"></span><br><span class="line"><span class="comment">// EXTERNAL MODULE: ./src/index/style.css</span></span><br><span class="line"><span class="keyword">var</span> style = __webpack_require__(<span class="number">11</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// CONCATENATED MODULE: ./src/index/hello.js</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'hellos'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// CONCATENATED MODULE: ./src/commons/util.js</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">square</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x * x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h3 id="打包组件-基础库"><a href="#打包组件-基础库" class="headerlink" title="打包组件/基础库"></a><strong>打包组件/基础库</strong></h3><p>webpack还可以用来打包组件或者基础库(发布到npm上),举个简单例子。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//config.js</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> webpack =<span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">const</span> TerserPlugin = <span class="built_in">require</span>(<span class="string">'terser-webpack-plugin'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry:&#123;</span><br><span class="line">         <span class="string">"long-number"</span>:<span class="string">'./src/index.js'</span>,</span><br><span class="line">         <span class="string">"long-number.min"</span>:<span class="string">'./src/index.js'</span>,</span><br><span class="line">     &#125;,</span><br><span class="line">    output:&#123;</span><br><span class="line">        path:path.join(__dirname,<span class="string">'dist'</span>),</span><br><span class="line">        filename:<span class="string">"[name].js"</span>,</span><br><span class="line">        library:<span class="string">"longNumber"</span>, <span class="comment">//指定库的全局变量</span></span><br><span class="line">        libraryTarget:<span class="string">'umd'</span>, <span class="comment">//支持库的引入方式 umd表示支持CJS ESM AMD方式、全局变量</span></span><br><span class="line">        libraryExport:<span class="string">'default'</span> </span><br><span class="line">        <span class="comment">// 没有声明是default的话,打包后被包裹了一层对象，对象下的default才是我们export的</span></span><br><span class="line">        <span class="comment">//Module &#123;default: &#123;…&#125;, __esModule: true, Symbol(Symbol.toStringTag): "Module"&#125;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    mode:<span class="string">'none'</span>,</span><br><span class="line">    optimization:&#123;</span><br><span class="line">        minimize:<span class="literal">true</span>,</span><br><span class="line">        minimizer:[</span><br><span class="line">            <span class="comment">//自定义需要压缩的文件,wp4后抛弃了UglifyJsPlugin，UglifyJsPlugin内部其实也是用了这个插件</span></span><br><span class="line">            <span class="keyword">new</span> TerserPlugin(&#123; </span><br><span class="line">                include:<span class="regexp">/\.min\.js$/</span></span><br><span class="line">            &#125;)</span><br><span class="line">        ]</span><br><span class="line">    &#125; </span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//src/index.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span> (<span class="params">num1,num2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="built_in">String</span>.prototype.split.call(num1,<span class="string">""</span>);</span><br><span class="line">    <span class="keyword">let</span> b = <span class="built_in">String</span>.prototype.split.call(num2,<span class="string">""</span>);</span><br><span class="line">    <span class="keyword">let</span> res = [];</span><br><span class="line">    <span class="keyword">let</span> addOne = <span class="number">0</span>; <span class="comment">//进位数</span></span><br><span class="line">    <span class="comment">//以两个数最长的那位为标准</span></span><br><span class="line">    <span class="keyword">while</span>(a.length||b.length)&#123;</span><br><span class="line">      <span class="keyword">let</span> item1 = <span class="built_in">parseInt</span>(a.pop())||<span class="number">0</span>;</span><br><span class="line">      <span class="keyword">let</span> item2 = <span class="built_in">parseInt</span>(b.pop())||<span class="number">0</span>;</span><br><span class="line">      <span class="keyword">let</span> temp = item1+item2+addOne;</span><br><span class="line">      <span class="keyword">if</span>(temp&gt;<span class="number">9</span>)&#123;</span><br><span class="line">          temp = temp%<span class="number">10</span>;</span><br><span class="line">          addOne = <span class="number">1</span>;</span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">          addOne = <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      res.unshift(temp) <span class="comment">//每次都从头插入</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(addOne)&#123;res.unshift(<span class="number">1</span>)&#125; <span class="comment">//当最后相加要进位的时候</span></span><br><span class="line">    <span class="keyword">return</span> res.join(<span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;add&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//最后npm登录后 publish上去在其他地方可以import 使用,且全局的话会有个longNumber变量，可以在引入script标签使用</span></span><br></pre></td></tr></table></figure>
 
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a>
-                </div>
-            </div>
+<h3 id="命令行构建信息的优化"><a href="#命令行构建信息的优化" class="headerlink" title="命令行构建信息的优化"></a><strong>命令行构建信息的优化</strong></h3><p>通过配置stats来决定构建后输出的内容及声明时候会输出。一般情况下配置项都是<code>&quot;errors-only&quot;</code>,在发生错误的时候才输出。但是在每次构建成功或者警告的时候就没有内容了，这时可以搭配<code>friendly-errors-webpack-plugin</code>来友好的显示构建的内容。</p>
+
         </div>
         
         
@@ -205,16 +200,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/13/pattern/factory-pattern/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/24/webpack4/webpack4-base6/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">工厂模式</span>
+                <span class="level-item">webpack4优化策略</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/13/ui/css-base2/">
-                <span class="level-item">CSS3 常见知识(二)</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/20/webpack4/webpack4-base4/">
+                <span class="level-item">webpack进阶使用(上)</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -236,7 +231,7 @@
 <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 <script>
 	// var gitment = new Gitment({
-	// 	id: 'fce48befcb1616b6fcda14136f1be12c',
+	// 	id: '94f2361eb27d4cb4c67d2bd8a2e2f8e8',
 	// 	owner: 'woliuCN',
 	// 	repo: 'woliuCN.github.io',
 	// 	oauth: {
@@ -250,7 +245,7 @@
 		owner: 'woliuCN',
 		repo: 'woliuCN.github.io',
 		admin: ['woliuCN'],
-		id: 'fce48befcb1616b6fcda14136f1be12c',      // Ensure uniqueness and length less than 50
+		id: '94f2361eb27d4cb4c67d2bd8a2e2f8e8',      // Ensure uniqueness and length less than 50
 		distractionFreeMode: false  // Facebook-like distraction free mode
 	})
 	gitalk.render('comment-container')
@@ -841,7 +836,7 @@
             <div class="level-start has-text-centered-mobile">
                 <!-- <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="单例模式" height="28">
+                    <img src="/images/logo.svg" alt="webpack进阶使用(下)" height="28">
                 
                 </a> -->
                 <p class="is-size-7" style="white-space: pre-line;">

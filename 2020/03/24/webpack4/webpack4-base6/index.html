@@ -7,21 +7,20 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>单例模式 - CN97 博客</title>
+<title>webpack4优化策略 - CN97 博客</title>
 
 
-    <meta name="description" content="一、单例模式及其用途所谓单例模式，就是一个类就只有一个实例，用途的话可以用来定义命名空间，通过在一个实例对象定义其的方法跟属性，来达到命名不重复的目的，例如Jquery的$符号就是这个思想。再者就是如果对于一个类是负责连接数据库的线程池，日志等逻辑的，用到这种模式来保证对象不被重复创建，降低开销。 二、代码实现&#x2F;&#x2F;惰性单例模式var laztSingle&#x3D;(function()&amp;#123;   &#x2F;">
+    <meta name="description" content="速度分析与体积分析webpack虽然内置了stats对象可以看到每次打包后的结果（输出的一大串），但是内容虽多但是难看明白。所以得借助其他插件来使得能明显的看到哪个环节（哪个loader&#x2F;plugin）的耗时，直观的看到打包后那些模块所占的体积的比例，才能进行相关内容的优化与提速。 const SpeedMeasureWebpackPlugin &#x3D; require(&#39;speed-measure-w">
 <meta property="og:type" content="article">
-<meta property="og:title" content="单例模式">
-<meta property="og:url" content="http://cn1997.top/2020/03/13/pattern/single-pattern/index.html">
+<meta property="og:title" content="webpack4优化策略">
+<meta property="og:url" content="http://cn1997.top/2020/03/24/webpack4/webpack4-base6/index.html">
 <meta property="og:site_name" content="CN97 博客">
-<meta property="og:description" content="一、单例模式及其用途所谓单例模式，就是一个类就只有一个实例，用途的话可以用来定义命名空间，通过在一个实例对象定义其的方法跟属性，来达到命名不重复的目的，例如Jquery的$符号就是这个思想。再者就是如果对于一个类是负责连接数据库的线程池，日志等逻辑的，用到这种模式来保证对象不被重复创建，降低开销。 二、代码实现&#x2F;&#x2F;惰性单例模式var laztSingle&#x3D;(function()&amp;#123;   &#x2F;">
+<meta property="og:description" content="速度分析与体积分析webpack虽然内置了stats对象可以看到每次打包后的结果（输出的一大串），但是内容虽多但是难看明白。所以得借助其他插件来使得能明显的看到哪个环节（哪个loader&#x2F;plugin）的耗时，直观的看到打包后那些模块所占的体积的比例，才能进行相关内容的优化与提速。 const SpeedMeasureWebpackPlugin &#x3D; require(&#39;speed-measure-w">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://cn1997.top/images/og_image.png">
-<meta property="article:published_time" content="2020-03-13T02:47:24.000Z">
-<meta property="article:modified_time" content="2020-03-13T02:53:05.063Z">
+<meta property="article:published_time" content="2020-03-24T03:14:38.000Z">
+<meta property="article:modified_time" content="2020-03-24T03:37:03.766Z">
 <meta property="article:author" content="CN97">
-<meta property="article:tag" content="设计模式">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://cn1997.top/images/og_image.png">
 
@@ -88,7 +87,7 @@
         <div class="navbar-brand is-flex-center">
             <!-- <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="单例模式" height="28">
+                <img src="/images/logo.svg" alt="webpack4优化策略" height="28">
             
             </a> -->
         </div>
@@ -149,17 +148,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-13T02:47:24.000Z">2020-03-13</time>
+                <time class="level-item has-text-grey" datetime="2020-03-24T03:14:38.000Z">2020-03-24</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
+                <a class="has-link-grey -link" href="/categories/webpack4/">webpack4</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 读完 (大约 199 个字)
+                    9 分钟 读完 (大约 1318 个字)
                 </span>
                 
                 
@@ -173,23 +172,28 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                单例模式
+                webpack4优化策略
             
         </h1>
         <div class="content">
-            <h2 id="一、单例模式及其用途"><a href="#一、单例模式及其用途" class="headerlink" title="一、单例模式及其用途"></a>一、单例模式及其用途</h2><p>所谓单例模式，就是一个类就只有一个实例，用途的话可以用来定义命名空间，通过在一个实例对象定义其的方法跟属性，来达到命名不重复的目的，例如Jquery的$符号就是这个思想。再者就是如果对于一个类是负责连接数据库的线程池，日志等逻辑的，用到这种模式来保证对象不被重复创建，降低开销。</p>
-<h2 id="二、代码实现"><a href="#二、代码实现" class="headerlink" title="二、代码实现"></a>二、代码实现</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//惰性单例模式</span></span><br><span class="line"><span class="keyword">var</span> laztSingle=(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="comment">//使用闭包使得单例对象为私有</span></span><br><span class="line">    <span class="keyword">var</span> instance=<span class="literal">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Signle</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            age:<span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(!instance)&#123;</span><br><span class="line">         instance=<span class="keyword">new</span> Signle()</span><br><span class="line">     &#125;</span><br><span class="line">        <span class="keyword">return</span> instance</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)()</span><br><span class="line"><span class="keyword">var</span> a=lazySingle();</span><br><span class="line"><span class="keyword">var</span> b=lazySingle();</span><br><span class="line"><span class="built_in">console</span>.log(a===b) <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+            <h3 id="速度分析与体积分析"><a href="#速度分析与体积分析" class="headerlink" title="速度分析与体积分析"></a><strong>速度分析与体积分析</strong></h3><p>webpack虽然内置了stats对象可以看到每次打包后的结果（输出的一大串），但是内容虽多但是难看明白。所以得借助其他插件来使得能明显的看到哪个环节（哪个loader/plugin）的耗时，直观的看到打包后那些模块所占的体积的比例，才能进行相关内容的优化与提速。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> SpeedMeasureWebpackPlugin = <span class="built_in">require</span>(<span class="string">'speed-measure-webpack-plugin'</span>); <span class="comment">//速度分析插件</span></span><br><span class="line"><span class="keyword">const</span> BundleAnalyzerPlugin = <span class="built_in">require</span>(<span class="string">'webpack-bundle-analyzer'</span>).BundleAnalyzerPlugin;<span class="comment">//体积分析插件</span></span><br><span class="line"><span class="keyword">const</span> smp = <span class="keyword">new</span> SpeedMeasureWebpackPlugin();</span><br><span class="line"><span class="built_in">module</span>.exports = smp.wrap(&#123;</span><br><span class="line">plugins:[</span><br><span class="line">    <span class="keyword">new</span> BundleAnalyzerPlugin();</span><br><span class="line">]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//SpeedMeasureWebpackPlugin会详细的输出每个loader plugin的耗时</span></span><br><span class="line">SMP  ⏱  Plugins</span><br><span class="line">HtmlWebpackPlugin took <span class="number">1.57</span> secs</span><br><span class="line">OptimizeCssAssetsWebpackPlugin took <span class="number">0.227</span> secs</span><br><span class="line">BundleAnalyzerPlugin took <span class="number">0.148</span> secs</span><br><span class="line">CleanWebpackPlugin took <span class="number">0.01</span> secs</span><br><span class="line">MiniCssExtractPlugin took <span class="number">0</span> secs</span><br><span class="line">SMP  ⏱  Loaders</span><br><span class="line">modules <span class="keyword">with</span> no loaders took <span class="number">1.28</span> secs</span><br><span class="line"><span class="built_in">module</span> count = <span class="number">16</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//BundleAnalyzerPlugin则会在打包后打开一个8888端口来展示打包后模块的体积比例</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="使用多进程构建与多进程压缩代码"><a href="#使用多进程构建与多进程压缩代码" class="headerlink" title="使用多进程构建与多进程压缩代码"></a><strong>使用多进程构建与多进程压缩代码</strong></h3><p>由于node.js的单进程单线程的性质，在耗时的loader解析的时候，可以开启多进程的方式加快构建，在最后构建完成压缩阶段也可以开启多进程的方式加快压缩效率。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//在耗时的loader上使用才是最好的</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line"><span class="built_in">module</span>:&#123;</span><br><span class="line">    rules:[</span><br><span class="line">            &#123;</span><br><span class="line">                test:<span class="regexp">/\.js$/</span>,</span><br><span class="line">                use: [</span><br><span class="line">                      &#123;</span><br><span class="line">                        loader: <span class="string">"thread-loader"</span>,</span><br><span class="line">                        <span class="comment">// 有同样配置的 loader 会共享一个 worker 池(worker pool)</span></span><br><span class="line">                        options: &#123;</span><br><span class="line">                          <span class="comment">// 产生的 worker 的数量，默认是 cpu 的核心数</span></span><br><span class="line">                          workers: <span class="number">2</span>,</span><br><span class="line">                          <span class="comment">// 一个 worker 进程中并行执行工作的数量</span></span><br><span class="line">                          <span class="comment">// 默认为 20</span></span><br><span class="line">                          workerParallelJobs: <span class="number">50</span>,</span><br><span class="line">                        &#125;</span><br><span class="line">                      &#125;,</span><br><span class="line">                        <span class="string">"babel-loader"</span></span><br><span class="line">                    ]</span><br><span class="line">            &#125;,</span><br><span class="line">&#125;</span><br><span class="line">optimization:&#123;</span><br><span class="line">        minimize:<span class="literal">true</span>,</span><br><span class="line">        minimizer:[</span><br><span class="line">            <span class="keyword">new</span> TerserPlugin(&#123; <span class="comment">//自定义需要压缩的文件,wp4后抛弃了UglifyJsPlugin，UglifyJsPlugin内部其实也是用了这个插件</span></span><br><span class="line">        	parallel:<span class="literal">true</span> <span class="comment">//开启多进程压缩</span></span><br><span class="line">            &#125;)</span><br><span class="line">        ]</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a>
-                </div>
-            </div>
+<h3 id="预编译资源模块分离-DLL优化"><a href="#预编译资源模块分离-DLL优化" class="headerlink" title="预编译资源模块分离(DLL优化)"></a><strong>预编译资源模块分离(DLL优化)</strong></h3><p>将一些第三方库，先进行预编译打包成一个固定的库，同时生成一个json文件，记录相关内容信息，同时再主配置文件进行关联，就能进行相关模块引用。但在webpack4后，对dll的应用就不是很多了，因为有了<code>splitchunk</code>进行分包处理，还有<code>hard-source-webpack-plugin</code> 缓存来提升了构建速度。但是dll对于一个团队而言，特别采用相同的技术栈，要么 <code>react</code>、要么<code>vue</code> 等等。这个时候，通常的做法都是把公共框架打成一个 common bundle 文件供所有项目使用。比如将 <code>react、react-dom、redux、react-redux</code> 等等打包成一个公共库。dll 可以很好的满足这种场景。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*webpack.dll.js*/</span>   </span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry:&#123;</span><br><span class="line">        <span class="comment">//可以配置多个key,例如还有其他的公共模块等</span></span><br><span class="line">        vender:[</span><br><span class="line">            <span class="string">'react'</span>,</span><br><span class="line">            <span class="string">'react-dom'</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    output:&#123;</span><br><span class="line">        path:path.join(__dirname,<span class="string">'dll'</span>),</span><br><span class="line">        filename:<span class="string">"[name].js"</span>,</span><br><span class="line">        library:<span class="string">"[name]_dll"</span> <span class="comment">//暴露的库的名字,这个必须跟下面的json的name一致,不然就会出现找不到预编译的库的情况</span></span><br><span class="line">    &#125;,</span><br><span class="line">    mode:<span class="string">'production'</span>,</span><br><span class="line">    plugins:[</span><br><span class="line">        <span class="keyword">new</span> webpack.DllPlugin(&#123;</span><br><span class="line">            name:<span class="string">'[name]_dll'</span>, <span class="comment">//json文件里面name的值</span></span><br><span class="line">            path:path.join(__dirname,<span class="string">'dll/[name].json'</span>),</span><br><span class="line">        &#125;)</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*webpack.prod.js*/</span></span><br><span class="line">plugins:[</span><br><span class="line">    <span class="keyword">new</span> webpack.DllReferencePlugin(&#123;</span><br><span class="line">        manifest:<span class="built_in">require</span>(<span class="string">'./dll/vender.json'</span>)</span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="comment">//可以手动引入vender.js文件 或者通过这个插件引入静态资源文件</span></span><br><span class="line">    <span class="keyword">new</span> AddAssetHtmlPlugin(&#123; <span class="attr">filepath</span>: path.resolve(__dirname, <span class="string">'./dll/vender.js'</span>) &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="使用缓存来提升二次构建速度"><a href="#使用缓存来提升二次构建速度" class="headerlink" title="使用缓存来提升二次构建速度"></a><strong>使用缓存来提升二次构建速度</strong></h3><p>在耗时的loader例如babel-loader开启缓存形式，在构建模块转化阶段使用<code>hard-source-webpack-plugin</code>开启缓存，在压缩阶段开启压缩缓存。都能提升二次构建的速度。开启缓存后能在node_modules目录下的.cache看到相关缓存文件。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">     test:<span class="regexp">/\.js$/</span>,</span><br><span class="line">     use:[<span class="string">'babel-loader?cacheDirectory=true'</span>], <span class="comment">//开启babel-loader 的cache</span></span><br><span class="line">     exclude: <span class="regexp">/node_modules/</span></span><br><span class="line"> &#125;,</span><br><span class="line">     </span><br><span class="line"> optimization:&#123;</span><br><span class="line">        minimize:<span class="literal">true</span>,</span><br><span class="line">        minimizer:[</span><br><span class="line">            <span class="keyword">new</span> TerserPlugin(&#123; <span class="comment">//自定义需要压缩的文件,wp4后抛弃了UglifyJsPlugin，UglifyJsPlugin内部其实也是用了这个插件</span></span><br><span class="line">        	parallel:<span class="literal">true</span>, <span class="comment">//开启多进程压缩</span></span><br><span class="line">            cache:<span class="literal">true</span>	<span class="comment">//开启压缩缓存,指定mode为production的时候会自动开启</span></span><br><span class="line">            &#125;)</span><br><span class="line">        ]</span><br><span class="line">  &#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">//使用hard-source-webpack-plugin插件来提供模块转换的阶段缓存</span></span><br><span class="line">plugins:[</span><br><span class="line">    <span class="keyword">new</span> HardSourceWebpakPlugin()</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="缩小构建目标来加快构建速度"><a href="#缩小构建目标来加快构建速度" class="headerlink" title="缩小构建目标来加快构建速度"></a><strong>缩小构建目标来加快构建速度</strong></h3><ol>
+<li>在rules规则匹配的时候通过配置exclude来决定那些需目录不需要被搜索匹配，例如node_modules</li>
+<li>使用reslove自定义配置模块如何解析 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">    <span class="built_in">module</span>.exports=&#123;</span><br><span class="line">    resolve:&#123;</span><br><span class="line">        <span class="comment">//创建模块的别名，可以方便引入同时可以告知webpack引入模块的时候可以直接通过路径去寻找而不用一直查找。另外可以配置自己组件模块引入的方式，简化引入时候路径的长度。</span></span><br><span class="line">        alias:&#123;</span><br><span class="line">            react:path.resolve(__dirname,<span class="string">'./node_modules/react/umd/react.production.min.js'</span>) </span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">//配置当找不到模块的时候搜索的目录，默认是跟Node.js一样会先查找当前目录的以及父级目录的	（node_modules）一直往上找</span></span><br><span class="line">        modules:[path.resolve(__dirname,<span class="string">"node_modules"</span>)],</span><br><span class="line">        extensions:[<span class="string">'.js'</span>], <span class="comment">//自动解析的扩展名称,表示在引入文件的时候可以不用写后缀,默认是js/json</span></span><br><span class="line">        mainFields:[<span class="string">'main'</span>],<span class="comment">//自定义当从npm包中导入模块时候，从package.json中使用哪个字段导入模块，及哪个是模块的入口文件，默认是["browser", "module", "main"]</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
         </div>
         
         
@@ -204,17 +208,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/13/pattern/factory-pattern/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">工厂模式</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/13/ui/css-base2/">
-                <span class="level-item">CSS3 常见知识(二)</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/24/webpack4/webpack4-base5/">
+                <span class="level-item">webpack进阶使用(下)</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -236,7 +233,7 @@
 <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 <script>
 	// var gitment = new Gitment({
-	// 	id: 'fce48befcb1616b6fcda14136f1be12c',
+	// 	id: '783ae35aa3d04c142764b25e077e1b84',
 	// 	owner: 'woliuCN',
 	// 	repo: 'woliuCN.github.io',
 	// 	oauth: {
@@ -250,7 +247,7 @@
 		owner: 'woliuCN',
 		repo: 'woliuCN.github.io',
 		admin: ['woliuCN'],
-		id: 'fce48befcb1616b6fcda14136f1be12c',      // Ensure uniqueness and length less than 50
+		id: '783ae35aa3d04c142764b25e077e1b84',      // Ensure uniqueness and length less than 50
 		distractionFreeMode: false  // Facebook-like distraction free mode
 	})
 	gitalk.render('comment-container')
@@ -841,7 +838,7 @@
             <div class="level-start has-text-centered-mobile">
                 <!-- <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="单例模式" height="28">
+                    <img src="/images/logo.svg" alt="webpack4优化策略" height="28">
                 
                 </a> -->
                 <p class="is-size-7" style="white-space: pre-line;">
