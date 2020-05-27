@@ -147,7 +147,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-05-06T06:18:36.000Z">2020-05-06</time>
+                <time class="level-item has-text-grey" datetime="2020-05-25T11:34:03.000Z">2020-05-25</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
@@ -157,7 +157,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 读完 (大约 130 个字)
+                    4 分钟 读完 (大约 647 个字)
                 </span>
                 
                 
@@ -166,19 +166,21 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/05/06/programming/reverse-linked/">从尾到头打印链表</a>
+                <a class="has-link-black-ter" href="/2020/05/25/programming/replication-complexLists/">复杂链表的复制</a>
             
         </h1>
         <div class="content">
-            <p><strong>题目描述:</strong><br>输入一个链表，按链表从尾到头的顺序返回一个ArrayList。</p>
-<p><strong>思路:</strong><br>理解了链表的数据结构后其实很简单，只需要遍历链表，然后利用数组的unshift方法每次将链表的下一个值插入到数组的前面，从而实现逆序。</p>
+            <p><strong>题目描述:</strong></p>
+<p>输入一个复杂链表（每个节点中有节点值，以及两个指针，一个指向下一个节点，另一个特殊指针random指向一个随机节点），请对此链表进行深拷贝，并返回拷贝后的头结点。</p>
+<p><strong>思路:</strong></p>
+<p>本身链表的拷贝很简单，但是因为这个链表的节点里面有一个随机的属性random指向了随机节点。1)传统的思想，先不考虑随机指针属性，先顺序拷贝链表，同时使用一个map来记录当前节点与随机节点的关系。然后最后再遍历一遍将其随机节点的属性带上。2)方法二，遍历每个节点，拷贝一份副本节点跟在原节点后面，例如A-&gt;A1-&gt;B-&gt;B1。这样做的好处是无需额外的记录一个节点的随机指针的参照表，因为假如遍历的时候发现A的随机节点是C，那很容易就知道A1的随机节点是C1。最后再通过将奇偶节点断开，即分开原链表与拷贝的链表即可。</p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/05/06/programming/reverse-linked/#more">阅读更多</a>
+                <a class="button is-size-7 is-light" href="/2020/05/25/programming/replication-complexLists/#more">阅读更多</a>
                 </div>
             </div>
         </div>
@@ -201,17 +203,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-05-06T02:53:42.000Z">2020-05-06</time>
+                <time class="level-item has-text-grey" datetime="2020-05-25T02:59:33.000Z">2020-05-25</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                <a class="has-link-grey -link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 读完 (大约 163 个字)
+                    3 分钟 读完 (大约 486 个字)
                 </span>
                 
                 
@@ -220,19 +222,20 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/05/06/programming/order-median/">有序数组的中位数</a>
+                <a class="has-link-black-ter" href="/2020/05/25/programming/binaryTree-path-value/">二叉树中和为某值的路径</a>
             
         </h1>
         <div class="content">
-            <p><strong>题目描述:</strong><br>给出两个有序数组，计算两个有序数组的中位数，且算法复杂度不超过O(log(m+n))。</p>
-<p><strong>思路:</strong><br>因为两个是有序的数组，所以只需逐个比较大小组成新的数组即可，再根据奇偶性求出中位数。</p>
+            <p><strong>题目描述:</strong></p>
+<p>输入一颗二叉树的根节点和一个整数，打印出二叉树中结点值的和为输入整数的所有路径。路径定义为从树的根结点开始往下一直到叶结点所经过的结点形成一条路径。</p>
+<p><strong>思路:</strong><br>叶节点，即是没有左右子节点的节点，利用递归的形式，从根节点往下寻找匹配的路径，每次保存路径后，判断当前的累加值是否与目标值相等且是否为根节点，如果是则将其路径的数组加入到路径数组中，否则则继续递归走左右子节点，最后需要注意，因为路径不止一条，不管找到与否，都得返回回去。</p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/05/06/programming/order-median/#more">阅读更多</a>
+                <a class="button is-size-7 is-light" href="/2020/05/25/programming/binaryTree-path-value/#more">阅读更多</a>
                 </div>
             </div>
         </div>
@@ -255,17 +258,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-05-06T02:32:27.000Z">2020-05-06</time>
+                <time class="level-item has-text-grey" datetime="2020-05-25T02:40:54.000Z">2020-05-25</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                <a class="has-link-grey -link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 读完 (大约 214 个字)
+                    3 分钟 读完 (大约 425 个字)
                 </span>
                 
                 
@@ -274,19 +277,21 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/05/06/programming/array-two-sum/">寻找数是数字的数字之和的下标数组</a>
+                <a class="has-link-black-ter" href="/2020/05/25/programming/binarySearchTree-sequentialTraversalSequence/">二叉搜索树的后序遍历序列</a>
             
         </h1>
         <div class="content">
-            <p><strong>题目描述:</strong><br>给出一个数与一个不重复的数组，如果这个数是数组里面两个数字之和，则返回下标数组。</p>
-<p><strong>思路:</strong><br>传统做法是循环两次，比较两次下标值不同，但值相加相同的就返回，但时间复杂度就是O(n^2)。另外的一种做法就是利用map哈希列表来记录值与下标的映射，然后比较目标值与每次循环的当前值的差是否是在map中，是则表示存在，返回下标组。</p>
+            <p><strong>题目描述:</strong></p>
+<p>输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历的结果。如果是则输出Yes,否则输出No。假设输入的数组的任意两个数字都互不相同。</p>
+<p><strong>思路:</strong></p>
+<p>二叉搜索树，左边的所有子节点永远比根节点小，右边的所有子节点永远比根节点大，虽然只有后序遍历的结果，但是可以结合二叉搜索树的特性，可以找出其根节点与分割左右子节点，因为左边是确定比根节点小的，所以只要比较分割出来的右子节点是否是所有都比根节点大，如果是，则继续递归比较，否则则可以直接确定不是二叉搜索树了。</p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/05/06/programming/array-two-sum/#more">阅读更多</a>
+                <a class="button is-size-7 is-light" href="/2020/05/25/programming/binarySearchTree-sequentialTraversalSequence/#more">阅读更多</a>
                 </div>
             </div>
         </div>
@@ -309,17 +314,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-05-06T02:08:26.000Z">2020-05-06</time>
+                <time class="level-item has-text-grey" datetime="2020-05-25T02:11:02.000Z">2020-05-25</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                <a class="has-link-grey -link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 读完 (大约 215 个字)
+                    2 分钟 读完 (大约 252 个字)
                 </span>
                 
                 
@@ -328,19 +333,20 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/05/06/programming/intersection/">两个数组的交集</a>
+                <a class="has-link-black-ter" href="/2020/05/25/programming/print-binaryTree-topTobottom/">从上往下打印二叉树</a>
             
         </h1>
         <div class="content">
-            <p><strong>题目描述:</strong><br>给出两个任意可重复的数组，计算并返回两个数组的交集，例如[2,1,2,1]、[1,1]应该返回[1,1]。</p>
-<p><strong>思路:</strong><br>一种做法是可以利用map对象来统计数组元素出现的个数，不过这次需要两个map来分别统计，最后再取两个数组相同值的最小次数，就是最后的结果。</p>
+            <p><strong>题目描述:</strong><br>从上往下打印出二叉树的每个节点，同层节点从左至右打印。</p>
+<p><strong>思路:</strong></p>
+<p>题目的意思，其实就是一个树的广度遍历。所以第一种方式就是使用递归的形式去实现。第二种呢，则是可以通过队列的方式，每次存储其左右子树，然后利用队列先进先出的特性，则可以实现从上往下，从左往右的打印节点。</p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/05/06/programming/intersection/#more">阅读更多</a>
+                <a class="button is-size-7 is-light" href="/2020/05/25/programming/print-binaryTree-topTobottom/#more">阅读更多</a>
                 </div>
             </div>
         </div>
@@ -363,17 +369,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-05-05T09:12:06.000Z">2020-05-05</time>
+                <time class="level-item has-text-grey" datetime="2020-05-24T09:15:26.000Z">2020-05-24</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                <a class="has-link-grey -link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 读完 (大约 199 个字)
+                    2 分钟 读完 (大约 325 个字)
                 </span>
                 
                 
@@ -382,19 +388,21 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/05/05/programming/long-add/">长整数相加</a>
+                <a class="has-link-black-ter" href="/2020/05/24/programming/pop-push-sequence/">栈的压入、弹出序列</a>
             
         </h1>
         <div class="content">
-            <p><strong>题目描述:</strong><br>两个任意大的整数相加的时候，可能会出现溢出、损失精度的情况，为了实现长整数相加，需要进行一些处理。</p>
-<p><strong>思路:</strong><br>将两个长整数转换为字符串，然后通过分割进行一位一位的相加，需要注意的是进位的处理。</p>
+            <p><strong>题目描述:</strong></p>
+<p>输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是否可能为该栈的弹出顺序。假设压入栈的所有数字均不相等。例如序列1,2,3,4,5是某栈的压入顺序，序列4,5,3,2,1是该压栈序列对应的一个弹出序列，但4,3,5,1,2就不可能是该压栈序列的弹出序列。（注意：这两个序列的长度是相等的）</p>
+<p><strong>思路:</strong></p>
+<p>因为一个压栈序列，出栈的顺序可能有许多种，例如上面的例子，1 2 3 4 5是压栈顺序，4 5 3 2 1 是一种，5 4 3 2 1 也是其中一种。但不变的是压栈进入的序列，出栈后，压栈的序列将是空的。所以可以利用一个辅助栈，作为压栈序列与出栈序列的中间栈，来模拟压栈与出栈的各种情况。如果最后的辅助栈的长度为空，则证明这个弹出序列是压入序列的一种。否则就不是。</p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/05/05/programming/long-add/#more">阅读更多</a>
+                <a class="button is-size-7 is-light" href="/2020/05/24/programming/pop-push-sequence/#more">阅读更多</a>
                 </div>
             </div>
         </div>
@@ -417,17 +425,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-05-05T08:43:19.000Z">2020-05-05</time>
+                <time class="level-item has-text-grey" datetime="2020-05-24T08:55:30.000Z">2020-05-24</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                <a class="has-link-grey -link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 362 个字)
+                    2 分钟 读完 (大约 278 个字)
                 </span>
                 
                 
@@ -436,19 +444,21 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/05/05/programming/continuous-repetition/">统计连续出现的字符及次数</a>
+                <a class="has-link-black-ter" href="/2020/05/24/programming/matrix-clockwise/">顺时针打印矩阵</a>
             
         </h1>
         <div class="content">
-            <p><strong>题目描述:</strong><br>寻找一个字符串中连续出现最多的字符，并且统计其次数</p>
-<p><strong>思路:</strong><br>最方便快捷的方法就是利用正则表达式匹配出连续出现的字符的内容数组，然后遍历数组，找出并统计连续出现最多的字符及其长度。</p>
+            <p><strong>题目描述:</strong></p>
+<p>输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字，例如，如果输入如下4 X 4矩阵： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 则依次打印出数字1,2,3,4,8,12,16,15,14,13,9,5,6,7,11,10</p>
+<p><strong>思路:</strong></p>
+<p>按照题目所述，顺时针的遍历整个矩阵，然后遍历完一圈后，往内缩小圈，改变上下左右的起点，直到left = right；top = bottom；注意进行往左与往上遍历的时候需要矩阵不止一行跟不止一列的时候才进行。</p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/05/05/programming/continuous-repetition/#more">阅读更多</a>
+                <a class="button is-size-7 is-light" href="/2020/05/24/programming/matrix-clockwise/#more">阅读更多</a>
                 </div>
             </div>
         </div>
@@ -471,17 +481,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-05-05T08:17:57.000Z">2020-05-05</time>
+                <time class="level-item has-text-grey" datetime="2020-05-07T08:48:55.000Z">2020-05-07</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                <a class="has-link-grey -link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 322 个字)
+                    1 分钟 读完 (大约 192 个字)
                 </span>
                 
                 
@@ -490,19 +500,21 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/05/05/programming/objectToTree/">对象数组转树形结构</a>
+                <a class="has-link-black-ter" href="/2020/05/07/programming/tree-substructure/">树的子结构</a>
             
         </h1>
         <div class="content">
-            <p><strong>题目描述:</strong><br>将一个含有可以组成树的对象数组转换为树形结构的数组。例如：[{id:1},{id:2,pid:1},{id:1},{id:3,pid:2},{id:4,pid:1}]转换结果是<br>[{“id”:1,”childs”:[{“id”:2,”pid”:1,”childs”:[{“id”:3,”pid”:2}]},{“id”:4,”pid”:1}]}]</p>
-<p><strong>思路:</strong><br>这个在实际应用还是比较经常遇到的，特别树形结构的目录，通常在后端存储的时候就只是一个类树型对象数组，需要前端自己拼接。利用一个map对象来记录id与对象的映射，遍历原数组，如果没有pid的话则是父节点，push到要返回的数组里面去。如果存在pid的话，则可以在map里面找到对应父对象，再将当前的节点对象存储到父对象的child数组里面。</p>
+            <p><strong>题目描述:</strong></p>
+<p>输入两棵二叉树A，B，判断B是不是A的子结构。（ps：我们约定空树不是任意一个树的子结构）</p>
+<p><strong>思路:</strong></p>
+<p>如果B是A的子结构的话，则A树的任意一直遍历结果一点包含了B树的那一种遍历结果，所以可以先将两棵树使用前序遍历的方式获取遍历后的结果数组。</p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/05/05/programming/objectToTree/#more">阅读更多</a>
+                <a class="button is-size-7 is-light" href="/2020/05/07/programming/tree-substructure/#more">阅读更多</a>
                 </div>
             </div>
         </div>
@@ -525,17 +537,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-24T03:14:38.000Z">2020-03-24</time>
+                <time class="level-item has-text-grey" datetime="2020-05-07T08:29:01.000Z">2020-05-07</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/webpack4/">webpack4</a>
+                <a class="has-link-grey -link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    9 分钟 读完 (大约 1319 个字)
+                    2 分钟 读完 (大约 341 个字)
                 </span>
                 
                 
@@ -544,18 +556,26 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/03/24/webpack4/webpack4-base6/">webpack4优化策略</a>
+                <a class="has-link-black-ter" href="/2020/05/07/programming/oneNumber-binary/">二进制中1的个数</a>
             
         </h1>
         <div class="content">
-            <h3 id="速度分析与体积分析"><a href="#速度分析与体积分析" class="headerlink" title="速度分析与体积分析"></a><strong>速度分析与体积分析</strong></h3><p>webpack虽然内置了stats对象可以看到每次打包后的结果（输出的一大串），但是内容虽多但是难看明白。所以得借助其他插件来使得能明显的看到哪个环节（哪个loader/plugin）的耗时，直观的看到打包后那些模块所占的体积的比例，才能进行相关内容的优化与提速。</p>
+            <p><strong>题目描述:</strong></p>
+<p>输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。</p>
+<p><strong>思路:</strong></p>
+<blockquote>
+<p><em>方法一</em>：先将整数转换为32为二进制数字，正数的话直接使用正则表达式匹配1的数字的结果，求其长度，负数的话需要先取其补码，这时候就用到了之前写的长整数相加了。最后也是用正则表达式匹配1的结果。</p>
+</blockquote>
+<blockquote>
+<p><em>方法二</em>：不断左移与数字进行与运算计算出1的个数,在与运算的时候负数会先取补码。</p>
+</blockquote>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/03/24/webpack4/webpack4-base6/#more">阅读更多</a>
+                <a class="button is-size-7 is-light" href="/2020/05/07/programming/oneNumber-binary/#more">阅读更多</a>
                 </div>
             </div>
         </div>
@@ -578,17 +598,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-24T02:57:23.000Z">2020-03-24</time>
+                <time class="level-item has-text-grey" datetime="2020-05-07T06:51:48.000Z">2020-05-07</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/webpack4/">webpack4</a>
+                <a class="has-link-grey -link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    8 分钟 读完 (大约 1175 个字)
+                    4 分钟 读完 (大约 525 个字)
                 </span>
                 
                 
@@ -597,19 +617,26 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/03/24/webpack4/webpack4-base5/">webpack进阶使用(下)</a>
+                <a class="has-link-black-ter" href="/2020/05/07/programming/dance-steps/">跳台阶</a>
             
         </h1>
         <div class="content">
-            <h3 id="treeShaking-摇树优化"><a href="#treeShaking-摇树优化" class="headerlink" title="treeShaking-摇树优化"></a><strong>treeShaking-摇树优化</strong></h3><p>使用CJS的时候，为了使用一个模块中的方法引入一个模块，整个模块都会最后打包到bundle里面。而在wepack4对其进行了优化，在mode指定为production的时候默认开启three shaking。注意只能检测静态引用，也就是ES6的import，export 语法。CJS则无法检测。而tree shaking是DCE的一种方式，检测的依据是代码不会被执行的，也就是没有引入的则会标记删除，或者执行的结果不会被用到的、执行的影响只是影响死变量也会被标记删除。这样的好处显而易见，可以减少打包后的代码的体积，减少程序的执行时间等…</p>
-<h3 id="scopeHoisting-作用域提升"><a href="#scopeHoisting-作用域提升" class="headerlink" title="scopeHoisting-作用域提升"></a><strong>scopeHoisting-作用域提升</strong></h3><p>webpack打包出来的是一个IIFE（立即执行函数，同时也是一个匿名闭包），传入的modules是个数组，数组每一个都是一个模块初始化函数（也就是我们自己定义导入导出的模块）。当项目庞大的时候，就会生成很多函数包裹块，增加内存的开销。而scope hoisting可以理解为是把每个模块被webpack处理成的模块初始化函数整理到一个统一的包裹函数里，也就是把多个作用域用一个作用域取代，以减少内存消耗并减少包裹块代码，从每个模块有一个包裹函数变成只有一个包裹函数包裹所有的模块，但是有一个前提就是，当模块的引用次数大于1时，比如被引用了两次或以上，那么这个效果会无效，也就是被引用多次的模块在被webpack处理后，会被独立的包裹函数所包裹。这个很好理解，被多次引用的话，肯定是抽离成为一个模块更加方便。</p>
+            <p><strong>题目描述:</strong></p>
+<p><em>问题一</em>：一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。<br><em>问题二</em>：一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。</p>
+<p><strong>思路:</strong></p>
+<blockquote>
+<p><em>问题一</em>：因为青蛙一次可以跳两种步伐，所以对于一级台阶、二级台阶，青蛙跳上去的情况是固定的一种与两种，现假设n为6，则跳上第6级台阶可以是从第5级台阶跳一级上来这一种，换句话说，有几种跳上5级台阶的方案就有几种跳上6级台阶的方案。跳上第6级台阶也可以是从第4级台阶跳两级上来，同样的有几种跳上4级台阶的方案就有几种跳上6级台阶的方案。即可以看出这个是一个跟斐波那契数列有点像的递归相加的情况，n级台阶的情况都可以看成是n-1级台阶的情况+n-2级台阶的情况，直到n=1或者n=2的时候。</p>
+</blockquote>
+<blockquote>
+<p><em>问题二</em>：其实这种情况第一次我是列出前面的一些结果发现这不是满足了数学的等比数列的通项公式吗，直接就写出来了。但换成另外的思路可以这样看，因为青蛙可以任意跳级，所以每个台阶都可以选择跳或者不跳2种选择，除了最终的台阶要存在，最后一阶是1，其他n-1都有两种情况。所以总的情况就算2^(n-1)*1 </p>
+</blockquote>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/03/24/webpack4/webpack4-base5/#more">阅读更多</a>
+                <a class="button is-size-7 is-light" href="/2020/05/07/programming/dance-steps/#more">阅读更多</a>
                 </div>
             </div>
         </div>
@@ -632,17 +659,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-20T08:14:13.000Z">2020-03-20</time>
+                <time class="level-item has-text-grey" datetime="2020-05-07T06:43:07.000Z">2020-05-07</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/webpack4/">webpack4</a>
+                <a class="has-link-grey -link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    14 分钟 读完 (大约 2079 个字)
+                    2 分钟 读完 (大约 262 个字)
                 </span>
                 
                 
@@ -651,18 +678,21 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/03/20/webpack4/webpack4-base4/">webpack进阶使用(上)</a>
+                <a class="has-link-black-ter" href="/2020/05/07/programming/smallNumber-rotateArray/">旋转数组的最小数字</a>
             
         </h1>
         <div class="content">
-            <h3 id="实现自动补充样式前缀与px转rem"><a href="#实现自动补充样式前缀与px转rem" class="headerlink" title="实现自动补充样式前缀与px转rem"></a><strong>实现自动补充样式前缀与px转rem</strong></h3><p>使用postcss(后处理器)来实现自动补充样式前缀与px转rem。在wepack中使用postcss-loader来实现postcss的功能。实现px转rem的话也可以使用px2rem-loader，这里为了方便一起使用就用了postcss的插件来实现。另外还需要动态指定html的px来实现自适应。可以使用阿里移动端的lib-flexible库(根html元素的fons-size的计算，获取的是当前浏览器的宽度/10)，也可以自己写。</p>
+            <p><strong>题目描述:</strong></p>
+<p>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。输入一个非递减排序的数组的一个旋转，输出旋转数组的最小元素。例如数组{3,4,5,1,2}为{1,2,3,4,5}的一个旋转，该数组的最小值为1。NOTE：给出的所有元素都大于0，若数组大小为0，请返回0。</p>
+<p><strong>思路:</strong></p>
+<p>最笨的方法就是逐个比较后确定最小值，但没利用好是一个非递减排序好的数组的特性，所以利用二分法来查找是比较有效果的。因为无论是奇数数组或者是偶数数组，二分到最后的两个值的区间的时候，最小值永远都会在右边。</p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/03/20/webpack4/webpack4-base4/#more">阅读更多</a>
+                <a class="button is-size-7 is-light" href="/2020/05/07/programming/smallNumber-rotateArray/#more">阅读更多</a>
                 </div>
             </div>
         </div>
@@ -694,9 +724,9 @@
             
             <li><a class="pagination-link has-text-black-ter" href="/page/2/">2</a></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/3/">3</a></li>
+            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/4/">4</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/page/5/">5</a></li>
             
         </ul>
     </nav>
@@ -746,7 +776,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            32
+                            42
                         </p>
                     </a>
                 </div>
@@ -770,7 +800,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            11
+                            15
                         </p>
                     </a>
                 </div>
@@ -794,7 +824,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/es6/" style="font-size: 15px;">es6</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/map/" style="font-size: 15px;">map</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 10px;">二叉树</a> <a href="/tags/%E6%95%B0%E7%BB%84/" style="font-size: 17.5px;">数组</a> <a href="/tags/%E6%AD%A3%E5%88%99/" style="font-size: 10px;">正则</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 20px;">设计模式</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10px;">递归</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 10px;">链表</a> <a href="/tags/%E9%98%9F%E5%88%97/" style="font-size: 10px;">队列</a>
+        <a href="/tags/css3/" style="font-size: 11.67px;">css3</a> <a href="/tags/es6/" style="font-size: 13.33px;">es6</a> <a href="/tags/javascript/" style="font-size: 16.67px;">javascript</a> <a href="/tags/map/" style="font-size: 13.33px;">map</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" style="font-size: 10px;">二叉搜索树</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 15px;">二叉树</a> <a href="/tags/%E6%95%B0%E7%BB%84/" style="font-size: 18.33px;">数组</a> <a href="/tags/%E6%9F%A5%E6%89%BE/" style="font-size: 10px;">查找</a> <a href="/tags/%E6%A0%88/" style="font-size: 10px;">栈</a> <a href="/tags/%E6%AD%A3%E5%88%99/" style="font-size: 10px;">正则</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 20px;">设计模式</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 10px;">贪心</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 15px;">递归</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 11.67px;">链表</a> <a href="/tags/%E9%98%9F%E5%88%97/" style="font-size: 11.67px;">队列</a>
     </div>
 </div> -->
     
@@ -808,8 +838,8 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-06T06:18:36.000Z">2020-05-06</time></div>
-                    <a href="/2020/05/06/programming/reverse-linked/" class="title has-link-black-ter is-size-6 has-text-weight-normal">从尾到头打印链表</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T11:34:03.000Z">2020-05-25</time></div>
+                    <a href="/2020/05/25/programming/replication-complexLists/" class="title has-link-black-ter is-size-6 has-text-weight-normal">复杂链表的复制</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
                     </p>
@@ -821,10 +851,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-06T02:53:42.000Z">2020-05-06</time></div>
-                    <a href="/2020/05/06/programming/order-median/" class="title has-link-black-ter is-size-6 has-text-weight-normal">有序数组的中位数</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T02:59:33.000Z">2020-05-25</time></div>
+                    <a href="/2020/05/25/programming/binaryTree-path-value/" class="title has-link-black-ter is-size-6 has-text-weight-normal">二叉树中和为某值的路径</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                        <a class="has-link-grey -link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
                     </p>
                 </div>
             </div>
@@ -834,10 +864,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-06T02:32:27.000Z">2020-05-06</time></div>
-                    <a href="/2020/05/06/programming/array-two-sum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">寻找数是数字的数字之和的下标数组</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T02:40:54.000Z">2020-05-25</time></div>
+                    <a href="/2020/05/25/programming/binarySearchTree-sequentialTraversalSequence/" class="title has-link-black-ter is-size-6 has-text-weight-normal">二叉搜索树的后序遍历序列</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                        <a class="has-link-grey -link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
                     </p>
                 </div>
             </div>
@@ -847,10 +877,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-06T02:08:26.000Z">2020-05-06</time></div>
-                    <a href="/2020/05/06/programming/intersection/" class="title has-link-black-ter is-size-6 has-text-weight-normal">两个数组的交集</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T02:11:02.000Z">2020-05-25</time></div>
+                    <a href="/2020/05/25/programming/print-binaryTree-topTobottom/" class="title has-link-black-ter is-size-6 has-text-weight-normal">从上往下打印二叉树</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                        <a class="has-link-grey -link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
                     </p>
                 </div>
             </div>
@@ -860,10 +890,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-05T09:12:06.000Z">2020-05-05</time></div>
-                    <a href="/2020/05/05/programming/long-add/" class="title has-link-black-ter is-size-6 has-text-weight-normal">长整数相加</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-24T09:15:26.000Z">2020-05-24</time></div>
+                    <a href="/2020/05/24/programming/pop-push-sequence/" class="title has-link-black-ter is-size-6 has-text-weight-normal">栈的压入、弹出序列</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                        <a class="has-link-grey -link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
                     </p>
                 </div>
             </div>
@@ -966,7 +996,7 @@
                 <span class="level-item">剑指offer</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">12</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">
@@ -996,7 +1026,7 @@
                     <span class="level-item">五月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">7</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1054,16 +1084,37 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">
+                        <span class="tag">二叉搜索树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
                         <span class="tag">二叉树</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E6%95%B0%E7%BB%84/">
                         <span class="tag">数组</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%9F%A5%E6%89%BE/">
+                        <span class="tag">查找</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%A0%88/">
+                        <span class="tag">栈</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1082,23 +1133,30 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%B4%AA%E5%BF%83/">
+                        <span class="tag">贪心</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/%E9%80%92%E5%BD%92/">
                         <span class="tag">递归</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E9%93%BE%E8%A1%A8/">
                         <span class="tag">链表</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E9%98%9F%E5%88%97/">
                         <span class="tag">队列</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1209,7 +1267,7 @@
                 <span class="level-item">剑指offer</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">12</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">
@@ -1239,7 +1297,7 @@
                     <span class="level-item">五月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">7</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1297,16 +1355,37 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">
+                        <span class="tag">二叉搜索树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
                         <span class="tag">二叉树</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E6%95%B0%E7%BB%84/">
                         <span class="tag">数组</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%9F%A5%E6%89%BE/">
+                        <span class="tag">查找</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%A0%88/">
+                        <span class="tag">栈</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1325,23 +1404,30 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%B4%AA%E5%BF%83/">
+                        <span class="tag">贪心</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/%E9%80%92%E5%BD%92/">
                         <span class="tag">递归</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E9%93%BE%E8%A1%A8/">
                         <span class="tag">链表</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E9%98%9F%E5%88%97/">
                         <span class="tag">队列</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 

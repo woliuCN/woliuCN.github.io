@@ -180,8 +180,10 @@
             
         </h1>
         <div class="content">
-            <p><strong>题目描述:</strong><br>给出一个数与一个不重复的数组，如果这个数是数组里面两个数字之和，则返回下标数组。</p>
-<p><strong>思路:</strong><br>传统做法是循环两次，比较两次下标值不同，但值相加相同的就返回，但时间复杂度就是O(n^2)。另外的一种做法就是利用map哈希列表来记录值与下标的映射，然后比较目标值与每次循环的当前值的差是否是在map中，是则表示存在，返回下标组。</p>
+            <p><strong>题目描述:</strong></p>
+<p>给出一个数与一个不重复的数组，如果这个数是数组里面两个数字之和，则返回下标数组。</p>
+<p><strong>思路:</strong></p>
+<p>传统做法是循环两次，比较两次下标值不同，但值相加相同的就返回，但时间复杂度就是O(n^2)。另外的一种做法就是利用map哈希列表来记录值与下标的映射，然后比较目标值与每次循环的当前值的差是否是在map中，是则表示存在，返回下标组。</p>
         </div>
         
         
@@ -234,8 +236,10 @@
             
         </h1>
         <div class="content">
-            <p><strong>题目描述:</strong><br>给出两个任意可重复的数组，计算并返回两个数组的交集，例如[2,1,2,1]、[1,1]应该返回[1,1]。</p>
-<p><strong>思路:</strong><br>一种做法是可以利用map对象来统计数组元素出现的个数，不过这次需要两个map来分别统计，最后再取两个数组相同值的最小次数，就是最后的结果。</p>
+            <p><strong>题目描述:</strong></p>
+<p>给出两个任意可重复的数组，计算并返回两个数组的交集，例如[2,1,2,1]、[1,1]应该返回[1,1]。</p>
+<p><strong>思路:</strong></p>
+<p>一种做法是可以利用map对象来统计数组元素出现的个数，不过这次需要两个map来分别统计，最后再取两个数组相同值的最小次数，就是最后的结果。</p>
         </div>
         
         
@@ -288,8 +292,10 @@
             
         </h1>
         <div class="content">
-            <p><strong>题目描述:</strong><br>将一个含有可以组成树的对象数组转换为树形结构的数组。例如：[{id:1},{id:2,pid:1},{id:1},{id:3,pid:2},{id:4,pid:1}]转换结果是<br>[{“id”:1,”childs”:[{“id”:2,”pid”:1,”childs”:[{“id”:3,”pid”:2}]},{“id”:4,”pid”:1}]}]</p>
-<p><strong>思路:</strong><br>这个在实际应用还是比较经常遇到的，特别树形结构的目录，通常在后端存储的时候就只是一个类树型对象数组，需要前端自己拼接。利用一个map对象来记录id与对象的映射，遍历原数组，如果没有pid的话则是父节点，push到要返回的数组里面去。如果存在pid的话，则可以在map里面找到对应父对象，再将当前的节点对象存储到父对象的child数组里面。</p>
+            <p><strong>题目描述:</strong></p>
+<p>将一个含有可以组成树的对象数组转换为树形结构的数组。例如：[{id:1},{id:2,pid:1},{id:1},{id:3,pid:2},{id:4,pid:1}]转换结果是<br>[{“id”:1,”childs”:[{“id”:2,”pid”:1,”childs”:[{“id”:3,”pid”:2}]},{“id”:4,”pid”:1}]}]</p>
+<p><strong>思路:</strong></p>
+<p>这个在实际应用还是比较经常遇到的，特别树形结构的目录，通常在后端存储的时候就只是一个类树型对象数组，需要前端自己拼接。利用一个map对象来记录id与对象的映射，遍历原数组，如果没有pid的话则是父节点，push到要返回的数组里面去。如果存在pid的话，则可以在map里面找到对应父对象，再将当前的节点对象存储到父对象的child数组里面。</p>
         </div>
         
         
@@ -357,7 +363,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            32
+                            42
                         </p>
                     </a>
                 </div>
@@ -381,7 +387,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            11
+                            15
                         </p>
                     </a>
                 </div>
@@ -405,7 +411,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/es6/" style="font-size: 15px;">es6</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/map/" style="font-size: 15px;">map</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 10px;">二叉树</a> <a href="/tags/%E6%95%B0%E7%BB%84/" style="font-size: 17.5px;">数组</a> <a href="/tags/%E6%AD%A3%E5%88%99/" style="font-size: 10px;">正则</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 20px;">设计模式</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10px;">递归</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 10px;">链表</a> <a href="/tags/%E9%98%9F%E5%88%97/" style="font-size: 10px;">队列</a>
+        <a href="/tags/css3/" style="font-size: 11.67px;">css3</a> <a href="/tags/es6/" style="font-size: 13.33px;">es6</a> <a href="/tags/javascript/" style="font-size: 16.67px;">javascript</a> <a href="/tags/map/" style="font-size: 13.33px;">map</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" style="font-size: 10px;">二叉搜索树</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 15px;">二叉树</a> <a href="/tags/%E6%95%B0%E7%BB%84/" style="font-size: 18.33px;">数组</a> <a href="/tags/%E6%9F%A5%E6%89%BE/" style="font-size: 10px;">查找</a> <a href="/tags/%E6%A0%88/" style="font-size: 10px;">栈</a> <a href="/tags/%E6%AD%A3%E5%88%99/" style="font-size: 10px;">正则</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 20px;">设计模式</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 10px;">贪心</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 15px;">递归</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 11.67px;">链表</a> <a href="/tags/%E9%98%9F%E5%88%97/" style="font-size: 11.67px;">队列</a>
     </div>
 </div> -->
     
@@ -419,8 +425,8 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-06T06:18:36.000Z">2020-05-06</time></div>
-                    <a href="/2020/05/06/programming/reverse-linked/" class="title has-link-black-ter is-size-6 has-text-weight-normal">从尾到头打印链表</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T11:34:03.000Z">2020-05-25</time></div>
+                    <a href="/2020/05/25/programming/replication-complexLists/" class="title has-link-black-ter is-size-6 has-text-weight-normal">复杂链表的复制</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
                     </p>
@@ -432,10 +438,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-06T02:53:42.000Z">2020-05-06</time></div>
-                    <a href="/2020/05/06/programming/order-median/" class="title has-link-black-ter is-size-6 has-text-weight-normal">有序数组的中位数</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T02:59:33.000Z">2020-05-25</time></div>
+                    <a href="/2020/05/25/programming/binaryTree-path-value/" class="title has-link-black-ter is-size-6 has-text-weight-normal">二叉树中和为某值的路径</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                        <a class="has-link-grey -link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
                     </p>
                 </div>
             </div>
@@ -445,10 +451,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-06T02:32:27.000Z">2020-05-06</time></div>
-                    <a href="/2020/05/06/programming/array-two-sum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">寻找数是数字的数字之和的下标数组</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T02:40:54.000Z">2020-05-25</time></div>
+                    <a href="/2020/05/25/programming/binarySearchTree-sequentialTraversalSequence/" class="title has-link-black-ter is-size-6 has-text-weight-normal">二叉搜索树的后序遍历序列</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                        <a class="has-link-grey -link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
                     </p>
                 </div>
             </div>
@@ -458,10 +464,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-06T02:08:26.000Z">2020-05-06</time></div>
-                    <a href="/2020/05/06/programming/intersection/" class="title has-link-black-ter is-size-6 has-text-weight-normal">两个数组的交集</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T02:11:02.000Z">2020-05-25</time></div>
+                    <a href="/2020/05/25/programming/print-binaryTree-topTobottom/" class="title has-link-black-ter is-size-6 has-text-weight-normal">从上往下打印二叉树</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                        <a class="has-link-grey -link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
                     </p>
                 </div>
             </div>
@@ -471,10 +477,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-05T09:12:06.000Z">2020-05-05</time></div>
-                    <a href="/2020/05/05/programming/long-add/" class="title has-link-black-ter is-size-6 has-text-weight-normal">长整数相加</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-24T09:15:26.000Z">2020-05-24</time></div>
+                    <a href="/2020/05/24/programming/pop-push-sequence/" class="title has-link-black-ter is-size-6 has-text-weight-normal">栈的压入、弹出序列</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                        <a class="has-link-grey -link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
                     </p>
                 </div>
             </div>
@@ -577,7 +583,7 @@
                 <span class="level-item">剑指offer</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">12</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">
@@ -607,7 +613,7 @@
                     <span class="level-item">五月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">7</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -665,16 +671,37 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">
+                        <span class="tag">二叉搜索树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
                         <span class="tag">二叉树</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E6%95%B0%E7%BB%84/">
                         <span class="tag">数组</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%9F%A5%E6%89%BE/">
+                        <span class="tag">查找</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%A0%88/">
+                        <span class="tag">栈</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -693,23 +720,30 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%B4%AA%E5%BF%83/">
+                        <span class="tag">贪心</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/%E9%80%92%E5%BD%92/">
                         <span class="tag">递归</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E9%93%BE%E8%A1%A8/">
                         <span class="tag">链表</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E9%98%9F%E5%88%97/">
                         <span class="tag">队列</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -820,7 +854,7 @@
                 <span class="level-item">剑指offer</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">12</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">
@@ -850,7 +884,7 @@
                     <span class="level-item">五月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">7</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -908,16 +942,37 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">
+                        <span class="tag">二叉搜索树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
                         <span class="tag">二叉树</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E6%95%B0%E7%BB%84/">
                         <span class="tag">数组</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%9F%A5%E6%89%BE/">
+                        <span class="tag">查找</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%A0%88/">
+                        <span class="tag">栈</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -936,23 +991,30 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%B4%AA%E5%BF%83/">
+                        <span class="tag">贪心</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/%E9%80%92%E5%BD%92/">
                         <span class="tag">递归</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E9%93%BE%E8%A1%A8/">
                         <span class="tag">链表</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E9%98%9F%E5%88%97/">
                         <span class="tag">队列</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 

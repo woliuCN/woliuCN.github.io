@@ -147,286 +147,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-15T02:40:26.000Z">2020-03-15</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/webpack4/">webpack4</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    11 分钟 读完 (大约 1590 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/15/webpack4/webpack4-base3/">webpack基本配置(下)</a>
-            
-        </h1>
-        <div class="content">
-            <p><strong>watch</strong></p>
-<p>文件监听配置，在源码发生变化的时候，自动重新构建出新的输出文件。因为是输出在磁盘里面的文件，所以每次更新后得手动刷新浏览器。可以在配置文件配置或者在脚本后面加上<code>--watch</code>参数开启。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//文件监听的原理：轮询判断文件的最后编辑时间是否变化，当某个文件发生变化后，并不是立刻的告诉监听者，而是先缓存起来，等待aggregateTimeout再去通知</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    watch:<span class="literal">true</span>,</span><br><span class="line">    watchOptions:&#123;</span><br><span class="line">        ignored:<span class="regexp">/node_modules/</span>, <span class="comment">//不监听变化的文件或者文件夹，支持正则</span></span><br><span class="line">        aggregateTimeout:<span class="number">300</span>, <span class="comment">//监听到变化后等待300ms后再去执行。默认是300ms</span></span><br><span class="line">        poll:<span class="number">1000</span> <span class="comment">//判断文件是否发送变化是通过不停询问系统指定文件有没有变化实现的，默认每秒询问1000次</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/03/15/webpack4/webpack4-base3/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-15T02:40:20.000Z">2020-03-15</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/webpack4/">webpack4</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 分钟 读完 (大约 810 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/15/webpack4/webpack4-base2/">webpack基本配置(上)</a>
-            
-        </h1>
-        <div class="content">
-            <p><strong>entry(入口)</strong></p>
-<p>webpack打包的入口,根据这个入口文件及里面文件的相关依赖来开始构建,可以指定单个或者多个入口。举个例子</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry:<span class="string">'./src/index.js'</span>, <span class="comment">//单个入口的时候是字符串 默认是.src/index</span></span><br><span class="line">    <span class="comment">//多个入口的时候是对象。可以动态配置</span></span><br><span class="line">    entry:&#123;</span><br><span class="line">		phone:<span class="string">'./src/phone.js'</span>,</span><br><span class="line">		pc:<span class="string">'./src/pc.js'</span></span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>output(出口)</strong></p>
-<p>webpack打包生成的bundle的最终出口，可以指定文件所在的目录及命名格式等配置，按需加载的文件名称等。具体更多的配置可参照官网的。举个例子</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    output:&#123;</span><br><span class="line">        path:path.join(__dirname,<span class="string">'dist'</span>),</span><br><span class="line">        filename:<span class="string">'bundle.js'</span> <span class="comment">//单入口的时候    </span></span><br><span class="line">        filename:<span class="string">'[name].bundle.js'</span> <span class="comment">//多入口的时候使用入口名称占位符</span></span><br><span class="line">        filename:<span class="string">'[id].bundle.js'</span><span class="comment">//多入口使用内部chunk id占位符</span></span><br><span class="line">        filename: <span class="string">"[name].[hash].bundle.js"</span> <span class="comment">//多入口的时候使用入口名称占位符加每次打包的hash</span></span><br><span class="line">        chunkFilename: <span class="string">'chunk.bundle.js'</span>, <span class="comment">// 指未列在 entry 中，却又需要被打包出来的文件的名称,通常指按需加载的代码</span></span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/03/15/webpack4/webpack4-base2/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-15T02:17:05.000Z">2020-03-15</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/webpack4/">webpack4</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 分钟 读完 (大约 625 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/15/webpack4/webpack4-base1/">webpack4配置文件及其相关概念</a>
-            
-        </h1>
-        <div class="content">
-            <p><strong>配置文件</strong></p>
-<p>webpack默认识别的配置文件是webpack.config.js。但是在日常的项目中，通常有分生产环境与开发环境，所以可以通过webpack –config 指定配置文件。例如webpack –config webpack.pro.js。在package.json里面脚本配置。打包的命令是./node_modules/.bin/webpack。原理是局部安装的依赖如果有创建一些命令的话，会在node_modules/.bin目录创建软链接。而package.json默认会读取这些软链接。所以可以在package.json的脚本里面配置命令。</p>
-<p><strong>打包输出结果</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;   </span><br><span class="line">entry:&#123;</span><br><span class="line">        index:<span class="string">'./src/index.js'</span>,</span><br><span class="line">        utils:<span class="string">'./src/util.js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    output:&#123;</span><br><span class="line">        path:path.join(__dirname,<span class="string">'dist'</span>),</span><br><span class="line">        filename:<span class="string">'[id].bundle.js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    mode:<span class="string">'production'</span></span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line">Hash: <span class="number">8</span>a5dd3006c8eb99d09ca	<span class="comment">//本次打包对应的唯一的一个hash值</span></span><br><span class="line">Version: webpack <span class="number">4.41</span><span class="number">.6</span>	 <span class="comment">//webpack 版本</span></span><br><span class="line">Time: <span class="number">96</span>ms		<span class="comment">//打包耗时</span></span><br><span class="line">Built at: <span class="number">2020</span><span class="number">-02</span><span class="number">-16</span> <span class="number">8</span>:<span class="number">16</span>:<span class="number">35</span> PM	</span><br><span class="line"><span class="comment">/* 打包出的文件	 文件大小	chunks id数组   asset对应的chunk名称 就是entry指定对象的key</span></span><br><span class="line"><span class="comment">                                              当entry是字符串的时候，会默认指定名称为main</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">    Asset        Size           Chunks        Chunk Names</span><br><span class="line"><span class="number">0.</span>bundle.js   <span class="number">976</span> bytes       <span class="number">0</span>  [emitted]     index</span><br><span class="line"><span class="number">1.</span>bundle.js  <span class="number">1020</span> bytes       <span class="number">1</span>  [emitted]     utils</span><br><span class="line">Entrypoint index = <span class="number">0.</span>bundle.js	 <span class="comment">//打包入口文件及输出的结果</span></span><br><span class="line">Entrypoint utils = <span class="number">1.</span>bundle.js</span><br><span class="line">[<span class="number">0</span>] ./src/util.js <span class="number">179</span> bytes &#123;<span class="number">1</span>&#125; [built]</span><br><span class="line">[<span class="number">1</span>] ./src/index.js + <span class="number">1</span> modules <span class="number">378</span> bytes &#123;<span class="number">0</span>&#125; [built] <span class="comment">//chunk 0 里有引用关系的文件列表</span></span><br><span class="line">| ./src/index.js <span class="number">196</span> bytes [built]</span><br><span class="line">| ./src/hello.js <span class="number">182</span> bytes [built]</span><br></pre></td></tr></table></figure>
-
-<p><strong><code>module</code>、<code>chunk</code>、<code>bundle</code>在webpack里面的意义与区别</strong></p>
-<ol>
-<li><code>module</code>：我们写的每个文件，如js文件,css文件，jsx文件。甚至是被引用的一张图片。都是认为是module。</li>
-<li><code>chunk</code>：webpack在运行打包的时候，根据文件的引用关系生成<strong>chunk</strong>文件，然后在对这个<strong>chunk</strong>文件进行相关操作。例如上面例子，index.js引用了hello.js文件，这两个就生成了<strong>chunk</strong>文件。</li>
-<li><code>bundle</code>：webpack处理完chunk文件后，最终输出的就是bundle文件。这个文件包含了加载与编译后的最终源文件，可以直接在浏览器运行。</li>
-<li>一般来说，一个chunk会对应一个bundle，但是也有例外，例如我在index.js里面引入了index.css文件,但我用插件将其分割出来生成了index.bundle.css文件。这个时候这个chunk就对应了两个bundle。</li>
-<li>总结来说，我们编写的是module，webpack运行的时候是chunk，最终输出的是可以直接运行的bundle。</li>
-</ol>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-14T03:15:21.000Z">2020-03-14</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 392 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/14/programming/DFS-deepClone/">深度遍历实现深拷贝</a>
-            
-        </h1>
-        <div class="content">
-            <p><strong>题目描述:</strong><br>利用深度遍历的思想实现对象的深拷贝，且能处理好环状数据的问题。</p>
-<p><strong>思路:</strong><br>根据深度遍历的思路，针对每个对象属性深入递归拷贝下去，然后再遍历整个对象，在对每个对象属性都依照前面规则。下面实现了基本的类型的拷贝，至于其他类型的得依照稍加处理。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/03/14/programming/DFS-deepClone/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-14T03:15:13.000Z">2020-03-14</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 458 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/14/programming/BFS-deepClone/">广度遍历实现深拷贝</a>
-            
-        </h1>
-        <div class="content">
-            <p><strong>题目描述:</strong><br>利用广度遍历的思想实现对象的深拷贝，且能处理好环状数据的问题。</p>
-<p><strong>思路:</strong><br>根据广度遍历的思路，先遍历拷贝每一层级的对象，利用队列的先进先出的性质，记录同一层级的对象的子层级对象，再依次遍历拷贝各自子层级的对象。下面实现了基本的类型的拷贝，至于其他类型的得依照稍加处理。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/03/14/programming/BFS-deepClone/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-14T03:14:27.000Z">2020-03-14</time>
+                <time class="level-item has-text-grey" datetime="2020-05-06T06:18:36.000Z">2020-05-06</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
@@ -436,7 +157,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 320 个字)
+                    1 分钟 读完 (大约 130 个字)
                 </span>
                 
                 
@@ -445,19 +166,21 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/03/14/programming/rebuild-binaryTree/">重建二叉树</a>
+                <a class="has-link-black-ter" href="/2020/05/06/programming/reverse-linked/">从尾到头打印链表</a>
             
         </h1>
         <div class="content">
-            <p><strong>题目描述:</strong><br>输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。</p>
-<p><strong>思路:</strong><br>因为前序与中序在各自左右节点下的序列内容是一样的，利用前序与中序的性质，（在前序中根节点永远是在第一个的，利用前序得出的根节点在中序里面可以分割出左右节点的序列）进行递归处理。注意递归的出口！</p>
+            <p><strong>题目描述:</strong></p>
+<p>输入一个链表，按链表从尾到头的顺序返回一个ArrayList。</p>
+<p><strong>思路:</strong></p>
+<p>理解了链表的数据结构后其实很简单，只需要遍历链表，然后利用数组的unshift方法每次将链表的下一个值插入到数组的前面，从而实现逆序。</p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/03/14/programming/rebuild-binaryTree/#more">阅读更多</a>
+                <a class="button is-size-7 is-light" href="/2020/05/06/programming/reverse-linked/#more">阅读更多</a>
                 </div>
             </div>
         </div>
@@ -480,17 +203,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-13T02:49:41.000Z">2020-03-13</time>
+                <time class="level-item has-text-grey" datetime="2020-05-06T02:53:42.000Z">2020-05-06</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
+                <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 读完 (大约 187 个字)
+                    1 分钟 读完 (大约 163 个字)
                 </span>
                 
                 
@@ -499,61 +222,25 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/03/13/pattern/strategy-pattern/">策略模式</a>
+                <a class="has-link-black-ter" href="/2020/05/06/programming/order-median/">有序数组的中位数</a>
             
         </h1>
         <div class="content">
-            <h2 id="一、策略模式及其用途"><a href="#一、策略模式及其用途" class="headerlink" title="一、策略模式及其用途"></a>一、策略模式及其用途</h2><p>  行为型模式之策略模式，实质就是将一系列可以互换的算法封装起来，每组算法处理的业务是一样的，但是处理的过程跟结果是不一样的。根据用户需求选择其中一种。优点是能将算法的使用跟实现进行分离，并且可以添加相应的算法。缺点就是得知道每种策略算法是异同点才能选择。</p>
-<h2 id="二、代码实现"><a href="#二、代码实现" class="headerlink" title="二、代码实现"></a>二、代码实现</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//策略类，定义相关的策略算法</span></span><br><span class="line"><span class="keyword">const</span> strategies=&#123;</span><br><span class="line">    A()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"A"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    B()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"B"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//环境类，就是选择算法工具</span></span><br><span class="line"><span class="keyword">const</span> context=<span class="function"><span class="params">name</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> strategies[name]</span><br><span class="line">&#125; </span><br><span class="line">context(<span class="string">'A'</span>)() <span class="comment">//A</span></span><br></pre></td></tr></table></figure>
+            <p><strong>题目描述:</strong></p>
+<p>给出两个有序数组，计算两个有序数组的中位数，且算法复杂度不超过O(log(m+n))。</p>
+<p><strong>思路:</strong></p>
+<p>因为两个是有序的数组，所以只需逐个比较大小组成新的数组即可，再根据奇偶性求出中位数。</p>
         </div>
         
         
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-13T02:49:30.000Z">2020-03-13</time>
-                
+        <div class="level is-mobile">
+            <div class="level-start">
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
+                <a class="button is-size-7 is-light" href="/2020/05/06/programming/order-median/#more">阅读更多</a>
                 </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 385 个字)
-                </span>
-                
-                
             </div>
         </div>
         
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/13/pattern/proxy-pattern/">代理模式</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="一、代理模式及其用途"><a href="#一、代理模式及其用途" class="headerlink" title="一、代理模式及其用途"></a>一、代理模式及其用途</h2><p>代理模式，给原对象提供一个代理对象，代理对象拥有原对象的引用，可以通过访问这个代理对象来实现执行原对象的相关操作，进而能避免对原对象的直接访问。举个例子：如平常我们买车买房，自己亲自去找车主房主是不现实的，通常做法就是去找中介，代理对象就了类似与中介，拉起两者之间的桥梁。代理有虚拟代理跟保护代理，保护代理的话可以在代理中直接拒绝对真实对象的访问，而虚拟代理的话可以延迟访问到真正需要的时候，节省程序开销。所以优点是高度解耦，对象保护，缺点的话就是添加的代理对象，可能会开销增大。</p>
-<h2 id="二、代码实现"><a href="#二、代码实现" class="headerlink" title="二、代码实现"></a>二、代码实现</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*----------------------------------------------------------------------保护代理*/</span></span><br><span class="line"> <span class="keyword">var</span> Fans = &#123;</span><br><span class="line">        flower()&#123;</span><br><span class="line">            Agent.reception(<span class="string">"刀片"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> Agent = &#123;</span><br><span class="line">        reception:<span class="function"><span class="keyword">function</span>(<span class="params">gift</span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"粉丝送的:"</span>+gift);  <span class="comment">//粉丝送的:刀片</span></span><br><span class="line">            <span class="keyword">if</span>(gift != <span class="string">"花"</span>)&#123;</span><br><span class="line">                star.reception(<span class="string">"花"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">          </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> star = &#123;</span><br><span class="line">        reception:<span class="function"><span class="keyword">function</span>(<span class="params">gift</span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"收到粉丝的:"</span>+gift); <span class="comment">//收到粉丝的:花</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Fans.flower();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*----------------------------------------------------------------------虚拟代理*/</span></span><br><span class="line"><span class="comment">//代理模式实现图片的延迟加载</span></span><br><span class="line"><span class="keyword">const</span> myImg=&#123;</span><br><span class="line">    setSrc(imgNode,src)&#123;</span><br><span class="line">        imgNode.src=src;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> proxyImg=&#123;</span><br><span class="line">    setSrc(imgNode,src)&#123;</span><br><span class="line">    myImg.setSrc(imgNode,<span class="string">'./img.jpg'</span>); <span class="comment">//1. 加载占位图片</span></span><br><span class="line">    <span class="keyword">let</span> img=<span class="keyword">new</span> Img(); <span class="comment">//2. 真正加载图片</span></span><br><span class="line">    img.src=src;</span><br><span class="line">    img.onload=<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">      myImg.setSrc(imgNode,src); <span class="comment">//3. 加载完成后，替换真正图片</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        </div>
-        
-        
         
     </div>
 </div>
@@ -572,56 +259,10 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-13T02:49:05.000Z">2020-03-13</time>
+                <time class="level-item has-text-grey" datetime="2020-05-06T02:32:27.000Z">2020-05-06</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 分钟 读完 (大约 318 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/13/pattern/command-pattern/">命令模式</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="一、命令模式"><a href="#一、命令模式" class="headerlink" title="一、命令模式"></a>一、命令模式</h2><p>  行为模式中的命令模式，是将可能请求的命令封装在一个对象中，交给中间人执行者，执行者再根据请求者的请求执行相应的命令。所以命令模式里面有三个主体。命令对象、执行者、请求者。应用场景就是当需要向命令对象发送请求的时候，不知道请求的对象具体是谁（执行者知道），更不知道被请求执行的操作是什么（命令对象知道），这个时候就用到命令模式了。优点就是高度松耦合，缺点嘛，就是需要定义三个对象且执行者跟命令对象之间的关系需要知道。</p>
-<h2 id="二、代码实现"><a href="#二、代码实现" class="headerlink" title="二、代码实现"></a>二、代码实现</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//定义一个命令对象，用来存储执行的操作</span></span><br><span class="line"><span class="keyword">const</span> MenuBar = &#123;</span><br><span class="line">	refresh()&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">"执行了刷新操作"</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//定义执行者函数，返回一个对象。用来执行命令</span></span><br><span class="line"><span class="keyword">const</span> command = <span class="function"><span class="params">receiver</span>=&gt;</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		execute()&#123;</span><br><span class="line">			receiver.refresh();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//定义一个请求者,接受一个dom对象以及一个执行者</span></span><br><span class="line"><span class="keyword">const</span> request = <span class="function">(<span class="params">button,command</span>)=&gt;</span>&#123;</span><br><span class="line">		button.onclick=<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">			command.execute()</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> refeshCommand = command(MenuBar);</span><br><span class="line"><span class="keyword">let</span> button = <span class="built_in">document</span>.xxxx;</span><br><span class="line">request(button,refeshCommand);</span><br></pre></td></tr></table></figure>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-13T02:48:54.000Z">2020-03-13</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/pattern/">pattern</a>
+                <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
                 </div>
                 
                 
@@ -637,16 +278,408 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/03/13/pattern/bridging-pattern/">桥接模式</a>
+                <a class="has-link-black-ter" href="/2020/05/06/programming/array-two-sum/">寻找数是数字的数字之和的下标数组</a>
             
         </h1>
         <div class="content">
-            <h2 id="一、桥接模式及其应用"><a href="#一、桥接模式及其应用" class="headerlink" title="一、桥接模式及其应用"></a>一、桥接模式及其应用</h2><p>桥接模式，将抽象部分跟具体实现部分分离，两者可以独立变化，也可以一起工作。中间通过‘桥’连接。如经常用到的组件上的那些方法，它们接受一个函数，如果用户传入这个函数，那么就会在某段代码逻辑里面使用。这个过程中，组件就是桥的作用，而用户传入的函数则是具体实现的部分了。</p>
-<h2 id="二、代码实现"><a href="#二、代码实现" class="headerlink" title="二、代码实现"></a>二、代码实现</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//例如array对象上的forEach方法，就是桥接模式的应用,forEach就是抽象部分，而具体实现是用户传入的回调函数。</span></span><br><span class="line"><span class="keyword">const</span> forEach=<span class="function">(<span class="params">arr,callback</span>)=&gt;</span>&#123; </span><br><span class="line">    <span class="keyword">if</span>(!<span class="built_in">Array</span>.isArray(arr)) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">const</span> length=arr.length;   </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;length,i++)&#123;</span><br><span class="line">        callback(arr[i],i); </span><br><span class="line">    &#125;&#125;</span><br><span class="line"><span class="keyword">let</span> arr=[<span class="string">"a"</span>,<span class="string">"b"</span>];</span><br><span class="line">forEach(arr,(el,index)=&gt;&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(el+index);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-
+            <p><strong>题目描述:</strong></p>
+<p>给出一个数与一个不重复的数组，如果这个数是数组里面两个数字之和，则返回下标数组。</p>
+<p><strong>思路:</strong></p>
+<p>传统做法是循环两次，比较两次下标值不同，但值相加相同的就返回，但时间复杂度就是O(n^2)。另外的一种做法就是利用map哈希列表来记录值与下标的映射，然后比较目标值与每次循环的当前值的差是否是在map中，是则表示存在，返回下标组。</p>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/05/06/programming/array-two-sum/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-06T02:08:26.000Z">2020-05-06</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 分钟 读完 (大约 215 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/05/06/programming/intersection/">两个数组的交集</a>
+            
+        </h1>
+        <div class="content">
+            <p><strong>题目描述:</strong></p>
+<p>给出两个任意可重复的数组，计算并返回两个数组的交集，例如[2,1,2,1]、[1,1]应该返回[1,1]。</p>
+<p><strong>思路:</strong></p>
+<p>一种做法是可以利用map对象来统计数组元素出现的个数，不过这次需要两个map来分别统计，最后再取两个数组相同值的最小次数，就是最后的结果。</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/05/06/programming/intersection/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-05T09:12:06.000Z">2020-05-05</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 分钟 读完 (大约 199 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/05/05/programming/long-add/">长整数相加</a>
+            
+        </h1>
+        <div class="content">
+            <p><strong>题目描述:</strong></p>
+<p>两个任意大的整数相加的时候，可能会出现溢出、损失精度的情况，为了实现长整数相加，需要进行一些处理。</p>
+<p><strong>思路:</strong></p>
+<p>将两个长整数转换为字符串，然后通过分割进行一位一位的相加，需要注意的是进位的处理。</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/05/05/programming/long-add/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-05T08:43:19.000Z">2020-05-05</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 362 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/05/05/programming/continuous-repetition/">统计连续出现的字符及次数</a>
+            
+        </h1>
+        <div class="content">
+            <p><strong>题目描述:</strong></p>
+<p>寻找一个字符串中连续出现最多的字符，并且统计其次数</p>
+<p><strong>思路:</strong></p>
+<p>最方便快捷的方法就是利用正则表达式匹配出连续出现的字符的内容数组，然后遍历数组，找出并统计连续出现最多的字符及其长度。</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/05/05/programming/continuous-repetition/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-05T08:17:57.000Z">2020-05-05</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 322 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/05/05/programming/objectToTree/">对象数组转树形结构</a>
+            
+        </h1>
+        <div class="content">
+            <p><strong>题目描述:</strong></p>
+<p>将一个含有可以组成树的对象数组转换为树形结构的数组。例如：[{id:1},{id:2,pid:1},{id:1},{id:3,pid:2},{id:4,pid:1}]转换结果是<br>[{“id”:1,”childs”:[{“id”:2,”pid”:1,”childs”:[{“id”:3,”pid”:2}]},{“id”:4,”pid”:1}]}]</p>
+<p><strong>思路:</strong></p>
+<p>这个在实际应用还是比较经常遇到的，特别树形结构的目录，通常在后端存储的时候就只是一个类树型对象数组，需要前端自己拼接。利用一个map对象来记录id与对象的映射，遍历原数组，如果没有pid的话则是父节点，push到要返回的数组里面去。如果存在pid的话，则可以在map里面找到对应父对象，再将当前的节点对象存储到父对象的child数组里面。</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/05/05/programming/objectToTree/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-24T03:14:38.000Z">2020-03-24</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/webpack4/">webpack4</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    9 分钟 读完 (大约 1319 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/03/24/webpack4/webpack4-base6/">webpack4优化策略</a>
+            
+        </h1>
+        <div class="content">
+            <h3 id="速度分析与体积分析"><a href="#速度分析与体积分析" class="headerlink" title="速度分析与体积分析"></a><strong>速度分析与体积分析</strong></h3><p>webpack虽然内置了stats对象可以看到每次打包后的结果（输出的一大串），但是内容虽多但是难看明白。所以得借助其他插件来使得能明显的看到哪个环节（哪个loader/plugin）的耗时，直观的看到打包后那些模块所占的体积的比例，才能进行相关内容的优化与提速。</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/03/24/webpack4/webpack4-base6/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-24T02:57:23.000Z">2020-03-24</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/webpack4/">webpack4</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    8 分钟 读完 (大约 1175 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/03/24/webpack4/webpack4-base5/">webpack进阶使用(下)</a>
+            
+        </h1>
+        <div class="content">
+            <h3 id="treeShaking-摇树优化"><a href="#treeShaking-摇树优化" class="headerlink" title="treeShaking-摇树优化"></a><strong>treeShaking-摇树优化</strong></h3><p>使用CJS的时候，为了使用一个模块中的方法引入一个模块，整个模块都会最后打包到bundle里面。而在wepack4对其进行了优化，在mode指定为production的时候默认开启three shaking。注意只能检测静态引用，也就是ES6的import，export 语法。CJS则无法检测。而tree shaking是DCE的一种方式，检测的依据是代码不会被执行的，也就是没有引入的则会标记删除，或者执行的结果不会被用到的、执行的影响只是影响死变量也会被标记删除。这样的好处显而易见，可以减少打包后的代码的体积，减少程序的执行时间等…</p>
+<h3 id="scopeHoisting-作用域提升"><a href="#scopeHoisting-作用域提升" class="headerlink" title="scopeHoisting-作用域提升"></a><strong>scopeHoisting-作用域提升</strong></h3><p>webpack打包出来的是一个IIFE（立即执行函数，同时也是一个匿名闭包），传入的modules是个数组，数组每一个都是一个模块初始化函数（也就是我们自己定义导入导出的模块）。当项目庞大的时候，就会生成很多函数包裹块，增加内存的开销。而scope hoisting可以理解为是把每个模块被webpack处理成的模块初始化函数整理到一个统一的包裹函数里，也就是把多个作用域用一个作用域取代，以减少内存消耗并减少包裹块代码，从每个模块有一个包裹函数变成只有一个包裹函数包裹所有的模块，但是有一个前提就是，当模块的引用次数大于1时，比如被引用了两次或以上，那么这个效果会无效，也就是被引用多次的模块在被webpack处理后，会被独立的包裹函数所包裹。这个很好理解，被多次引用的话，肯定是抽离成为一个模块更加方便。</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/03/24/webpack4/webpack4-base5/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-20T08:14:13.000Z">2020-03-20</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/webpack4/">webpack4</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    14 分钟 读完 (大约 2079 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/03/20/webpack4/webpack4-base4/">webpack进阶使用(上)</a>
+            
+        </h1>
+        <div class="content">
+            <h3 id="实现自动补充样式前缀与px转rem"><a href="#实现自动补充样式前缀与px转rem" class="headerlink" title="实现自动补充样式前缀与px转rem"></a><strong>实现自动补充样式前缀与px转rem</strong></h3><p>使用postcss(后处理器)来实现自动补充样式前缀与px转rem。在wepack中使用postcss-loader来实现postcss的功能。实现px转rem的话也可以使用px2rem-loader，这里为了方便一起使用就用了postcss的插件来实现。另外还需要动态指定html的px来实现自适应。可以使用阿里移动端的lib-flexible库(根html元素的fons-size的计算，获取的是当前浏览器的宽度/10)，也可以自己写。</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/03/20/webpack4/webpack4-base4/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -678,6 +711,8 @@
             <li><a class="pagination-link has-text-black-ter" href="/page/3/">3</a></li>
             
             <li><a class="pagination-link has-text-black-ter" href="/page/4/">4</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/5/">5</a></li>
             
         </ul>
     </nav>
@@ -727,7 +762,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            32
+                            42
                         </p>
                     </a>
                 </div>
@@ -751,7 +786,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            11
+                            15
                         </p>
                     </a>
                 </div>
@@ -775,7 +810,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/es6/" style="font-size: 15px;">es6</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/map/" style="font-size: 15px;">map</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 10px;">二叉树</a> <a href="/tags/%E6%95%B0%E7%BB%84/" style="font-size: 17.5px;">数组</a> <a href="/tags/%E6%AD%A3%E5%88%99/" style="font-size: 10px;">正则</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 20px;">设计模式</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10px;">递归</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 10px;">链表</a> <a href="/tags/%E9%98%9F%E5%88%97/" style="font-size: 10px;">队列</a>
+        <a href="/tags/css3/" style="font-size: 11.67px;">css3</a> <a href="/tags/es6/" style="font-size: 13.33px;">es6</a> <a href="/tags/javascript/" style="font-size: 16.67px;">javascript</a> <a href="/tags/map/" style="font-size: 13.33px;">map</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" style="font-size: 10px;">二叉搜索树</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 15px;">二叉树</a> <a href="/tags/%E6%95%B0%E7%BB%84/" style="font-size: 18.33px;">数组</a> <a href="/tags/%E6%9F%A5%E6%89%BE/" style="font-size: 10px;">查找</a> <a href="/tags/%E6%A0%88/" style="font-size: 10px;">栈</a> <a href="/tags/%E6%AD%A3%E5%88%99/" style="font-size: 10px;">正则</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 20px;">设计模式</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 10px;">贪心</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 15px;">递归</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 11.67px;">链表</a> <a href="/tags/%E9%98%9F%E5%88%97/" style="font-size: 11.67px;">队列</a>
     </div>
 </div> -->
     
@@ -789,8 +824,8 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-06T06:18:36.000Z">2020-05-06</time></div>
-                    <a href="/2020/05/06/programming/reverse-linked/" class="title has-link-black-ter is-size-6 has-text-weight-normal">从尾到头打印链表</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T11:34:03.000Z">2020-05-25</time></div>
+                    <a href="/2020/05/25/programming/replication-complexLists/" class="title has-link-black-ter is-size-6 has-text-weight-normal">复杂链表的复制</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
                     </p>
@@ -802,10 +837,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-06T02:53:42.000Z">2020-05-06</time></div>
-                    <a href="/2020/05/06/programming/order-median/" class="title has-link-black-ter is-size-6 has-text-weight-normal">有序数组的中位数</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T02:59:33.000Z">2020-05-25</time></div>
+                    <a href="/2020/05/25/programming/binaryTree-path-value/" class="title has-link-black-ter is-size-6 has-text-weight-normal">二叉树中和为某值的路径</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                        <a class="has-link-grey -link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
                     </p>
                 </div>
             </div>
@@ -815,10 +850,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-06T02:32:27.000Z">2020-05-06</time></div>
-                    <a href="/2020/05/06/programming/array-two-sum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">寻找数是数字的数字之和的下标数组</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T02:40:54.000Z">2020-05-25</time></div>
+                    <a href="/2020/05/25/programming/binarySearchTree-sequentialTraversalSequence/" class="title has-link-black-ter is-size-6 has-text-weight-normal">二叉搜索树的后序遍历序列</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                        <a class="has-link-grey -link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
                     </p>
                 </div>
             </div>
@@ -828,10 +863,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-06T02:08:26.000Z">2020-05-06</time></div>
-                    <a href="/2020/05/06/programming/intersection/" class="title has-link-black-ter is-size-6 has-text-weight-normal">两个数组的交集</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T02:11:02.000Z">2020-05-25</time></div>
+                    <a href="/2020/05/25/programming/print-binaryTree-topTobottom/" class="title has-link-black-ter is-size-6 has-text-weight-normal">从上往下打印二叉树</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                        <a class="has-link-grey -link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
                     </p>
                 </div>
             </div>
@@ -841,10 +876,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-05T09:12:06.000Z">2020-05-05</time></div>
-                    <a href="/2020/05/05/programming/long-add/" class="title has-link-black-ter is-size-6 has-text-weight-normal">长整数相加</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-24T09:15:26.000Z">2020-05-24</time></div>
+                    <a href="/2020/05/24/programming/pop-push-sequence/" class="title has-link-black-ter is-size-6 has-text-weight-normal">栈的压入、弹出序列</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                        <a class="has-link-grey -link" href="/categories/%E5%89%91%E6%8C%87offer/">剑指offer</a>
                     </p>
                 </div>
             </div>
@@ -947,7 +982,7 @@
                 <span class="level-item">剑指offer</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">12</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">
@@ -977,7 +1012,7 @@
                     <span class="level-item">五月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">7</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1035,16 +1070,37 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">
+                        <span class="tag">二叉搜索树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
                         <span class="tag">二叉树</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E6%95%B0%E7%BB%84/">
                         <span class="tag">数组</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%9F%A5%E6%89%BE/">
+                        <span class="tag">查找</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%A0%88/">
+                        <span class="tag">栈</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1063,23 +1119,30 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%B4%AA%E5%BF%83/">
+                        <span class="tag">贪心</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/%E9%80%92%E5%BD%92/">
                         <span class="tag">递归</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E9%93%BE%E8%A1%A8/">
                         <span class="tag">链表</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E9%98%9F%E5%88%97/">
                         <span class="tag">队列</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1190,7 +1253,7 @@
                 <span class="level-item">剑指offer</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">12</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">
@@ -1220,7 +1283,7 @@
                     <span class="level-item">五月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">7</span>
+                    <span class="level-item tag">17</span>
                 </span>
             </a>
         </li>
@@ -1278,16 +1341,37 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">
+                        <span class="tag">二叉搜索树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">
                         <span class="tag">二叉树</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E6%95%B0%E7%BB%84/">
                         <span class="tag">数组</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%9F%A5%E6%89%BE/">
+                        <span class="tag">查找</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%A0%88/">
+                        <span class="tag">栈</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1306,23 +1390,30 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%B4%AA%E5%BF%83/">
+                        <span class="tag">贪心</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/%E9%80%92%E5%BD%92/">
                         <span class="tag">递归</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E9%93%BE%E8%A1%A8/">
                         <span class="tag">链表</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/%E9%98%9F%E5%88%97/">
                         <span class="tag">队列</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
